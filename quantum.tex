@@ -478,37 +478,29 @@ The arguably simplest device may be a {\em quantum random number generator} uses
 
 Entangling two qubits $A$ and $B$ in a superposition denoted $\frac{1}{\sqrt{2}}(|0\rangle_A|0\rangle_B + |1\rangle_A|1\rangle_B)$, such that they are either {\em both} 0 or {\em both} 1, can be used for cryptography. Giving one of the qubits to Alice and one to Bob, the qubits remain entangled no matter how far apart they are. Measuring their individual qubits, Alice and Bob will get a random result -- however both get the {\em same} random value is the same for both of them. This can be used for {\em quantum teleportation} or as one way of establishing a shared secret key for  {\em secure  communication}, again surpassing classical technology \cite{RevModPhys.81.1301,EkertRenner2014}. 
 
-Faced with the challenge of simulation quantum systems on classical computers, Richard Feynman in 1982 \cite{Feynman1982} suggested to use quantum devices to simulate physics problems. Analog implementations of this idea in {\em quantum simulators }  \cite{RevModPhys.86.153}  have  been successful used to explore complex quantum problems, but {\em quantum annealers} to solve hard optimization problems \cite{Johnson2011} have not  yet shown any advantage over classical computers \cite{speedup}. {\color{red} we could drop this part about analog devices and jump straight to digital computers.}  Richard Feynman \cite{Feynman1982} in his seminal paper already envisaged a digital quantum computer, overcoming calibrarion and design limitations of analog quantum devices by generalizing the bits and gates of classical computers to quantum bits (qubits) and quantum gates.
+Faced with the challenge of simulation quantum systems on classical computers, Richard Feynman in 1982 \cite{Feynman1982} suggested to use quantum devices to simulate physics problems. Analog implementations of this idea in {\em quantum simulators }  \cite{RevModPhys.86.153}  have  been successful used to explore complex quantum problems, but {\em quantum annealers} to solve hard optimization problems have not  yet shown any advantage over classical computers \cite{speedup}. {\color{red} we could drop this part about analog devices and jump straight to digital computers.}  Richard Feynman \cite{Feynman1982} in his seminal paper already envisaged a digital quantum computer, overcoming calibrarion and design limitations of analog quantum devices by generalizing the bits and gates of classical computers to quantum bits (qubits) and quantum gates.
 
 Already we have a diverse range of quantum algorithms that outperform the classical counterparts: quantum simulations will have applications throughout chemistry and materials science and Shor's factoring algorithm \cite{Shor1994} and its variants break all currently used public-key cryptosystems.  More recent work suggests that quantum computers will have important applications in machine learning and even in the simulation of classical systems. While quantum algorithms are generally much less well understood than their classical cousins, the search continues for which important problems can be solved much faster on quantum computers and which cannot. Answering this question has become increasingly important, and industrial efforts are emerging that focus on the impending quantum revolution. The heightened interest is in part due to recent advances in quantum algorithms for quantum chemistry that enable solving critical real-world problems, such as for elucidating the mechanism of biological nitrogen fixation, with application to fertilizer production.
 
 
 \section{Special-purpose accelerator (MATTHIAS)}
 \begin{enumerate}
-
 \item       Computation moves to the data
-\item       Classical controller
-\item     Cloud service, data center (won't have your own)
-\item     You may have a few qubits for security/privacy (quantum credit card or money)
 \end{enumerate}
 
 
 
-Quantum computers are unlike their classical cousins.  A quantum computer will operate as a co-processor, receiving its instructions and cues from a stack of classical processors.  A scalable software stack is crucial for the implementation of quantum algorithms on actual hardware.  The software will require high-level programming languages, optimizing compilers, simulators, emulators, and translation to hardware-level instructions.  The symbolic programming language FORTRAN revolutionized programming of computing devices by closing the semantic gap between human and machine.  To rapidly innovate in the space of both quantum algorithms and devices and take quantum computers from laboratories to the cloud, similar abstractions, tools, and design methodologies are required.  The landscape of quantum applications and devices is rapidly evolving.  Understanding the applications enabled by our quantum future, and how to harness them, will forever alter our economic, industrial, academic and societal landscape.
+Quantum computers are unlike their classical cousins.  While, in principle,  they can perform any computation that a classical computer can perform, we should not expect them to power future personal computers or phones. Classical computers will remain cheaper, smaller and more portable than quantum computers for many of these tasks. Quantum computers play out their strength when running special quantum algorithms that solve certain computational tasks faster (in some cases exponentially faster) than any classical computer by acting in a superposition of values.  
+
+A quantum computer will thus operate as a co-processor, receiving its instructions and cues from a stack of classical processors. To suppress noise and errors and keep the qubits in a superposition most design for quantum computers require the qubits to be cooled to very low temperatures. This requires the use of dilution refrigerators and means that large scale quantum computers will be operated in data centers and accessed remotely as cloud service. Locally one may just have a limited number of qubits to establish secure communication or for use as quantum money .
+
+Cryogenic temperatures alone are insufficient to keep qubits in superposition for the runtime of a non-trivial algorithm and quantum error correction (QEC) \cite{qec} is needed to extend the lifetime of quantum information. The no-cloning theorem of quantum information, which makes quantum communication provably secure, unfortunately also QEC harder than classical fault tolerance. QEC can incur a large overhead and thousands or more ``physical'' qubits may be needed to realize a single error-protected ``logical'' qubits. Topological qubits \cite{tqc}, which  encode  quantum information in a non-local property of a quantum state are a promising way of reducing this overhead by being robust to any source of local noise. 
+
+Given these overheads, qubits will be a rare commodity in quantum computers and this leads to radical differences in their design compared  to classical computers where memory is cheap. Instead of moving data to computational units, early quantum computers will move operations to the data, applying gates directly to the memory qubits.
+
+ An even bigger difference exists in the design of quantum algorithms themselves. To make use of the  exponential parallelism inherent in a quantum superposition, computations need to be reversible and follow certain design patterns that are discussed in Box \ref{sec:box1}. 
 
 
-While quantum computers can perform any computation that a classical computer can perform, we should not expect them to power future personal computers or phones. Classical computers will remain cheaper, smaller and more portable than quantum computers for these tasks. Quantum computers play out their strength when running special quantum algorithms that solve certain computational tasks faster (in some cases exponentially faster) than any classical computer by acting in a superposition of values. 
-
-They will be used as accelerators for classical supercomputers -- not unlike the way graphics processing units (GPUs) are today used to accelerate certain demanding numerical calculations.
-
-
- Carbon Capture (to combat global warming), on the scale of days or months as opposed to billions of years on state-of-the-art supercomputers today.  Extensions of these approaches promise solutions for applications in materials modeling, including investigation of materials that display room-temperature superconductivity. 
-
-
-
-
-
-{\bf fragments }
 
 
  
@@ -549,6 +541,13 @@ They will be used as accelerators for classical supercomputers -- not unlike the
                            \item         Room temp SC
 \end{enumerate}
 \end{enumerate}
+
+
+ Carbon Capture (to combat global warming), on the scale of days or months as opposed to billions of years on state-of-the-art supercomputers today.  Extensions of these approaches promise solutions for applications in materials modeling, including investigation of materials that display room-temperature superconductivity. 
+
+
+
+
 \section{Quantum accelerated applications (classical problems solved faster on quantum computer)}
 \begin{enumerate}
 \item    Shor
@@ -559,11 +558,15 @@ They will be used as accelerators for classical supercomputers -- not unlike the
 
 
 \section{Software architecture (KRYSTA)}
+
+
 \begin{enumerate}
 \item     History of developing FORTRAN/etc.
 \item     Abstractions
 \item    QPLs and Q compilers
 \end{enumerate}
+
+A scalable software stack is crucial for the implementation of quantum algorithms on actual hardware.  The software will require high-level programming languages, optimizing compilers, simulators, emulators, and translation to hardware-level instructions.  The symbolic programming language FORTRAN revolutionized programming of computing devices by closing the semantic gap between human and machine.  To rapidly innovate in the space of both quantum algorithms and devices and take quantum computers from laboratories to the cloud, similar abstractions, tools, and design methodologies are required.  The landscape of quantum applications and devices is rapidly evolving.  Understanding the applications enabled by our quantum future, and how to harness them, will forever alter our economic, industrial, academic and societal landscape.
 
 In recent history we have witnessed a rapid growth of software for digital machines, due in part to the development of high-level programming languages based on layers of abstractions and optimizing compilers, rendering programming easier for the user.
 One of the oldest languges, FORTRAN \cite{} (FORmula TRANslation), was created to allow easier mapping of mathematical formulas into code.  Considered the first high-level programming language and compiler, it targeted the scientific computing community and its simplicity allowed more rapid programming and execution.  FORTRAN is attributed with having improved the speed of programming by $500\%$ and the length of programs by over $20\%$.
@@ -619,14 +622,12 @@ In addition, we introduce the compilation and auto-tuning of quantum libraries. 
 In addition to our demonstration implementations, our software methodology supports the Quipper and  LIQ$Ui\ket{} $ languages as the high-level programming language, and can leverage their simulation and resource analysis tools within various layers of the stack.
 However, our design significantly extends and defines the necessary components of a complete scalable compilation framework, including details on how to compile, tune, and link libraries, where to map to an explicit hardware layout and error correction, and how to map to hardware controls and instructions.  We detail the  necessary layers of abstraction and the optimizing transformations that will ultimately lead to successful compilation of any quantum algorithm for quantum hardware.  We have designed our framework explicitly to program and control a quantum computer, no matter its size.
 
-
-
 \section{Conclusion/Key directions}
 \begin{enumerate}
 \item    Establishing quantum supremacy on real hardware
 \item     Software is in development
 \item     Qubits are in development (see Rod's paper)
-\item     Won't be bad for privacy, but will enhance it
+\item     Won't be bad for privacy, but will enhance it -- mention blind quantum computing here
 \end{enumerate}
 
 
@@ -750,6 +751,7 @@ However, our design significantly extends and defines the necessary components o
 \end{enumerate}
 
 \section{Quantum architecture from a classical point of view}
+\label{sec:box1}
 \begin{enumerate}
 \item      What do they take advantage of? (CALL OUT BOX)
 \item  Parallelism - massive SIMD architecture
