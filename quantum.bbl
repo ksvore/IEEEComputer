@@ -40,14 +40,6 @@ R.~Feynman, ``\BIBforeignlanguage{English}{Simulating physics with
 I.~M. Georgescu, S.~Ashhab, and F.~Nori, ``Quantum simulation,'' \emph{Rev.
   Mod. Phys.}, vol.~86, pp. 153--185, Mar 2014.
 
-\bibitem{Johnson2011}
-M.~W. Johnson, M.~H.~S. Amin, S.~Gildert, T.~Lanting, F.~Hamze, N.~Dickson,
-  R.~Harris, A.~J. Berkley, J.~Johansson, P.~Bunyk, E.~M. Chapple, C.~Enderud,
-  J.~P. Hilton, K.~Karimi, E.~Ladizinsky, N.~Ladizinsky, T.~Oh, I.~Perminov,
-  C.~Rich, M.~C. Thom, E.~Tolkacheva, C.~J.~S. Truncik, S.~Uchaikin, J.~Wang,
-  B.~Wilson, and G.~Rose, ``Quantum annealing with manufactured spins,''
-  \emph{Nature}, vol. 473, no. 7346, pp. 194--198, May 2011.
-
 \bibitem{speedup}
 T.~F. R{\o}nnow, Z.~Wang, J.~Job, S.~Boixo, S.~V. Isakov, D.~Wecker, J.~M.
   Martinis, D.~A. Lidar, and M.~Troyer, ``Defining and detecting quantum
@@ -57,5 +49,13 @@ T.~F. R{\o}nnow, Z.~Wang, J.~Job, S.~Boixo, S.~V. Isakov, D.~Wecker, J.~M.
 P.~Shor, ``Algorithms for quantum computation: discrete logarithms and
   factoring,'' in \emph{Foundations of Computer Science, 1994 Proceedings.,
   35th Annual Symposium on}, 1994, pp. 124--134.
+
+\bibitem{qec}
+D.~A. Lidar and T.~A. Brun, \emph{Quantum Error Correction}.\hskip 1em plus
+  0.5em minus 0.4em\relax Cambridge University Press, 2013.
+
+\bibitem{tqc}
+S.~D. Sarma, M.~Freedman, and C.~Nayak, ``Topological quantum computation,''
+  \emph{Physics Today}, vol.~59, no.~7, pp. 32--38, 2006.
 
 \end{thebibliography}
