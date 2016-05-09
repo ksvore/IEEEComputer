@@ -365,7 +365,7 @@
 
 % correct bad hyphenation here
 \hyphenation{op-tical net-works semi-conduc-tor}
-
+\usepackage{color}
 
 \begin{document}
 %
@@ -443,11 +443,7 @@
 % As a general rule, do not put math, special symbols or citations
 % in the abstract or keywords.
 \begin{abstract}
-While the industrial revolution transformed how material things are made, and the microprocessor forever changed how things are analyzed, modeled, and simulated, the coming quantum revolution will utterly overturn our notions of computational methods and devices. Still in early stages of development, quantum computers use the quantum mechanical properties of superposition and entanglement to solve problems that are likely to be forever out of reach of classical computers.  Already we have a diverse range of quantum algorithms that outperform the classical counterparts: Shor's factoring algorithm and its variants break all currently used public-key cryptosystems, and quantum simulations, as initially proposed by Feynman, will have applications throughout chemistry and materials science.  More recent work suggests that quantum computers will have important applications in machine learning and even in the simulation of classical systems. 
- 
-While quantum algorithms are generally much less well understood than their classical cousins, the search continues for which important problems can be solved much faster on quantum computers and which cannot. Answering this question has become increasingly important, and industrial efforts are emerging that focus on the impending quantum revolution.  The heightened interest is in part due to recent advances in quantum algorithms for quantum chemistry that enable solving critical real-world problems, such as Nitrogen Fixation (artificial fertilizer production) and Carbon Capture (to combat global warming), on the scale of days or months as opposed to billions of years on state-of-the-art supercomputers today.  Extensions of these approaches promise solutions for applications in materials modeling, including investigation of materials that display room-temperature superconductivity. 
- 
-Quantum computers are unlike their classical cousins.  A quantum computer will operate as a co-processor, receiving its instructions and cues from a stack of classical processors.  A scalable software stack is crucial for the implementation of quantum algorithms on actual hardware.  The software will require high-level programming languages, optimizing compilers, simulators, emulators, and translation to hardware-level instructions.  The symbolic programming language FORTRAN revolutionized programming of computing devices by closing the semantic gap between human and machine.  To rapidly innovate in the space of both quantum algorithms and devices and take quantum computers from laboratories to the cloud, similar abstractions, tools, and design methodologies are required.  The landscape of quantum applications and devices is rapidly evolving.  Understanding the applications enabled by our quantum future, and how to harness them, will forever alter our economic, industrial, academic and societal landscape.\end{abstract}
+The coming quantum revolution will overturn our notions of computational methods and devices. Still in early stages of development, quantum computers use the quantum mechanical properties of superposition and entanglement to solve problems that are likely to be forever out of reach of classical computers.  Already we have a diverse range of quantum algorithms that outperform their classical counterparts, from cryptography to chemistry and materials science. Quantum computers will operate as co-processors, receiving instructions from a stack of classical processors.  A scalable software stack is crucial for the implementation of quantum algorithms on actual hardware.  It will require high-level programming languages, optimizing compilers, simulators, emulators, and translation to hardware-level instructions.  The landscape of quantum applications and devices is rapidly evolving.  Understanding the applications enabled by our quantum future, and how to harness them, will forever alter our economic, industrial, academic and societal landscape.\end{abstract}
 
 % Note that keywords are not normally used for peerreview papers.
 \begin{IEEEkeywords}
@@ -472,6 +468,24 @@ Quantum computers are unlike their classical cousins.  A quantum computer will o
 
 
 \section{Introduction (MATTHIAS)}
+
+\IEEEPARstart{M}{ore} than a century after the discovery of quantum mechanics we are on the threshold of an age of quantum technology in which quantum mechanics not only enables classical devices,  such as transistor, but where quantum properties are essential to their operation. Unlike classical computers, quantum devices can simultaneously be in a ``superposition'' of many different states and have deep connections ( ``entanglement'') between spatially separated entities.  These properties make it possible to design devices that whose capabilities exceed that of any imaginable classical computer, and first such devices to create quantum random numbers and securely encrypt communication are already commercially available. 
+
+The arguably simplest device may be a {\em quantum random number generator} uses the property of superposition:  a quantum bit (or qubit for short) can be created in a state $\frac{1}{\sqrt{2}}(|0\rangle + |1\rangle)$ that is the superposition  of the values 0 and 1 of a classical bit. Upon measuring the value of the qubit, the superposition collapses into one of the two classical states, and the measurement gives either the value 0 or 1, each with probability 1/2. This procedure realizes a true and perfect random number generator, which is impossible classically due to the deterministic nature of classical physics.\footnote{While  chaotic classical processes might look random enough for many applications, only with quantum random numbers do we have the assurance of no perfect randomness}
+
+Entangling two qubits $A$ and $B$ in a superposition denoted $\frac{1}{\sqrt{2}}(|0\rangle_A|0\rangle_B + |1\rangle_A|1\rangle_B)$, such that they are either {\em both} 0 or {\em both} 1, can be used for cryptography. Giving one of the qubits to Alice and one to Bob, the qubits remain entangled no matter how far apart they are. Measuring their individual qubits, Alice and Bob will get a random result -- however both get the {\em same} random value is the same for both of them. This can be used for {\em quantum teleportation} or as one way of establishing a shared secret key for  {\em secure  communication}, again surpassing classical technology \cite{RevModPhys.81.1301,EkertRenner2014}. 
+
+Faced with the challenge of simulation quantum systems on classical computers, Richard Feynman in 1982 \cite{Feynman1982} suggested to use quantum devices to simulate physics problems. Analog implementations of this idea in {\em quantum simulators }  \cite{RevModPhys.86.153}  have  been successful used to explore complex quantum problems, but {\em quantum annealers} to solve hard optimization problems \cite{Johnson2011} have not  yet shown any advantage over classical computers \cite{speedup}. {\color{red} we could drop this part about analog devices and jump straight to digital computers.} Limitations of analog devices due to calibration errors and their hardware design have been overcome in classical computing by the switch to digital technology. The same transformation is happening for quantum device with the development of quantum computers.
+
+
+
+
+{\bf Krysta's abstact parts}
+
+While quantum algorithms are generally much less well understood than their classical cousins, the search continues for which important problems can be solved much faster on quantum computers and which cannot. Answering this question has become increasingly important, and industrial efforts are emerging that focus on the impending quantum revolution.  The heightened interest is in part due to recent advances in quantum algorithms for quantum chemistry that enable solving critical real-world problems, such as Nitrogen Fixation (artificial fertilizer production) and Carbon Capture (to combat global warming), on the scale of days or months as opposed to billions of years on state-of-the-art supercomputers today.  Extensions of these approaches promise solutions for applications in materials modeling, including investigation of materials that display room-temperature superconductivity. 
+ 
+Quantum computers are unlike their classical cousins.  A quantum computer will operate as a co-processor, receiving its instructions and cues from a stack of classical processors.  A scalable software stack is crucial for the implementation of quantum algorithms on actual hardware.  The software will require high-level programming languages, optimizing compilers, simulators, emulators, and translation to hardware-level instructions.  The symbolic programming language FORTRAN revolutionized programming of computing devices by closing the semantic gap between human and machine.  To rapidly innovate in the space of both quantum algorithms and devices and take quantum computers from laboratories to the cloud, similar abstractions, tools, and design methodologies are required.  The landscape of quantum applications and devices is rapidly evolving.  Understanding the applications enabled by our quantum future, and how to harness them, will forever alter our economic, industrial, academic and societal landscape.
+
 % The very first letter is a 2 line initial drop letter followed
 % by the rest of the first word in caps.
 % 
@@ -487,14 +501,7 @@ Quantum computers are unlike their classical cousins.  A quantum computer will o
 % 
 % Here we have the typical use of a "T" for an initial drop letter
 % and "HIS" in caps to complete the first word.
-\IEEEPARstart{Q}{uantum} computers \cite{Feynman1982}
  ... 
-
-\begin{enumerate}
-\item Fundamentally different uses - privacy, random number generator
-\item        Computational uses - see below
-\item      Applications beyond computing.  What can you do with quantum?
-\end{enumerate}
 
 \section{Special-purpose accelerator (MATTHIAS)}
 \begin{enumerate}
