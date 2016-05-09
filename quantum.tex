@@ -581,7 +581,14 @@ It should also define the necessary interfaces between the software and hardware
 The high-level language and compilers should be machine independent and scalable, such that the upper layers of the stack are agnostic to whether the hardware backend is an ion trap, superconducting system, quantum dot, or topological quantum computer.
 The stack should enable programming of any quantum algorithm of any size for any target architecture.
 
-In recent years, several languages and compilers for quantum computing have been introduced. 
+The significant steps of any quantum computing design flow \cite{svore2006layered} include a front end, a technology-independent optimizer, a technology-dependent optimizer, and a technology simulator or quantum device.  The interfaces between the steps require a high-level programming language and several intermediate and low-level representations.
+Figure \ref{fig:toolchain} shows a software stack for quantum computing \cite{}, including details on integration, e.g., tuned quantum libraries of arithmetic, subroutines, and quantum gates, on the compilers and optimizers in the stack.
+At the top is a high-level language in which one writes quantum programs.
+Quantum programs consist of an intimate mixture of classical and quantum instructions, thus the high-level language could be an embedded domain specific language (eDSL) to maximally leverage existing classical infrastructure.
+The bottom supports a variety of backends, including simulators, emulators, resource analyzers, or any proposed quantum hardware implementation.
+To ensure flexibility and modularity, the high-level compilers are hardware-agnostic and, combined with quantum meta functions, e.g., conditional instructions and user annotations, enable an unprecedented level of optimization of quantum code.
+
+%Later work presents a more detailed software architecture \cite{jones2012layered}, however the components are specific to a quantum dot architecture and the focus is %mainly on the pipelined control cycle from the application layer down to the physical hardware layer.
 
 \begin{figure*}[t]
 \centering
@@ -590,29 +597,12 @@ In recent years, several languages and compilers for quantum computing have been
 \label{fig:toolchain}
 \end{figure*}
 
-
-Our software design flow is shown in Figure \ref{fig:toolchain}.
-At the top of our design stack is a high-level language in which one writes quantum programs.
-Quantum programs consist of an intimate mixture of classical and quantum instructions. Therefore, we argue the high-level language should be  an embedded domain specific language (eDSL) to maximally leverage existing classical infrastructure.
-At the bottom, our methodology supports a vast variety of backends, such as simulators, emulators, resource analyzers, or any proposed quantum hardware implementation.
-Our layered methodology provides modularity and flexibility for the future.
-The high-level compilers are hardware-agnostic and, combined with quantum meta functions (e.g., conditional instructions and user annotations), enable an unprecedented level of optimization of quantum code.
-
-
-One of the earliest proposals for a scalable software methodology for quantum compiling dates back a decade \cite{svore2006layered} and presents significant steps of any quantum computing design flow.
-Our work expands upon this work, extending the stack elements by showing how to integrate, e.g., tuned quantum libraries of arithmetic, subroutines, and quantum gates, and providing concrete details of the compilers and optimizers in the stack.
-Later work presents a more detailed software architecture \cite{jones2012layered}, however the components are specific to a quantum dot architecture and the focus is mainly on the pipelined control cycle from the application layer down to the physical hardware layer.
-
-High-level quantum programming languages have been more readily studied than supporting compilation frameworks \cite{gay2006quantum}.
-Programming languages have been introduced that are based on C \cite{omer1998procedural} and based on functional languages \cite{green13,wecker14}.
-We argue that instead of inventing a new programming language, a quantum software architecture should build on an embedded domain-specific language in order to leverage classical language and compilation features.
-
-Existing quantum embedded languages include Quipper~\cite{green13} and LIQ$Ui\ket{} $\cite{wecker14}.
-Both are functional languages and include an underlying compilation framework, allowing the representation of quantum algorithms and circuits at various levels of abstraction.  
-Quipper is embedded in Haskell and allows extensible data types and advanced programming constructs.
- LIQ$Ui\ket{} $  contains a domain-specific language embedded in F\# ~\cite{wecker14}.
-Compilation is primarily targeted to backends such as simulators and resource analyzers.
-In contrast to Quipper,  LIQ$Ui\ket{} $ also features simulators for noise and resource analysis, but neither allows for hardware backends.
+The high-level quantum programming language may be one of several~\cite{gay2006quantum}:
+some are based on C \cite{omer1998procedural} and others based on functional languages \cite{green13,wecker14}.
+A compelling case can be made for an embedded domain-specific language such as Quipper \cite{green13} or LIQ$Ui\ket{} $\cite{wecker14} in order to leverage classical language and compilation features.
+Both are functional languages, the former is embedded in Haskell and allows extensible data types and advanced programming constructs,
+while the latter contains a domain-specific language embedded in F\#.
+%In contrast to Quipper,  LIQ$Ui\ket{} $ also features simulators for noise and resource analysis, but neither allows for hardware backends.
 
 ScaffCC is a concrete implementation of a quantum compiler for a C-style language \cite{scaffcc14}. 
 It compiles to a specific gate set in the QASM assembly language and enables program analysis and low-level optimizations.
@@ -621,6 +611,9 @@ In addition, we introduce the compilation and auto-tuning of quantum libraries. 
 
 In addition to our demonstration implementations, our software methodology supports the Quipper and  LIQ$Ui\ket{} $ languages as the high-level programming language, and can leverage their simulation and resource analysis tools within various layers of the stack.
 However, our design significantly extends and defines the necessary components of a complete scalable compilation framework, including details on how to compile, tune, and link libraries, where to map to an explicit hardware layout and error correction, and how to map to hardware controls and instructions.  We detail the  necessary layers of abstraction and the optimizing transformations that will ultimately lead to successful compilation of any quantum algorithm for quantum hardware.  We have designed our framework explicitly to program and control a quantum computer, no matter its size.
+
+
+
 
 \section{Conclusion/Key directions}
 \begin{enumerate}
