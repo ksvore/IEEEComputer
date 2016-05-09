@@ -527,6 +527,21 @@ Given these overheads, qubits will be a rare commodity in quantum computers and 
 \item   Quantum Chemistry and Materials
 \item    Quantum Machine Learning?
 \end{enumerate}
+
+Quantum computers are most readily known for solving integer factorization \cite{}, where given an integer $N=p\times q$, the task is to determine the prime numbers $p$ and $q$.  This problem forms a mainstay of e-commerce today, as it underlies the most widely used public-key cryptosystem RSA.  A quantum computer consisting of roughly one billion physical qubits (see Rod's article) would be able to break a 2000-bit key RSA in just over one day \cite{}.  More broadly, integer factorization falls within a class of problems called the Hidden Subgroup Problems (HSPs).  Polynomial-time quantum algorithms exist not only for breaking RSA, but also for breaking Diffie-Hellman, DSA, Buchmann-Williams, etc.
+While quantum algorithms for cryptographic attacks are certainly an area of quantum advantage over classical counterparts, they potentially will be less significant over time.  Already, post-quantum cryptosystems are in development that aim for security against a quantum computer.  The transition to post-quantum protocols will require no less than a decade and a substantial sum, which is why companies and governments around the world are already beginning a move to post-quantum crypto.  
+
+More globally and economically impactful applications arise from the simulation of physical systems and performing machine learning on a quantum computer.
+The simulation of physical systems includes areas such as quantum chemistry, materials science, and high-energy physics.
+How better to understand a quantum mechanical system than with a device that is inherently quantum mechanical!
+In quantum simulation, the goal is to understand properties of a system, such as the ground state energy or the bond length, and their evolution according to Schroedinger's equation.
+Given a Hamiltonian $H$ that describes a system and the initial state of system $\ket{\psi}$, the task is to determine a given property of the state after evolving according to $H$ for time $t$: $\ket{\psi_t}=e^{-iHt}$.
+A quantum computer can efficiently solve for many important properties of systems.  See more below.
+
+An emerging application area is machine learning.  Quantum algorithms have been developed for more efficiently performing data processing, learning, and classification.  Recently, quantum advantage has been found for training deep learning models, classifying with nearest-neighbor learning and k-means clustering, and performing Bayesian inference.
+ADD LLOYD work?
+
+
 \section{Quantum Chemistry and materials science (quantum problems solved on quantum computer) (MATTHIAS)}
 \begin{enumerate}
 \item      Native application
@@ -550,7 +565,7 @@ Given these overheads, qubits will be a rare commodity in quantum computers and 
 \section{Quantum accelerated applications (classical problems solved faster on quantum computer)}
 \begin{enumerate}
 \item    Shor
-\item    Grover
+\item    Grover: amplitude amplification technique; applications are to find minimum, to determine graph connectivity, to perform pattern matching
 \item     Linear systems
 \item    Sampling
 \end{enumerate}
@@ -727,11 +742,28 @@ A grand challenge for computer scientists and engineers will be to design the co
 \section{Suggested quantum applications/algorithms}
 
 \begin{enumerate}
-\item    Grover
-\item     Linear systems
-\item    Sampling
-\item       Walks
+\item    Grover:
+Searching a database of unstructured items is a key problem in computer science.  Given the ability to evaluate a function $f: \{0,1\}^n\rightarrow \{0,1\}$, the task is to find $x$ such that $f(x)=1$.  If such an $x$ does not exist, then return that no such item exists.   
+Grover's algorithm solves the unstructured search problem on a quantum computer with only $O(\sqrt{N})$ evalutions of $f$ in the worst case, while classically $O(N)$ evaluations are required.  Applications include finding the minimum of an unsorted list of integers, identifying whether a graph is connected, and finding a given pattern within a length of text.
+
+\item     Linear systems:
+The task of solving a system of linear equations is given an $N\times N$ matrix $A$ and a $N$-dimensional vector $b$, find $x$ such that $Ax=b$.
+Classically, it requires time polynomial in $N$ using methods like Gaussian elimination.
+Quantumly, it requires time polynomial in log $N$, albeit there are some constraints on the size of $A$ and its condition number \cite{}. 
+In addition, the algorithm allows sampling from the solution, since reading out the elements of $x$ would take time $N$ and therefore counter the speedup obtained.
+Applications of the algorithm include the finite element method, where one can for example determine solutions to electromagnetic scattering problems, solving large systems of equations, performing data fitting, and recent machine learning applications such as the training of deep learning models.
+
+\item    Sampling:
+MATTHIAS - will you add here?
+
+\item       Walks:
+A walk, or random walk, is a succession of random steps on a given graph.
+A quantum walk involves a coherent evolution to determine each step.
+Quantum walks can outperform random walks on tasks including the hitting time, determining the hitting time from a source to destination vertex, and the mixing time, spreading from a source to all vertices in a graph, of certain graphs such as glued trees and the hypercube.  Applications include the evaluation of Boolean formulas and the simulation of Markov chains.
+
 \item       Etc.
+MATTHIAS - do you want to talk about annealing applications more explicitly?
+
 \end{enumerate}
 
 \section{Quantum architecture from a classical point of view}
