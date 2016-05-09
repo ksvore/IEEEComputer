@@ -571,7 +571,7 @@ A scalable software stack is crucial for the implementation of quantum algorithm
 In recent history we have witnessed a rapid growth of software for digital machines, due in part to the development of high-level programming languages based on layers of abstractions and optimizing compilers, rendering programming easier for the user.
 One of the oldest languges, FORTRAN \cite{} (FORmula TRANslation), was created to allow easier mapping of mathematical formulas into code.  Considered the first high-level programming language and compiler, it targeted the scientific computing community and its simplicity allowed more rapid programming and execution.  FORTRAN is attributed with having improved the speed of programming by $500\%$ and the length of programs by over $20\%$.
 
-Similar to pre-FORTRAN days, quantum computing is mostly described at the level of logic operations, compiled and manually optimized. 
+Quantum computations have been mostly described at the level of logic operations, compiled and manually optimized. 
 As seen with FORTRAN, a software architecture enables rapid innovation in both algorithms and hardware components.
 For emerging technologies, the development of software in advance of a fully scalable hardware architecture allows the verification and analysis of software and hardware components.  Early design decisions can result in substantial cost savings on the path to finalizing an end-to-end system.
 
@@ -604,16 +604,8 @@ Both are functional languages, the former is embedded in Haskell and allows exte
 while the latter contains a domain-specific language embedded in F\#.
 %In contrast to Quipper,  LIQ$Ui\ket{} $ also features simulators for noise and resource analysis, but neither allows for hardware backends.
 
-ScaffCC is a concrete implementation of a quantum compiler for a C-style language \cite{scaffcc14}. 
-It compiles to a specific gate set in the QASM assembly language and enables program analysis and low-level optimizations.
-Our methodology differs from the framework followed by ScaffCC in that it begins at the top with a high-level embedded language instead of a newly defined language, to enable easy programming of quantum algorithms and the ability to leverage existing classical language and compilation tools.  We also automatically translate to hardware instructions for specific backend quantum devices.
-In addition, we introduce the compilation and auto-tuning of quantum libraries.  This allows programmers to reuse subroutines and automatically determine the best underlying circuit representations for the target backend, offering substantial quantum resource savings.
-
-In addition to our demonstration implementations, our software methodology supports the Quipper and  LIQ$Ui\ket{} $ languages as the high-level programming language, and can leverage their simulation and resource analysis tools within various layers of the stack.
-However, our design significantly extends and defines the necessary components of a complete scalable compilation framework, including details on how to compile, tune, and link libraries, where to map to an explicit hardware layout and error correction, and how to map to hardware controls and instructions.  We detail the  necessary layers of abstraction and the optimizing transformations that will ultimately lead to successful compilation of any quantum algorithm for quantum hardware.  We have designed our framework explicitly to program and control a quantum computer, no matter its size.
-
-
-
+The compilers of the stack will allow automatic translations to hardware instructions for specific backend quantum devices.  Auto-tuning of quantum libraries allows determination of the best representations for a given target backend and in turn can result in substantial cost savings in the final implmentation of the quantum algorithms on hardware.  Ultimately the software stack is designed to program and automate the control of a quantum computer, no matter the size of the algorithm or device.
+A grand challenge for computer scientists and engineers will be to design the components of the quantum stack, such that the task of implementing a quantum algorithm and optimizing it becomes streamlined and efficient. The design will require leveraging the advances in the digital space, while also developing novel solutions for the quantum domain.
 
 \section{Conclusion/Key directions}
 \begin{enumerate}
