@@ -367,12 +367,15 @@
 \hyphenation{op-tical net-works semi-conduc-tor}
 \usepackage{color}
 
+\usepackage{graphicx}
+\usepackage{braket}
+
 \begin{document}
 %
 % paper title
 % can use linebreaks \\ within to get better formatting as desired
 % Do not put math or special symbols in the title.
-\title{Quantum computing}
+\title{Making Quantum Leaps for Computation}
 %
 %
 % author names and IEEE memberships
@@ -384,7 +387,7 @@
 % was not built to handle multiple paragraphs
 %
 
-\author{Krysta~Svore~and~Matthias~Troyer% <-this % stops a space
+\author{Krysta~M.~Svore~and~Matthias~Troyer% <-this % stops a space
 \thanks{K. Svore is with the Quantum Architectures and Computation Group, Microsoft Research, Redmond, WA (USA).}% <-this % stops a space
 \thanks{M. Troyer is with the Institute for Theoretical Physics of ETH Zurich (Switzerland)  and with the Quantum Architectures and Computation Group, Microsoft Research, Redmond, WA (USA).}% <-this % stops a space
 %\thanks{Manuscript received April 19, 2005; revised December 27, 2012.}
@@ -551,6 +554,8 @@ Given these overheads, qubits will be a rare commodity in quantum computers and 
 \item     Linear systems
 \item    Sampling
 \end{enumerate}
+
+
 \section{Software architecture (KRYSTA)}
 
 
@@ -561,6 +566,51 @@ Given these overheads, qubits will be a rare commodity in quantum computers and 
 \end{enumerate}
 
 A scalable software stack is crucial for the implementation of quantum algorithms on actual hardware.  The software will require high-level programming languages, optimizing compilers, simulators, emulators, and translation to hardware-level instructions.  The symbolic programming language FORTRAN revolutionized programming of computing devices by closing the semantic gap between human and machine.  To rapidly innovate in the space of both quantum algorithms and devices and take quantum computers from laboratories to the cloud, similar abstractions, tools, and design methodologies are required.  The landscape of quantum applications and devices is rapidly evolving.  Understanding the applications enabled by our quantum future, and how to harness them, will forever alter our economic, industrial, academic and societal landscape.
+
+In recent history we have witnessed a rapid growth of software for digital machines, due in part to the development of high-level programming languages based on layers of abstractions and optimizing compilers, rendering programming easier for the user.
+One of the oldest languges, FORTRAN \cite{} (FORmula TRANslation), was created to allow easier mapping of mathematical formulas into code.  Considered the first high-level programming language and compiler, it targeted the scientific computing community and its simplicity allowed more rapid programming and execution.  FORTRAN is attributed with having improved the speed of programming by $500\%$ and the length of programs by over $20\%$.
+
+Similar to pre-FORTRAN days, quantum computing is mostly described at the level of logic operations, compiled and manually optimized. 
+As seen with FORTRAN, a software architecture enables rapid innovation in both algorithms and hardware components.
+For emerging technologies, the development of software in advance of a fully scalable hardware architecture allows the verification and analysis of software and hardware components.  Early design decisions can result in substantial cost savings on the path to finalizing an end-to-end system.
+
+A scalable software stack and hardware architecture for quantum computing is a complex system.
+The software design should enhance communication between algorithm designers, quantum engineers, and experimental physicists alike.
+It should also define the necessary interfaces between the software and hardware systems.
+The high-level language and compilers should be machine independent and scalable, such that the upper layers of the stack are agnostic to whether the hardware backend is an ion trap, superconducting system, quantum dot, or topological quantum computer.
+The stack should enable programming of any quantum algorithm of any size for any target architecture.
+
+The significant steps of any quantum computing design flow \cite{svore2006layered} include a front end, a technology-independent optimizer, a technology-dependent optimizer, and a technology simulator or quantum device.  The interfaces between the steps require a high-level programming language and several intermediate and low-level representations.
+Figure \ref{fig:toolchain} shows a software stack for quantum computing \cite{}, including details on integration, e.g., tuned quantum libraries of arithmetic, subroutines, and quantum gates, on the compilers and optimizers in the stack.
+At the top is a high-level language in which one writes quantum programs.
+Quantum programs consist of an intimate mixture of classical and quantum instructions, thus the high-level language could be an embedded domain specific language (eDSL) to maximally leverage existing classical infrastructure.
+The bottom supports a variety of backends, including simulators, emulators, resource analyzers, or any proposed quantum hardware implementation.
+To ensure flexibility and modularity, the high-level compilers are hardware-agnostic and, combined with quantum meta functions, e.g., conditional instructions and user annotations, enable an unprecedented level of optimization of quantum code.
+
+%Later work presents a more detailed software architecture \cite{jones2012layered}, however the components are specific to a quantum dot architecture and the focus is %mainly on the pipelined control cycle from the application layer down to the physical hardware layer.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/coarse_toolchain}
+\caption{The proposed toolchain for quantum programming: The quantum program is implemented in an embedded domain-specific language (eDSL) and then translated to hardware instructions using a series of compilers, which generate quantum intermediate representations (QIR) of the code. Pre-compiled libraries are linked against prior to creating the logical layout and applying error correction, since this will produce more efficient code. The resulting low-level quantum intermediate representation (LLQIR) is then mapped to hardware.}
+\label{fig:toolchain}
+\end{figure*}
+
+The high-level quantum programming language may be one of several~\cite{gay2006quantum}:
+some are based on C \cite{omer1998procedural} and others based on functional languages \cite{green13,wecker14}.
+A compelling case can be made for an embedded domain-specific language such as Quipper \cite{green13} or LIQ$Ui\ket{} $\cite{wecker14} in order to leverage classical language and compilation features.
+Both are functional languages, the former is embedded in Haskell and allows extensible data types and advanced programming constructs,
+while the latter contains a domain-specific language embedded in F\#.
+%In contrast to Quipper,  LIQ$Ui\ket{} $ also features simulators for noise and resource analysis, but neither allows for hardware backends.
+
+ScaffCC is a concrete implementation of a quantum compiler for a C-style language \cite{scaffcc14}. 
+It compiles to a specific gate set in the QASM assembly language and enables program analysis and low-level optimizations.
+Our methodology differs from the framework followed by ScaffCC in that it begins at the top with a high-level embedded language instead of a newly defined language, to enable easy programming of quantum algorithms and the ability to leverage existing classical language and compilation tools.  We also automatically translate to hardware instructions for specific backend quantum devices.
+In addition, we introduce the compilation and auto-tuning of quantum libraries.  This allows programmers to reuse subroutines and automatically determine the best underlying circuit representations for the target backend, offering substantial quantum resource savings.
+
+In addition to our demonstration implementations, our software methodology supports the Quipper and  LIQ$Ui\ket{} $ languages as the high-level programming language, and can leverage their simulation and resource analysis tools within various layers of the stack.
+However, our design significantly extends and defines the necessary components of a complete scalable compilation framework, including details on how to compile, tune, and link libraries, where to map to an explicit hardware layout and error correction, and how to map to hardware controls and instructions.  We detail the  necessary layers of abstraction and the optimizing transformations that will ultimately lead to successful compilation of any quantum algorithm for quantum hardware.  We have designed our framework explicitly to program and control a quantum computer, no matter its size.
+
 
 
 
