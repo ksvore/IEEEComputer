@@ -542,11 +542,9 @@ In many electronic systems, the firmware that controls and manipulates the compu
 
 
 
-
-
 \section{Native applications: quantum chemistry and materials science}
 
-Simulating quantum models can be considered the native applications of quantum computers. How better to understand a quantum mechanical system than with a device that is inherently quantum mechanical! The simulation of such models includes areas such as quantum chemistry, materials science, and high-energy physics. In quantum simulation, the goal is to understand properties of a system, such as its energy, electron density, or excitation spectrum through simulation of their evolution according to Schr\"odinger's equation.  
+Simulating quantum models can be considered the native application of quantum computers. How better to understand a quantum mechanical system than with a device that is inherently quantum mechanical! The simulation of such models includes areas such as quantum chemistry, materials science, and high-energy physics. In quantum simulation, the goal is to understand properties of a system, such as its energy, electron density, or excitation spectrum through simulation of their evolution according to Schr\"odinger's equation.  
 
 The first applications of small quantum computers will be to simple quantum models whose exact dynamics is already intractable for classical computers for about one hundred lattice sites or orbitals.  Accurate solutions of such model systems can be used to develop, improve, and validate new classical simulation methods which can then be used in turn to simulate more complex systems than are tractable just by quantum simulations on a quantum computer. 
 
@@ -588,6 +586,7 @@ To elucidate reaction mechanisms one needs to accurately calculate the energy of
 \section{Quantum accelerated applications}
  (classical problems solved faster on quantum computer)
 \subsection{Cryptographic applications}
+{\color{red} Paragraph below exists in intro already}
 Quantum computers are most readily known for solving integer factorization \cite{}, where given an integer $N=p\times q$, the task is to determine the prime numbers $p$ and $q$.  This problem forms a mainstay of e-commerce today, as it underlies the most widely used public-key cryptosystem RSA.  A quantum computer consisting of roughly one billion physical qubits (see Rod's article) would be able to break a 2000-bit key RSA in just over one day \cite{}.  More broadly, integer factorization falls within a class of problems called the Hidden Subgroup Problems (HSPs).  Polynomial-time quantum algorithms exist not only for breaking RSA, but also for breaking Diffie-Hellman, DSA, Buchmann-Williams, etc.
 While quantum algorithms for cryptographic attacks are certainly an area of quantum advantage over classical counterparts, they potentially will be less significant over time.  Already, post-quantum cryptosystems are in development that aim for security against a quantum computer.  The transition to post-quantum protocols will require no less than a decade and a substantial sum, which is why companies and governments around the world are already beginning a move to post-quantum crypto.  
 
