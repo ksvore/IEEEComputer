@@ -508,7 +508,7 @@ Quantum computers are most readily known for solving integer factorization \cite
 
 More globally and economically impactful applications arise from the simulation of physical systems. This has been the original motivation behind Feynman's seminal paper and finds applications in chemistry and materials science. Quantum computers will improve reliability of quantum chemical calculations by performing accurate simulations of molecules and materials on the scale of days to months for problems that might take billions of years on state-of-the-art supercomputers today. They can be applied to help solve critical real-world problems, such as elucidating the mechanism of biological nitrogen fixation with application to fertilizer production) or designing catalysts for carbon capture  capture and sequestration (to combat global warming).  Extensions of these approaches promise solutions for applications in materials modeling, including investigation of materials that display higher temperature superconductivity. 
 
-The last decade has witnessed an explosion in machine learning methods for making predictions and gaining insights based on data.  Machine learning has utterly transformed domains such as speech recognition, computer vision, and web search.  With its foundations in computational statistics, machine learning is an area ripe for quantum leaps.  Recent results indicate that quantum algorithms may perform classification and clustering methods such as $k$-means and nearest-neighbor methods more efficiently than  classical methods.  Boltzman machine training, deep learning, and neural networks have also been shown to have quantum advantages.  The discovery of quantum algorithms for machine learning is in its infancy and we anticipate a proliferation of methods as quantum hardware comes online.  After all, quantum algorithms presently require rigorous proofs to validate any improvements in runtime complexity over classical algorithms.  However, as seen by machine learning practitioners, often the best-performing algorithms on real-world data are heuristic in nature.  We may therefore look forward to having a modest-size quantum computer on which to test and master the art of quantum programming and quantum algorithm design. 
+The last decade has witnessed an explosion in machine learning methods for making predictions and gaining insights based on data.  Machine learning has utterly transformed domains such as speech recognition, computer vision, and web search.  With its foundations in computational statistics, machine learning is an area ripe for quantum leaps.  Recent results indicate that quantum algorithms may perform classification and clustering methods such as $k$-means and nearest-neighbor methods more efficiently than  classical methods.  Boltzmann machine training, deep learning, and neural networks have also been shown to have quantum advantages.  The discovery of quantum algorithms for machine learning is in its infancy and we anticipate a proliferation of methods as quantum hardware comes online.  After all, quantum algorithms presently require rigorous proofs to validate any improvements in runtime complexity over classical algorithms.  However, as seen by machine learning practitioners, often the best-performing algorithms on real-world data are heuristic in nature.  We may therefore look forward to having a modest-size quantum computer on which to test and master the art of quantum programming and quantum algorithm design. 
 
 
 \section{Quantum computers as special-purpose accelerators }
@@ -608,19 +608,18 @@ Applications of the algorithm include the finite element method, where one can f
 
 \section{Software architecture}
 
+A computer grounded in quantum mechanical principles carries with it a unique set of computational attributes.  Novel constructs for programming, optimizing, and controlling quantum hardware are necessary to fully harness and manipulate quantum states for algorithmic advantage.
+For many years there has been a chasm between theory and experiment, with theory  focused on mathematical proofs of algorithmic improvements and experiment focused on controlling qubit lifetimes.  In turn, quantum computations have thus far been mostly described at the level of logic gate operations (see Box), compiled and manually optimized for a small quantum device or simulator.
+As hardware steadily advances past single-qubit devices towards 100-qubit devices, a challenge is set forth for computer scientists, engineers, and developers to design and architect a software framework for programming and controlling a scalable, fault-tolerant quantum computer.
+The development of software in advance of a fully scalable hardware architecture allows the verification and analysis of software and hardware components.  Early design decisions can result in substantial cost savings on the path to finalizing an end-to-end system and enables rapid innovation in both algorithms and hardware components.
 
-In recent history we have witnessed a rapid growth of software for digital machines, due in part to the development of high-level programming languages based on layers of abstractions and optimizing compilers, rendering programming easier for the user.
-One of the oldest languges, FORTRAN \cite{} (FORmula TRANslation), was created to allow easier mapping of mathematical formulas into code.  Considered the first high-level programming language and compiler, it targeted the scientific computing community and its simplicity allowed more rapid programming and execution.  FORTRAN is attributed with having improved the speed of programming by $500\%$ and the length of programs by over $20\%$. {\color{red} I don't fully understand the latter, about length of programs?}
+High-level programming languages and optimizing compilers are designed to provide layers of abstraction of the computation, therefore creating a simple, modular programming environment.
+The idea dates back to the introduction of FORTRAN \cite{} (FORmula TRANslation), one of the oldest programming languages and compilers.  FORTRAN was created to transition users from mathematical formulas and machine code into algorithm design and specification.  FORTRAN's simplicity allowed more rapid programming and execution, improving programming speed by $500\%$ and reducing the length of programs by over $20\%$. 
 
-Quantum computations have, so far, been mostly described at the level of logic operations, compiled and manually optimized. 
-As seen with FORTRAN, a software architecture enables rapid innovation in both algorithms and hardware components.
-For emerging technologies, the development of software in advance of a fully scalable hardware architecture allows the verification and analysis of software and hardware components.  Early design decisions can result in substantial cost savings on the path to finalizing an end-to-end system.
-
-A scalable software stack and hardware architecture for quantum computing is a complex system.
-The software design should enhance communication between algorithm designers, quantum engineers, and experimental physicists alike.
-It should also define the necessary interfaces between the software and hardware systems.
-The high-level language and compilers should be machine independent and scalable, such that the upper layers of the stack are agnostic to whether the hardware backend is an ion trap, superconducting system, quantum dot, or topological quantum computer.
-The stack should enable programming of any quantum algorithm of any size for any target architecture.
+Quantum computing requires a similar software revolution, as the algorithms and hardware are complex systems.
+A scalable quantum software stack should enhance communication between algorithm designers, quantum engineers, and experimental physicists alike.
+It should provide well-defined interfaces between the software and hardware systems and should enable programming of any quantum algorithm of any size for any target architecture.
+The high-level language and compilers should be machine independent, such that the upper layers of the stack are agnostic to whether the hardware backend is an ion trap, superconducting system, quantum dot, or topological quantum computer.
 
 \begin{figure*}[t]
 \centering
@@ -903,7 +902,6 @@ To profit from quantum parallelism a quantum algorithm thus has to perform a glo
 
 % use section* for acknowledgement
 \section*{Acknowledgment}
-
 
 The authors would like to thank D. Carmean, T. H\"aner, D. Steiger for discussion and T. H\"aner for help in preparing figures for this article.
 
