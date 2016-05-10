@@ -791,12 +791,12 @@ A walk, or random walk, is a succession of random steps on a given graph. Quantu
 \section{Quantum algorithms from a classical point of view}
 \label{sec:box3}
 
-\begin{figure}[t]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=\columnwidth]{figures/simd}
-\caption{Design pattern for many quantum algorithms: Starting from a single classical initial state, an entangling operation is performed to create a quantum superposition of many input states. A quantum algorithm is then performed on this superposition. Since reading out the superposition would give just the result for one random input a collective reduction operation is next performed, before the quantum superposition is collapsed to a single classical result in a measurement process. {\color{red} Shall I ask Thomas to make this figure in the style of the other one?} }
+\includegraphics[width=\textwidth]{figures/simd}
+\caption{Design pattern for many quantum algorithms: Starting from a single classical initial state, an entangling operation is performed to create a quantum superposition of many input states. A quantum algorithm is then performed on this superposition. Since reading out the superposition would give just the result for one random input a collective reduction operation is next performed, before the quantum superposition is collapsed to a single classical result in a measurement process. {\color{red} I need to modify the caption to explain the nice additional row added by Thomas} }
 \label{fig:simd}
-\end{figure}
+\end{figure*}
 
 
 The advantage of quantum computers over classical ones is sometimes over-simplified to be due to the former being able to perform computations on all possible input simultaneously. More precisely, many quantum algorithms can be viewed as instances of the design pattern shown in figure \ref{fig:simd}. At a high level such a quantum program can be viewed to be similar to MapReduce, but working on all possible values on a single quantum CPU. After a quantum superposition of all input values is prepared, a computation is performed simultaneously on all these values, before summary information is computed in a reduction step and read out. 
