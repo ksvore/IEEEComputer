@@ -517,17 +517,11 @@ Given these overheads, qubits will be a rare commodity in quantum computers and 
 
 Simulating quantum models can be considered the native applications of quantum computers. The simulation of such models includes areas such as quantum chemistry, materials science, and high-energy physics. How better to understand a quantum mechanical system than with a device that is inherently quantum mechanical! In quantum simulation, the goal is to understand properties of a system, such as its energy, electron density, or excitation spectrum through simulation of their evolution according to Schr\"odinger's equation.  
 
-Given a (potentially time-dependent) Hamiltonian ({\it i.e.} energy function) $H(t)$ that describes a system and the initial state of system $\ket{\psi(0)}$, the task is to determine a given property of the state after evolving according to $H$ for some time $t$ using a discretized time evolution $\ket{\psi(t+\delta_t)}=e^{-iH(t)\delta_t}\ket{\psi(t)}$.
+Given a (potentially time-dependent) Hamiltonian ({\it i.e.} energy function) $H(t)$ that describes a system and the initial state of system $\ket{\psi(0)}$, the task is to determine a given property of the state after evolving according to $H$ for some time $t$ using a discretized time evolution $\ket{\psi(t+\delta_t)}=e^{-iH(t)\delta_t}\ket{\psi(t)}$. Using time evolution a quantum computer can efficiently  calculate many important properties. One can prepare ground states and excited states of quantum systems, measure their energies through processes mimicking interferometry and and simulate the outcome of any measurement procedure by simulating experimental procedures.
 
+Being discrete quantum devices, quantum computers, are by construction well suited for simulating discrete quantum systems, such as electrons in molecular orbitals or in a crystal lattice. The time evolution operator $e^{-iH(t)\delta_t}$ can thus be efficiently decomposed into discrete quantum gates whose number only grows polynomially with the number of electrons $N_e$. Accurate solutions of model systems can be used to develop, improve, and validate new classical simulation methods which can then be used in turn to simulate more complex systems than are tractable just by quantum simulations on a quantum computer. 
 
-Being discrete quantum devices, quantum computers, are by construction well suited for simulating discrete quantum systems, such as electrons in molecular orbitals or in a crystal lattice. 
-
-
-
-
-
-A quantum computer can efficiently solve for many important properties of systems.  See more below.
-
+Recent algorithmic advances have substantially improved both the constants and the power of this polynomial scaling such that simulations will be realistic not only for simplified model systems but also for the direct  treatment of realistic models of small molecules and materials. To give one example, with only about 200 qubits in the main quantum processor one will be able to simulate the active center of the enzyme nitrogenase. The iron molybdenum cofactor (FeMoco) of nitrogenase can split a dinitrogen molecule into two ammonia molecules under ambient conditions, while the industrial Haber-Bosch process  is energy intensive and requires high temperatures and pressures. Understanding this reaction mechanism will give new insights into ways of splitting dinitrogen and may lead to better catalysts and processes for fertilizer production.
 
 \begin{enumerate}
 \item      Native application
