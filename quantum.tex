@@ -568,32 +568,25 @@ Similar hybrid algorithms have been developed for the simulation of crystalline 
 
 
 \section{Quantum accelerated applications}
- (classical problems solved faster on quantum computer)
+While simulating quantum physics was the initial motivation for quantum computers, the power of quantum mechanics can also be applied to solving purely classical computational problems by making use of quantum superposition and entanglement. Here we present a selection of likely and potential applications, based on some of the quantum algorithms in Box \ref{sec:box2}.
+
 \subsection{Cryptographic applications}
-{\color{red} Paragraph below exists in intro already}
-Quantum computers are most readily known for solving integer factorization \cite{}, where given an integer $N=p\times q$, the task is to determine the prime numbers $p$ and $q$.  This problem forms a mainstay of e-commerce today, as it underlies the most widely used public-key cryptosystem RSA.  A quantum computer consisting of roughly one billion physical qubits (see Rod's article) would be able to break a 2000-bit key RSA in just over one day \cite{}.  More broadly, integer factorization falls within a class of problems called the Hidden Subgroup Problems (HSPs).  Polynomial-time quantum algorithms exist not only for breaking RSA, but also for breaking Diffie-Hellman, DSA, Buchmann-Williams, etc.
-While quantum algorithms for cryptographic attacks are certainly an area of quantum advantage over classical counterparts, they potentially will be less significant over time.  Already, post-quantum cryptosystems are in development that aim for security against a quantum computer.  The transition to post-quantum protocols will require no less than a decade and a substantial sum, which is why companies and governments around the world are already beginning a move to post-quantum crypto.  
+Shor's algorithm \cite{Shor1994} for integer factorization was the first demonstration that quantum computers could be used to solve hard computational problems outside the realm of quantum physics and raised interest in this so far esoteric approach to computing. Integer factorization falls more broadly within a class of problems called the Hidden Subgroup Problems (HSPs).  Polynomial-time quantum algorithms exist not only for breaking RSA, but also for breaking Diffie-Hellman, DSA, Buchmann-Williams, and others, thus posing a threat and challenge to many common public-key encryption schemes.
+
+\subsection{Search}
 
 
-\begin{enumerate}
-\item    Shor
+Another famous example of a quantum algorithm outperforming classical ones is Grover's algorithm \cite{Grover1996} for searching the index of an item in an unsorted collection. While classically $O(N)$ queries are needed, a quantum computer can solve this problem with just $O(\sqrt{N})$ queries. Applications are finding minimal (optimal) values,  determining graph connectivity, and pattern matching.
 
+However, query complexity alone may be misleading. To establish quantum advantage for an application one has to take into account the cost of implementing the oracles. Indeed, for naive database lookup, each quantum query has to access the complete database, with $O(N)$ complexity, thus raising the full cost to $O(N^{3/2})$ and thus worse than the classical complexity $O(N)$. Applications of Grover's algorithms will thus be to {\rm implicit} searches, where the value at a given index can be calculated efficiently \cite{MarkovGrover}. 
 
-\item    Grover: amplitude amplification technique; applications are to find minimum, to determine graph connectivity, to perform pattern matching
+\subsection{Linear systems}
 
-Applications include finding the minimum of an unsorted list of integers, identifying whether a graph is connected, and finding a given pattern within a length of text. --- [I dropped applications as we will discuss it in more detail in the text]
-
-
-
-\item     Linear systems
-
-In addition, the algorithm allows sampling from the solution, since reading out the elements of $x$ would take time $N$ and therefore counter the speedup obtained.
 Applications of the algorithm include the finite element method, where one can for example determine solutions to electromagnetic scattering problems, solving large systems of equations, performing data fitting, and recent machine learning applications such as the training of deep learning models.
 
+In addition, the algorithm allows sampling from the solution, since reading out the elements of $x$ would take time $N$ and therefore counter the speedup obtained.
 
-\item    Sampling
-\end{enumerate}
-
+\subsection{Sampling}
 
 \section{Software architecture}
 
