@@ -590,9 +590,9 @@ However, query complexity alone may be misleading. To establish quantum advantag
 
 \subsection{Linear systems}
 
-Similar considerations apply to applications of the linear systems algorithm \cite{HHL}, which allows  sampling from solutions $\mathbf{x}$ of a well-conditioned  linear system of equations $A\mathbf{x}=\mathbf{b}$ with exponential speedup over classical algorithms -- as longs as the operation $e^{-iAt}$ can be efficiently implemented using quantum gates. For arbitrary $N\times N$ matrices this requires at least $O(N^2)$ effort, which undoes any advantage of the quantum algorithm. In addition, the algorithm only allows sampling from the solution, since reading out all the elements of $\mathbf{x}$ would take time $O(N)$ and thus again counter the speedup obtained.
+Similar considerations apply to applications of the linear systems algorithm \cite{HHL}, which allows  sampling from solutions $\mathbf{x}$ of a well-conditioned  linear system of equations $A\mathbf{x}=\mathbf{b}$ with exponential speedup over classical algorithms -- as long as the operation $e^{-iAt}$ can be efficiently implemented using quantum gates. For arbitrary $N\times N$ matrices this requires at least $O(N^2)$ effort, which undoes any advantage of the quantum algorithm. In addition, the algorithm only allows sampling from the solution, since reading out all the elements of $\mathbf{x}$ would take time $O(N)$ and thus again counter the speedup obtained.
 
-Practical applications of the algorithm thus require matrices $A$ that can be described algorithmically and the computation of only $O(\log N)$ bit of information from the solution  $\mathbf{x}$. Such problem include  finite difference and finite element discretization of partial differential equations, where one can determine, for example, solutions to electromagnetic scattering problems on exponentially fine meshes. 
+Practical applications of the algorithm thus require matrices $A$ that can be described algorithmically and the computation of only $O(\log N)$ bits of information from the solution  $\mathbf{x}$. Such problems include  finite difference and finite element discretization of partial differential equations, where one can determine, for example, solutions to electromagnetic scattering problems on exponentially fine meshes. 
 
 \subsection{Sampling}
 
@@ -611,14 +611,14 @@ The second potential for acceleration is a quadratic speedup in the mixing times
 
 \subsection{Privacy}
 
-In an age of increasing awareness of privacy the broadest impact may not even come from quantum algorithms outperforming their classical counterparts but in  privacy for computing. Indeed, blind quantum computing \cite{blind} allows the user of a quantum computer to run quantum algorithms without the operator of the  quantum computer being able to detect what is being computed. Provable privacy and security of cloud computing may be more important for many users than accelerating calculations with quantum speedup. On the contrary, in many settings one may even be willing to take a performance hit in return for perfect security. One may speculate that this could ultimately, be one of the biggest application for quantum computers.
+In an age of increasing awareness of privacy the broadest impact may not even come from quantum algorithms outperforming their classical counterparts but in  privacy for computing. Indeed, blind quantum computing \cite{blind} allows the user of a quantum computer to run quantum algorithms without the operator of the  quantum computer being able to detect what is being computed. Provable privacy and security of cloud computing may be more important for many users than accelerating calculations with quantum speedup. On the contrary, in many settings one may even be willing to take a performance hit in return for perfect security. One may speculate that this could ultimately be one of the biggest applications for quantum computers.
 
  
 \section{Software architecture}
 
 
 Until recently there has been a separation between quantum algorithm theory and experiment, with theory focused on mathematical proofs of algorithmic improvements and experiment focused on controlling qubit lifetimes.  In turn, quantum computations have thus far been mostly described at the level of mathematics and logic gate operations (see Box \ref{sec:box1}), compiled and manually optimized for a small quantum device or simulator.  While some quantum programming languages and compilers exist, a complete software architecture remains to be developed.
-As hardware steadily advances past single-qubit devices towards 100-qubit devices, a challenge is presented for computer scientists, engineers, and developers to design and architect a software framework for programming and controlling a scalable, fault-tolerant quantum computer.
+As hardware steadily advances past single-qubit devices towards 100-qubit devices and beyond, a challenge is presented for computer scientists, engineers, and developers to design and architect a software framework for programming and controlling a scalable, fault-tolerant quantum computer.
 
  
 High-level programming languages and optimizing compilers are designed to provide layers of abstraction of the computation, therefore creating a simple, modular programming environment. The development of software in advance of a fully scalable hardware architecture allows the verification and analysis of software components and rapid innovation in algorithm design.
