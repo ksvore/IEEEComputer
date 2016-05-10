@@ -502,7 +502,7 @@ Faced with the challenge of simulation quantum systems on classical computers, R
 
 \section{Quantum computers and their applications}
 
-Richard Feynman \cite{Feynman1982} in his seminal paper already envisaged a digital quantum computer, overcoming calibration and design limitations of analog quantum devices by generalizing the bits and gates of classical computers to quantum bits (qubits) and quantum gates. Already we have a diverse range of quantum algorithms that outperform the classical counterparts, and summarize them in Box \ref{sec:box2}.
+Richard Feynman's seminal paper already envisaged a digital quantum computer, overcoming calibration and design limitations of analog quantum devices by generalizing the bits and gates of classical computers to quantum bits (qubits) and quantum gates. Already we have a diverse range of quantum algorithms that outperform the classical counterparts, and summarize them in Box \ref{sec:box2}.
 
 Quantum computers are most readily known for solving integer factorization \cite{Shor1994}, where given an integer $N=p\times q$, the task is to determine the prime numbers $p$ and $q$.  This problem forms a mainstay of e-commerce today, as it underlies the most widely used public-key cryptosystem RSA.  A quantum computer consisting of roughly one billion physical qubits {\color{red}(see Rod's article)} would be able to break a 2000-bit key RSA in a short time \cite{}.  While quantum algorithms for cryptographic attacks are certainly an area of quantum advantage over classical counterparts, their significance will decrease over time.  Already, post-quantum cryptosystems are in development that aim for security against a quantum computer.  Companies and governments around the world are already beginning a move to post-quantum crypto.  
 
@@ -516,9 +516,16 @@ The last decade has witnessed an explosion in machine learning methods for makin
 
 Quantum computers are unlike their classical cousins.  While, in principle,  they can perform any computation that a classical computer can perform, we should not expect them to power future personal computers or phones. Classical computers will remain cheaper, smaller and more portable than quantum computers for many of these tasks. Quantum computers play out their strength when running special quantum algorithms that solve certain computational tasks faster (in some cases exponentially faster) than any classical computer by acting in a superposition of values.  
 
-A quantum computer will thus operate as a co-processor, receiving its instructions and cues from a stack of classical processors. To suppress noise and errors and keep the qubits in a superposition most design for quantum computers require the qubits to be cooled to very low temperatures. This requires the use of dilution refrigerators and means that large scale quantum computers will be operated in data centers and accessed remotely as cloud service. Locally one may just have a limited number of qubits to establish secure communication or for use as quantum money .
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/cryostat}
+\caption{The inside of a dilution refrigerator that is used to cool a quantum computer to milli-Kelvin temperatures. Various stages of the cryostat host the classical control logic and the quantum chips and operate at different temperatures. All are connected to a classical frontend (super)-computer that runs the classical parts of computations in a hybrid quantum-classical code and controls the quantum processor that acts as an accelerator. Image credit: C. Marcus (NBI).
+}
+\label{fig:cryo}
+\end{figure}
 
-{\color{red} Matthias: I modified the two paragraphs below.  Feel free to adjust as needed.}
+A quantum computer will thus operate as a co-processor, receiving its instructions and cues from a stack of classical processors. To suppress noise and errors and keep the qubits in a superposition most design for quantum computers require the qubits to be cooled to very low temperatures. This requires the use of dilution refrigerators, as shown in figure \ref{fig:cryo} and means that large scale quantum computers will be operated in data centers and accessed remotely as cloud service. Locally one may just have a limited number of qubits to establish secure communication or for use as quantum money .
+
 Cryogenic temperatures alone are insufficient to keep qubits in superposition for the runtime of a non-trivial quantum algorithm and quantum error correction (QEC) \cite{qec} is needed to extend the lifetime of quantum information.  QEC remarkably allows an arbitrarily large quantum computation to be performed efficiently as long as the rate of errors occurring on the physical qubits are below a given threshold value. The no-cloning theorem of quantum information, which makes quantum communication provably secure, unfortunately also makes QEC harder than classical fault tolerance. QEC can incur a large overhead and thousands or more ``physical'' qubits may be needed to realize a single error-protected ``logical'' qubit. The classical processors must also continually monitor the ``logical" qubits and determine if they have been corrupted.  This is done by learning the location and type of errors in the system through measurement information obtained from the quantum computer.  The classical processors run a classical decoding algorithm, such as an approximation to maximum likelihood estimation or Edwards' minimum weight perfect matching, to determine the most likely correction pattern to remove the errors on the qubits. 
 
 Topological qubits \cite{tqc}, which  encode  quantum information in a non-local property of a quantum state, are a promising way of reducing this overhead by being robust to any source of local noise.  While QEC works at the level of mathematics in software, topological qubits have an intrinsic, hardware-level of protection.  The hardware protection allows the qubits to achieve longer lifetimes and lower rates of errors.  With a lower rate of error on the qubits, the overhead of QEC may be dramatically reduced by up to several orders of magnitude --- a topological quantum computer may use factors of 1000 fewer physical qubits to implement a given quantum algorithm.
@@ -535,9 +542,8 @@ Given the cost of quantum fault tolerance, qubits will be a rare commodity in qu
 
 Simulating quantum models can be considered the native applications of quantum computers. The simulation of such models includes areas such as quantum chemistry, materials science, and high-energy physics. How better to understand a quantum mechanical system than with a device that is inherently quantum mechanical! In quantum simulation, the goal is to understand properties of a system, such as its energy, electron density, or excitation spectrum through simulation of their evolution according to Schr\"odinger's equation.  
 
-Given a (potentially time-dependent) Hamiltonian ({\it i.e.} energy function) $H(t)$ that describes a system and the initial state of system $\ket{\psi(0)}$, the task is to determine a given property of the state after evolving according to $H$ for some time $t$ using a discretized time evolution $\ket{\psi(t+\delta_t)}=e^{-iH(t)\delta_t}\ket{\psi(t)}$. Using time evolution a quantum computer can efficiently  calculate many important properties. One can prepare ground states and excited states of quantum systems, measure their energies through processes mimicking interferometry and and simulate the outcome of any measurement procedure by simulating experimental procedures.
 
-Being discrete quantum devices, quantum computers, are by construction well suited for simulating discrete quantum systems, such as electrons in molecular orbitals or in a crystal lattice. The time evolution operator $e^{-iH(t)\delta_t}$ can thus be efficiently decomposed into discrete quantum gates whose number only grows polynomially with the number of electrons $N_e$. Accurate solutions of model systems can be used to develop, improve, and validate new classical simulation methods which can then be used in turn to simulate more complex systems than are tractable just by quantum simulations on a quantum computer. 
+ Accurate solutions of model systems can be used to develop, improve, and validate new classical simulation methods which can then be used in turn to simulate more complex systems than are tractable just by quantum simulations on a quantum computer. 
 
 Recent algorithmic advances have substantially improved both the constants and the power of this polynomial scaling such that simulations will be realistic not only for simplified model systems but also for the direct  treatment of realistic models of small molecules and materials. To give one example, with only about 200 qubits in the main quantum processor one will be able to simulate the active center of the enzyme nitrogenase. The iron molybdenum cofactor (FeMoco) of nitrogenase can split a dinitrogen molecule into two ammonia molecules under ambient conditions, while the industrial Haber-Bosch process  is energy intensive and requires high temperatures and pressures. Understanding this reaction mechanism will give new insights into ways of splitting dinitrogen and may lead to better catalysts and processes for fertilizer production.
 
@@ -637,7 +643,7 @@ A grand challenge for computer scientists and engineers will be to design the co
 \item     Won't be bad for privacy, but will enhance it -- mention blind quantum computing here
 \end{enumerate}
 
-While quantum algorithms are generally much less well understood than their classical cousins, the search continues for which important problems can be solved much faster on quantum computers and which cannot. Answering this question has become increasingly important, and industrial efforts are emerging that focus on the impending quantum revolution. {\color{red} move to conclusions?}
+While quantum algorithms are generally much less well understood than their classical cousins, the search continues for which important problems can be solved much faster on quantum computers and which cannot. Answering this question has become increasingly important, and industrial efforts are emerging that focus on the impending quantum revolution.
 
 % needed in second column of first page if using \IEEEpubid
 %\IEEEpubidadjcol
@@ -770,52 +776,54 @@ where $\alpha$ and $\beta$ are two complex numbers, normalized such that
   \end{equation}
 where the $k$-th bit of the integer $i$ corresponds to the values of the $k$-th qubit.
 
-The exponential memory of $2^N$ complex numbers required to represent the state of just $N$ qubits hints at the potential for exponentially larger computational power of quantum computers compared to classical ones. However, when reading out a quantum register one does not obtain all $2^N$ complex numbers, but just $N$ bits of information. Of all the $2^N$ classical values in the superposition one value $i$ is chosen at random in a measurement, according to a probability distribution given by the squares of the wave function entries $|c_i|^2$.
+The exponential memory of $2^N$ complex numbers required to represent the state of just $N$ qubits hints at the potential for exponentially larger computational power of quantum computers compared to classical ones. Current high end supercomputers are barely able to represent the state of $N\approx50$ qubits and simulating $N=60$ qubits is beyond the powers of planned exa-scale machines. Already small scale quantum computers with about one hundred qubits thus already offer computational capabilities that go beyond that of any classical computer for certain applications.
 
-Quantum gates, similar to classical gates typically act only on a few qubits. Their action can be described by unitary matrices operating on the vector $\mathbf{x}$ of coefficients of the wave function. Unitarity of these matrices implies that all quantum gates act reversibly.
 
-\begin{table}
+Despite requiring $2^N$ complex numbers to represent a quantum state on a classical computers, when reading out a quantum register one obtains just $N$ bits of information. Of all the $2^N$ classical values in the superposition one value $i$ is chosen at random in a measurement, according to a probability distribution given by the squares of the wave function entries $|c_i|^2$.
+
+
+\begin{figure}[tb]
 	\centering
 	\vspace{20pt}
 	\renewcommand{\arraystretch}{1}
 	\begin{tabular}{>{\centering}m{2cm} >{\centering}m{2cm} >{\centering\arraybackslash}m{2cm}}
 	\toprule
-	Gate & Matrix & Symbol\\\hline
- NOT or X gate& \(\displaystyle\left(\begin{matrix}0 & 1\\1 & 0\end{matrix}\right)\)&\includegraphics[width=2cm]{figures/gates/x.pdf}\\
- Y gate & \(\displaystyle\left(\begin{matrix}
+	symbol & name & matrix  \\\hline
+ \includegraphics[width=2cm]{figures/gates/x.pdf} & NOT & \(\displaystyle\left(\begin{matrix}0 & 1\\1 & 0\end{matrix}\right)\)\\
+ \includegraphics[width=2cm]{figures/gates/Y.pdf} & Pauli-Y  & \(\displaystyle\left(\begin{matrix}
  			0 & -i\\
  			i & 0
- 			\end{matrix}\right)\)&\includegraphics[width=2cm]{figures/gates/Y.pdf}\\
-	Z gate & \(\displaystyle\left(\begin{matrix}
+ 			\end{matrix}\right)\)\\
+\includegraphics[width=2cm]{figures/gates/Z.pdf}\ & Pauli-Z  & \(\displaystyle\left(\begin{matrix}
 			1 & 0\\
 			0 &-1
-			\end{matrix}\right)\)&\includegraphics[width=2cm]{figures/gates/Z.pdf}\\
-	Hadamard gate & \(\displaystyle\frac 1{\sqrt2}\left(\begin{matrix}
+			\end{matrix}\right)\)\\
+	\includegraphics[width=2cm]{figures/gates/H.pdf} & Hadamard & \(\displaystyle\frac 1{\sqrt2}\left(\begin{matrix}
 			1 & 1\\
 			1 &-1
-			\end{matrix}\right)\)&\includegraphics[width=2cm]{figures/gates/H.pdf}\\
-	S gate& \(\displaystyle\left(\begin{matrix}
-			1 & 0\\
-			0 & i
-			\end{matrix}\right)\)&\includegraphics[width=2cm]{figures/gates/S.pdf}\\
-	T gate & \(\displaystyle\left(\begin{matrix}
+			\end{matrix}\right)\)\\
+	\includegraphics[width=2cm]{figures/gates/T.pdf} & T & \(\displaystyle\left(\begin{matrix}
 			1 & 0\\
 			0 & e^{i\pi/4}
-			\end{matrix}\right)\)&\includegraphics[width=2cm]{figures/gates/T.pdf}\\
-	$Z$-Rotation gate & \(\displaystyle\left(\begin{matrix}
+			\end{matrix}\right)\)\\
+	{\centering\includegraphics[width=2.5cm]{figures/gates/Rz.pdf}} & Z-Rotation & \(\displaystyle\left(\begin{matrix}
 			e^{-i\theta/2} & 0\\
 			0 & e^{i\theta/2}
-			\end{matrix}\right)\)&{\centering\includegraphics[width=2.5cm]{figures/gates/Rz.pdf}}\\
-	Controlled NOT (CNOT) & \(\displaystyle\left(\begin{matrix}
+			\end{matrix}\right)\)\\
+	\includegraphics[width=2cm]{figures/gates/cnot.pdf} & controlled NOT (CNOT) & \(\displaystyle\left(\begin{matrix}
 			1 & 0 & 0 & 0\\
 			0 & 1 & 0 & 0\\
 			0 & 0 & 0 & 1\\
 			0 & 0 & 1 & 0
-			\end{matrix}\right)\)&\includegraphics[width=2cm]{figures/gates/cnot.pdf}\\\bottomrule
+			\end{matrix}\right)\)\\ \bottomrule
 	\end{tabular}
-	\caption{Common quantum gates, their matrix representations, and symbols.}
+	\caption{Standard quantum gates with their corresponding matrices and symbols. Similar to classical logic circuits lines denotes qubits and boxes gates acting on the qubits. Quantum gates operating on $n$ qubits can be represented by unitary matrices of simension $2^n\times 2^n$. We use a basis $\{|0\rangle, |1\rangle\}$ for the two states of a single qubit and   $\{|00\rangle, |01\rangle, |10\rangle,|11\rangle\}$ for the four states of two qubits.
+	}
 	\label{tbl:gates}
-\end{table}
+\end{figure}
+
+Quantum gates, similar to classical gates typically act only on a few qubits. Their action can be described by unitary matrices operating on the vector $\mathbf{x}$ of coefficients of the wave function. A selection of commonly used gates is shown in figure \ref{tbl:gates}. 
+Unitarity of these matrices implies that all quantum gates act reversibly.
 
 
 
@@ -843,6 +851,8 @@ A walk, or random walk, is a succession of random steps on a given graph. Quantu
 
 
 \item   {\bf Quantum tunneling}: Escaping from local minima is an important problem in heuristic optimization algorithms. Quantum systems can ``tunnel'' between local minima faster than classical local search algorithms can climb the barrier separating them, if the barrier is tall but narrow. It is currently unknown whether this can lead to faster solutions for hard optimization problems of practical interest.
+
+\item   {\bf Quantum simulation}: Being discrete quantum devices, quantum computers, are by construction well suited for simulating discrete quantum systems, such as electrons in molecular orbitals or in a crystal lattice. Given a (potentially time-dependent) Hamiltonian ({\it i.e.} energy function) $H(t)$ that describes a system and the initial state of system $\ket{\psi(0)}$, the task is to determine a given property of the state after evolving according to Schr\"odinger's equation, which can be discretized as  $\ket{\psi(t+\delta_t)}=e^{-iH(t)\delta_t}\ket{\psi(t)}$. Using time evolution a quantum computer can efficiently  calculate many important properties: one can prepare ground states and excited states of quantum systems, measure their energies through processes mimicking interferometry and and simulate the outcome of any measurement procedure by simulating experimental procedures.
 
 
 \end{itemize}
