@@ -590,19 +590,40 @@ In addition, the algorithm allows sampling from the solution, since reading out 
 
 \section{Software architecture}
 
-A computer grounded in quantum mechanical principles carries with it a unique set of computational attributes, such as superposition, entanglement, and no cloning to name a few.  Novel constructs for programming, optimizing, and controlling quantum hardware are necessary to fully harness and manipulate quantum states for algorithmic advantage. Debugging tools will require innovative approaches due to the entanglement of qubits and the inability to copy.  In this regard, simulators and emulators will be critical for the design and testing of quantum algorithms and circuits.
+Until recently there has been a separation between quantum algorithm theory and experiment, with theory focused on mathematical proofs of algorithmic improvements and experiment focused on controlling qubit lifetimes.  In turn, quantum computations have thus far been mostly described at the level of mathematics and logic gate operations (see Box \ref{sec:box1}), compiled and manually optimized for a small quantum device or simulator.  While some quantum programming languages and compilers exist, a complete software architecture remains to be developed.
+As hardware steadily advances past single-qubit devices towards 100-qubit devices, a challenge is presented for computer scientists, engineers, and developers to design and architect a software framework for programming and controlling a scalable, fault-tolerant quantum computer.
 
-For many years there has been a chasm between theory and experiment, with theory  focused on mathematical proofs of algorithmic improvements and experiment focused on controlling qubit lifetimes.  In turn, quantum computations have thus far been mostly described at the level of logic gate operations (see Box), compiled and manually optimized for a small quantum device or simulator.
-As hardware steadily advances past single-qubit devices towards 100-qubit devices, a challenge is set forth for computer scientists, engineers, and developers to design and architect a software framework for programming and controlling a scalable, fault-tolerant quantum computer.
-The development of software in advance of a fully scalable hardware architecture allows the verification and analysis of software and hardware components.  Early design decisions can result in substantial cost savings on the path to finalizing an end-to-end system and enables rapid innovation in both algorithms and hardware components.
+ 
 
-High-level programming languages and optimizing compilers are designed to provide layers of abstraction of the computation, therefore creating a simple, modular programming environment.
-The idea dates back to the introduction of FORTRAN \cite{} (FORmula TRANslation), one of the oldest programming languages and compilers.  FORTRAN was created to transition users from mathematical formulas and machine code into algorithm design and specification.  FORTRAN's simplicity allowed more rapid programming and execution, improving programming speed by $500\%$ and reducing the length of programs by over $20\%$. 
+High-level programming languages and optimizing compilers are designed to provide layers of abstraction of the computation, therefore creating a simple, modular programming environment. The development of software in advance of a fully scalable hardware architecture allows the verification and analysis of software components and rapid innovation in algorithm design.
+The idea dates back to FORTRAN \cite{} (FORmula TRANslation), one of the oldest programming languages and compilers.  FORTRAN was created to transition users from mathematical formulas and machine code into algorithm design and specification.  FORTRAN's simplicity allowed more rapid programming and execution, improving programming speed by $500\%$ and reducing the length of programs by over $20\%$.
 
 Quantum computing requires a similar software revolution, as the algorithms and hardware are complex systems.
-A scalable quantum software stack should enhance communication between algorithm designers, quantum engineers, and experimental physicists alike.
+A computer grounded in quantum mechanical principles carries with it a unique set of computational attributes, such as superposition, entanglement, and no cloning to name a few.  Novel constructs for programming, optimizing, and controlling quantum hardware are necessary to fully harness and manipulate quantum states for algorithmic advantage. Debugging tools will require innovative approaches due to the entanglement of qubits and the inability to copy.  In this regard, simulators and emulators will be critical for the design and testing of quantum algorithms and circuits. Early design decisions can result in substantial cost savings on the path to finalizing an end-to-end system, and enable the verification, analysis, and redesign of key components of the system.
+
+%The significant steps of any quantum computing design flow \cite{svore2006layered} include a front end, a technology-independent optimizer, a technology-dependent %optimizer, and a technology simulator or quantum device.  The interfaces between the steps require a high-level programming language and several intermediate and low-%level representations.
+
+Figure \ref{fig:toolchain} shows a software stack for quantum computing \cite{stack}.
+The stack should enhance communication between algorithm designers, quantum engineers, and experimental physicists alike.
 It should provide well-defined interfaces between the software and hardware systems and should enable programming of any quantum algorithm of any size for any target architecture.
-The high-level language and compilers should be machine independent, such that the upper layers of the stack are agnostic to whether the hardware backend is an ion trap, superconducting system, quantum dot, or topological quantum computer.
+
+At the top is a high-level language in which one writes quantum programs.
+%The high-level quantum programming language may be one of several~\cite{gay2006quantum}:
+%some are based on C \cite{omer1998procedural} and others based on functional languages \cite{green13,wecker14}.
+Since quantum programs consist of an intimate mixture of classical and quantum instructions, a compelling case can be made for an embedded domain-specific language such as Quipper \cite{green13} or LIQ$Ui\ket{} $\cite{wecker14} in order to maximally leverage classical language and compilation features.
+Both are functional languages, the former is embedded in Haskell and allows extensible data types and advanced programming constructs,
+while the latter contains a domain-specific language embedded in F\#.
+%In contrast to Quipper,  LIQ$Ui\ket{} $ also features simulators for noise and resource analysis, but neither allows for hardware backends.
+
+To ensure flexibility and modularity, the high-level compilers are hardware agnostic and, combined with quantum meta functions, e.g., conditional instructions and user annotations, enable a very high level of optimization of quantum code.  
+The low-level compilers of the stack will allow automatic translations to hardware instructions for specific backend quantum devices.  The development of standard libraries for quantum subroutines, including those for arithmetic, subroutines, and complex quantum gates, will speed up the development of new quantum programs.
+Auto-tuning of these quantum libraries allows determination of the best representations for a given target backend and in turn can result in substantial cost savings in the final implementation of the quantum algorithms on any hardware \cite{stack}.  
+
+The bottom supports a variety of backends, including simulators, emulators, resource analyzers, or any proposed quantum hardware implementation.
+Ultimately the software stack needs to be designed to program and automate the control of a quantum computer, no matter the size of the algorithm or device.
+While the upper layers of the stack are agnostic to whether the hardware backend is an ion trap, superconducting system, quantum dot, or topological quantum computer, the lower layers allow tuning and optimization of control for the specific device design, including layout, scheduling, and control optimization.
+
+%Later work presents a more detailed software architecture \cite{jones2012layered}, however the components are specific to a quantum dot architecture and the focus is %mainly on the pipelined control cycle from the application layer down to the physical hardware layer.
 
 \begin{figure*}[t]
 \centering
@@ -611,27 +632,10 @@ The high-level language and compilers should be machine independent, such that t
 \label{fig:toolchain}
 \end{figure*}
 
+%A grand challenge for computer scientists and engineers will be to design the components of the quantum stack, such that the task of implementing a quantum algorithm and optimizing it becomes streamlined and efficient. 
+%The design will require leveraging the advances in the classical space, while also developing novel solutions for the quantum domain.
 
-The significant steps of any quantum computing design flow \cite{svore2006layered} include a front end, a technology-independent optimizer, a technology-dependent optimizer, and a technology simulator or quantum device.  The interfaces between the steps require a high-level programming language and several intermediate and low-level representations.
-Figure \ref{fig:toolchain} shows a software stack for quantum computing \cite{stack}, including details on integration, e.g., tuned quantum libraries of arithmetic, subroutines, and quantum gates, on the compilers and optimizers in the stack.
-At the top is a high-level language in which one writes quantum programs.
-They consist of an intimate mixture of classical and quantum instructions, thus the high-level language could be an embedded domain specific language (eDSL) to maximally leverage existing classical infrastructure.
-The bottom supports a variety of backends, including simulators, emulators, resource analyzers, or any proposed quantum hardware implementation.
-To ensure flexibility and modularity, the high-level compilers are hardware-agnostic and, combined with quantum meta functions, e.g., conditional instructions and user annotations, enable a very high level of optimization of quantum code.
-
-%Later work presents a more detailed software architecture \cite{jones2012layered}, however the components are specific to a quantum dot architecture and the focus is %mainly on the pipelined control cycle from the application layer down to the physical hardware layer.
-
-
-The high-level quantum programming language may be one of several~\cite{gay2006quantum}:
-some are based on C \cite{omer1998procedural} and others based on functional languages \cite{green13,wecker14}.
-A compelling case can be made for an embedded domain-specific language such as Quipper \cite{green13} or LIQ$Ui\ket{} $\cite{wecker14} in order to leverage classical language and compilation features.
-Both are functional languages, the former is embedded in Haskell and allows extensible data types and advanced programming constructs,
-while the latter contains a domain-specific language embedded in F\#.
-%In contrast to Quipper,  LIQ$Ui\ket{} $ also features simulators for noise and resource analysis, but neither allows for hardware backends.
-
-The compilers of the stack will allow automatic translations to hardware instructions for specific backend quantum devices.  The development of standard libraries for quantum subroutines will speed up the development of new quantum programs.
-Auto-tuning of these quantum libraries allows determination of the best representations for a given target backend and in turn can result in substantial cost savings in the final implementation of the quantum algorithms on any hardware  \cite{stack}.  Ultimately the software stack needs to be designed to program and automate the control of a quantum computer, no matter the size of the algorithm or device.
-A grand challenge for computer scientists and engineers will be to design the components of the quantum stack, such that the task of implementing a quantum algorithm and optimizing it becomes streamlined and efficient. The design will require leveraging the advances in the classical space, while also developing novel solutions for the quantum domain.
+{\color{red} Matthias: should we add something here on the improvements software can lend in terms of cost?  For example for q. chem we know that algorithmic and circuit optimizations led to a substantial complexity reduction; in quantum gate synthesis we saved orders of magnitude, etc.}
 
 \section{Conclusion/Key directions}
 \begin{enumerate}
@@ -774,7 +778,7 @@ where $\alpha$ and $\beta$ are two complex numbers, normalized such that
   \end{equation}
 where the $k$-th bit of the integer $i$ corresponds to the values of the $k$-th qubit.
 
-The exponential memory of $2^N$ complex numbers required to represent the state of just $N$ qubits hints at the potential for exponentially larger computational power of quantum computers compared to classical ones. Current high end supercomputers are barely able to represent the state of $N\approx50$ qubits and simulating $N=60$ qubits is beyond the powers of planned exa-scale machines. Already small scale quantum computers with about one hundred qubits thus already offer computational capabilities that go beyond that of any classical computer for certain applications.
+The exponential memory of $2^N$ complex numbers required to represent the state of just $N$ qubits hints at the potential for exponentially larger computational power of quantum computers compared to classical ones. Current high end supercomputers are barely able to represent the state of $N\approx50$ qubits and simulating $N=60$ qubits is beyond the powers of planned exa-scale machines. Already small-scale quantum computers with about one hundred qubits offer computational capabilities that go beyond that of any classical computer for certain applications.
 
 
 Despite requiring $2^N$ complex numbers to represent a quantum state on a classical computers, when reading out a quantum register one obtains just $N$ bits of information. Of all the $2^N$ classical values in the superposition one value $i$ is chosen at random in a measurement, according to a probability distribution given by the squares of the wave function entries $|c_i|^2$.
@@ -820,21 +824,20 @@ Despite requiring $2^N$ complex numbers to represent a quantum state on a classi
 	\label{tbl:gates}
 \end{figure}
 
-Quantum gates, similar to classical gates typically act only on a few qubits. Their action can be described by unitary matrices operating on the vector $\mathbf{x}$ of coefficients of the wave function. A selection of commonly used gates is shown in figure \ref{tbl:gates}. 
+Quantum gates, similar to classical gates, typically act only on a few qubits. Their action can be described by unitary matrices operating on the vector $\mathbf{x}$ of coefficients of the wave function. A selection of commonly used gates is shown in Figure \ref{tbl:gates}. 
 Unitarity of these matrices implies that all quantum gates act reversibly.
-
 
 
 \section{Quantum algorithms}
 \label{sec:box2}
-The superiority of quantum computers over classical ones is due to the existence of quantum algorithms that solve a range of problems  better  than the best known classical algorithms \cite{jordan2011quantum}. Below we list a selection of these algorithms.
+The superiority of quantum computers over classical ones is due to the existence of quantum algorithms that solve a range of problems  better than the best-known classical algorithms \cite{jordan2011quantum}. Below we list a selection of these algorithms.
 
 \begin{itemize}
 \item {\bf Grover search}:
 Searching a database of unstructured items is a key problem in computer science.  Given the ability to evaluate a function $f: \{0,1\}^n\rightarrow \{0,1\}$, the task is to find $x$ such that $f(x)=1$.  If such an $x$ does not exist, then return that no such item exists.   
 Grover's algorithm solves the unstructured search problem on a quantum computer with only $O(\sqrt{N})$ evaluations of $f$ in the worst case, while classically $O(N)$ evaluations are required.  
 
-\item {\bf Period finding}: Given a periodic function $f(x)=f(x+r)$ find the period $r$ . Classically this requires $O(r)$ function evaluations. Quantumly, using Shor's period finding algorithm that is at the root of his factoring algorithm the same problem can be solved in $O(\log r)$ function evaluations. {\color{red} Krysta, please check this scaling.}
+\item {\bf Period finding}: Given a periodic function $f(x)=f(x+r)$ find the period $r$ . Classically this requires $O(r)$ function evaluations. Quantumly, using Shor's period finding algorithm that is at the root of his factoring algorithm, the same problem can be solved in $O(\log r)$ function evaluations. {\color{red} Krysta, please check this scaling.}
 
 
 \item {\bf Linear systems}: Given an $N\times N$ matrix $A$ and a $N$-dimensional vector $b$, find $x$ such that $Ax=b$.
@@ -866,7 +869,7 @@ A walk, or random walk, is a succession of random steps on a given graph. Quantu
 \end{figure*}
 
 
-The advantage of quantum computers over classical ones is sometimes over-simplified to be due to the former being able to perform computations on all possible input simultaneously. More precisely, many quantum algorithms can be viewed as instances of the design pattern shown in figure \ref{fig:simd}. At a high level such a quantum program can be viewed to be similar to MapReduce, but working on all possible values on a single quantum CPU. After a quantum superposition of all input values is prepared, a computation is performed simultaneously on all these values, before summary information is computed in a reduction step and read out. 
+The advantage of quantum computers over classical ones is sometimes over-simplified to be due to the former being able to perform computations on all possible inputs simultaneously. More precisely, many quantum algorithms can be viewed as instances of the design pattern shown in Figure \ref{fig:simd}. At a high level such a quantum program can be viewed to be similar to MapReduce, but working on all possible values on a single quantum CPU. After a quantum superposition of all input values is prepared, a computation is performed simultaneously on all these values, before summary information is computed in a reduction step and read out. 
 While conceptually similar to MapReduce there are a number of important differences that show both the powers and limitations of quantum computers.
 
 The up to exponential speedup of a quantum computer over a classical one is due to its ability to perform operations on a superposition of exponential many input values on a single quantum processor. As each quantum gates acts on {\em all} input values, these computations can be viewed as an extreme form of single instruction, multiple data (SIMD) parallelism. This analogy immediately points out some of the issues faced by the designer of quantum algorithms. Conditional instructions have to implemented using masking registers (called control qubits), both branches of an if-else statement have to be executed and any loops have to be iterated for the worst case.
