@@ -474,27 +474,34 @@ The coming quantum revolution will overturn our notions of computational methods
 
 \IEEEPARstart{M}{ore} than a century after the discovery of quantum mechanics we are on the threshold of an age of quantum technology in which quantum mechanics not only enables classical devices,  such as transistor, but where quantum properties are essential to their operation. Unlike classical computers, quantum devices can simultaneously be in a ``superposition'' of many different states and have deep connections ( ``entanglement'') between spatially separated entities.  These properties make it possible to design devices that whose capabilities exceed that of any imaginable classical computer, and first such devices to create quantum random numbers and securely encrypt communication are already commercially available. 
 
-The arguably simplest device may be a {\em quantum random number generator} uses the property of superposition:  a quantum bit (or qubit for short) can be created in a state $\frac{1}{\sqrt{2}}(|0\rangle + |1\rangle)$ that is the superposition  of the values 0 and 1 of a classical bit. Upon measuring the value of the qubit, the superposition collapses into one of the two classical states, and the measurement gives either the value 0 or 1, each with probability 1/2. This procedure realizes a true and perfect random number generator, which is impossible classically due to the deterministic nature of classical physics.\footnote{While  chaotic classical processes might look random enough for many applications, only with quantum random numbers do we have the assurance of no perfect randomness}
+The arguably simplest device may be a {\em quantum random number generator} uses the property of superposition:  a quantum bit (or qubit for short) can be created in a state $\frac{1}{\sqrt{2}}(|0\rangle + |1\rangle)$ that is the superposition  of the values 0 and 1 of a classical bit (see Box \ref{sec:box1}). Upon measuring the value of the qubit, the superposition collapses into one of the two classical states, and the measurement gives either the value 0 or 1, each with probability 1/2. This procedure realizes a true and perfect random number generator, which is impossible classically due to the deterministic nature of classical physics.\footnote{While  chaotic classical processes might look random enough for many applications, only with quantum random numbers do we have the assurance of no perfect randomness}
 
 Entangling two qubits $A$ and $B$ in a superposition denoted $\frac{1}{\sqrt{2}}(|0\rangle_A|0\rangle_B + |1\rangle_A|1\rangle_B)$, such that they are either {\em both} 0 or {\em both} 1, can be used for cryptography. Giving one of the qubits to Alice and one to Bob, the qubits remain entangled no matter how far apart they are. Measuring their individual qubits, Alice and Bob will get a random result -- however both get the {\em same} random value is the same for both of them. This can be used for {\em quantum teleportation} or as one way of establishing a shared secret key for  {\em secure  communication}, again surpassing classical technology \cite{RevModPhys.81.1301,EkertRenner2014}. 
 
-Faced with the challenge of simulation quantum systems on classical computers, Richard Feynman in 1982 \cite{Feynman1982} suggested to use quantum devices to simulate physics problems. Analog implementations of this idea in {\em quantum simulators }  \cite{RevModPhys.86.153}  have  been successful used to explore complex quantum problems, but {\em quantum annealers} to solve hard optimization problems have not  yet shown any advantage over classical computers \cite{speedup}. {\color{red} we could drop this part about analog devices and jump straight to digital computers.}  Richard Feynman \cite{Feynman1982} in his seminal paper already envisaged a digital quantum computer, overcoming calibrarion and design limitations of analog quantum devices by generalizing the bits and gates of classical computers to quantum bits (qubits) and quantum gates.
 
-Already we have a diverse range of quantum algorithms that outperform the classical counterparts: quantum simulations will have applications throughout chemistry and materials science and Shor's factoring algorithm \cite{Shor1994} and its variants break all currently used public-key cryptosystems.  More recent work suggests that quantum computers will have important applications in machine learning and even in the simulation of classical systems. While quantum algorithms are generally much less well understood than their classical cousins, the search continues for which important problems can be solved much faster on quantum computers and which cannot. Answering this question has become increasingly important, and industrial efforts are emerging that focus on the impending quantum revolution. The heightened interest is in part due to recent advances in quantum algorithms for quantum chemistry that enable solving critical real-world problems, such as for elucidating the mechanism of biological nitrogen fixation, with application to fertilizer production.
+Faced with the challenge of simulation quantum systems on classical computers, Richard Feynman in 1982 \cite{Feynman1982} suggested to use quantum devices to simulate physics problems. Analog implementations of this idea in {\em quantum simulators }  \cite{RevModPhys.86.153}  have  been successful used to build tunable analog realizations of complex quantum models. Quantum simulators can also be used to solve purely classical problems. One example are {\em quantum annealers} to solve hard optimization problems. However, they have not  yet shown any advantage over classical computers \cite{speedup}. 
 
+\section{Quantum computers and their applications}
 
-\section{Special-purpose accelerator }
-\begin{enumerate}
-\item       Computation moves to the data
-\end{enumerate}
+Richard Feynman \cite{Feynman1982} in his seminal paper already envisaged a digital quantum computer, overcoming calibration and design limitations of analog quantum devices by generalizing the bits and gates of classical computers to quantum bits (qubits) and quantum gates. Already we have a diverse range of quantum algorithms that outperform the classical counterparts, and summarize them in Box \ref{sec:box2}.
 
+Quantum computers are most readily known for solving integer factorization \cite{Shor1994}, where given an integer $N=p\times q$, the task is to determine the prime numbers $p$ and $q$.  This problem forms a mainstay of e-commerce today, as it underlies the most widely used public-key cryptosystem RSA.  A quantum computer consisting of roughly one billion physical qubits {\color{red}(see Rod's article)} would be able to break a 2000-bit key RSA in a short time \cite{}.  While quantum algorithms for cryptographic attacks are certainly an area of quantum advantage over classical counterparts, their significance will decrease over time.  Already, post-quantum cryptosystems are in development that aim for security against a quantum computer.  Companies and governments around the world are already beginning a move to post-quantum crypto.  
+
+More globally and economically impactful applications arise from the simulation of physical systems. This has been the original motivation behind Feynman's seminal paper and finds applications in chemistry and materials science. Quantum computers will improve reliability of quantum chemical calculations by performing accurate simulations of molecules and materials on the scale of days to months for problems that might take billions of years on state-of-the-art supercomputers today. They can be applied to help solve critical real-world problems, such as elucidating the mechanism of biological nitrogen fixation with application to fertilizer production) or designing catalysts for carbon capture  capture and sequestration (to combat global warming).  Extensions of these approaches promise solutions for applications in materials modeling, including investigation of materials that display higher temperature superconductivity. 
+
+An emerging application area is machine learning.  Quantum algorithms have been developed for more efficiently performing data processing, learning, and classification.  Recently, quantum advantage has been found for training deep learning models, classifying with nearest-neighbor learning and k-means clustering, and performing Bayesian inference.
+{\color{red} ADD LLOYD work?}
+
+While quantum algorithms are generally much less well understood than their classical cousins, the search continues for which important problems can be solved much faster on quantum computers and which cannot. Answering this question has become increasingly important, and industrial efforts are emerging that focus on the impending quantum revolution. {\color{red} move to conclusions?}
+
+\section{Quantum computers as special-purpose accelerators }
 
 
 Quantum computers are unlike their classical cousins.  While, in principle,  they can perform any computation that a classical computer can perform, we should not expect them to power future personal computers or phones. Classical computers will remain cheaper, smaller and more portable than quantum computers for many of these tasks. Quantum computers play out their strength when running special quantum algorithms that solve certain computational tasks faster (in some cases exponentially faster) than any classical computer by acting in a superposition of values.  
 
 A quantum computer will thus operate as a co-processor, receiving its instructions and cues from a stack of classical processors. To suppress noise and errors and keep the qubits in a superposition most design for quantum computers require the qubits to be cooled to very low temperatures. This requires the use of dilution refrigerators and means that large scale quantum computers will be operated in data centers and accessed remotely as cloud service. Locally one may just have a limited number of qubits to establish secure communication or for use as quantum money .
 
-Cryogenic temperatures alone are insufficient to keep qubits in superposition for the runtime of a non-trivial algorithm and quantum error correction (QEC) \cite{qec} is needed to extend the lifetime of quantum information. The no-cloning theorem of quantum information, which makes quantum communication provably secure, unfortunately also QEC harder than classical fault tolerance. QEC can incur a large overhead and thousands or more ``physical'' qubits may be needed to realize a single error-protected ``logical'' qubits. Topological qubits \cite{tqc}, which  encode  quantum information in a non-local property of a quantum state are a promising way of reducing this overhead by being robust to any source of local noise. 
+Cryogenic temperatures alone are insufficient to keep qubits in superposition for the runtime of a non-trivial quantum algorithm and quantum error correction (QEC) \cite{qec} is needed to extend the lifetime of quantum information. The no-cloning theorem of quantum information, which makes quantum communication provably secure, unfortunately also QEC harder than classical fault tolerance. QEC can incur a large overhead and thousands or more ``physical'' qubits may be needed to realize a single error-protected ``logical'' qubits. Topological qubits \cite{tqc}, which  encode  quantum information in a non-local property of a quantum state are a promising way of reducing this overhead by being robust to any source of local noise. {\color{red} Krysta, do you want to expand on this?}
 
 Given these overheads, qubits will be a rare commodity in quantum computers and this leads to radical differences in their design compared  to classical computers where memory is cheap. Instead of moving data to computational units, early quantum computers will move operations to the data, applying gates directly to the memory qubits.
 
@@ -521,28 +528,18 @@ Given these overheads, qubits will be a rare commodity in quantum computers and 
 % and "HIS" in caps to complete the first word.
 
 
-\section{Killer Applications (Why these applications?) (CALL OUT BOX) (KRYSTA)}
-\begin{enumerate}
-\item     Crypto/Number Theory
-\item   Quantum Chemistry and Materials
-\item    Quantum Machine Learning?
-\end{enumerate}
 
-Quantum computers are most readily known for solving integer factorization \cite{}, where given an integer $N=p\times q$, the task is to determine the prime numbers $p$ and $q$.  This problem forms a mainstay of e-commerce today, as it underlies the most widely used public-key cryptosystem RSA.  A quantum computer consisting of roughly one billion physical qubits (see Rod's article) would be able to break a 2000-bit key RSA in just over one day \cite{}.  More broadly, integer factorization falls within a class of problems called the Hidden Subgroup Problems (HSPs).  Polynomial-time quantum algorithms exist not only for breaking RSA, but also for breaking Diffie-Hellman, DSA, Buchmann-Williams, etc.
-While quantum algorithms for cryptographic attacks are certainly an area of quantum advantage over classical counterparts, they potentially will be less significant over time.  Already, post-quantum cryptosystems are in development that aim for security against a quantum computer.  The transition to post-quantum protocols will require no less than a decade and a substantial sum, which is why companies and governments around the world are already beginning a move to post-quantum crypto.  
 
-More globally and economically impactful applications arise from the simulation of physical systems and performing machine learning on a quantum computer.
+
+
+\section{Native applications: quantum chemistry and materials science}
 The simulation of physical systems includes areas such as quantum chemistry, materials science, and high-energy physics.
 How better to understand a quantum mechanical system than with a device that is inherently quantum mechanical!
 In quantum simulation, the goal is to understand properties of a system, such as the ground state energy or the bond length, and their evolution according to Schroedinger's equation.
 Given a Hamiltonian $H$ that describes a system and the initial state of system $\ket{\psi}$, the task is to determine a given property of the state after evolving according to $H$ for time $t$: $\ket{\psi_t}=e^{-iHt}$.
 A quantum computer can efficiently solve for many important properties of systems.  See more below.
 
-An emerging application area is machine learning.  Quantum algorithms have been developed for more efficiently performing data processing, learning, and classification.  Recently, quantum advantage has been found for training deep learning models, classifying with nearest-neighbor learning and k-means clustering, and performing Bayesian inference.
-ADD LLOYD work?
 
-
-\section{Quantum Chemistry and materials science (quantum problems solved on quantum computer) (MATTHIAS)}
 \begin{enumerate}
 \item      Native application
 \item     Catalysis
@@ -562,9 +559,17 @@ ADD LLOYD work?
 
 
 
-\section{Quantum accelerated applications (classical problems solved faster on quantum computer)}
+\section{Quantum accelerated applications}
+ (classical problems solved faster on quantum computer)
+\subsection{Cryptographic applications}
+Quantum computers are most readily known for solving integer factorization \cite{}, where given an integer $N=p\times q$, the task is to determine the prime numbers $p$ and $q$.  This problem forms a mainstay of e-commerce today, as it underlies the most widely used public-key cryptosystem RSA.  A quantum computer consisting of roughly one billion physical qubits (see Rod's article) would be able to break a 2000-bit key RSA in just over one day \cite{}.  More broadly, integer factorization falls within a class of problems called the Hidden Subgroup Problems (HSPs).  Polynomial-time quantum algorithms exist not only for breaking RSA, but also for breaking Diffie-Hellman, DSA, Buchmann-Williams, etc.
+While quantum algorithms for cryptographic attacks are certainly an area of quantum advantage over classical counterparts, they potentially will be less significant over time.  Already, post-quantum cryptosystems are in development that aim for security against a quantum computer.  The transition to post-quantum protocols will require no less than a decade and a substantial sum, which is why companies and governments around the world are already beginning a move to post-quantum crypto.  
+
+
 \begin{enumerate}
 \item    Shor
+
+
 \item    Grover: amplitude amplification technique; applications are to find minimum, to determine graph connectivity, to perform pattern matching
 
 Applications include finding the minimum of an unsorted list of integers, identifying whether a graph is connected, and finding a given pattern within a length of text. --- [I dropped applications as we will discuss it in more detail in the text]
@@ -581,7 +586,7 @@ Applications of the algorithm include the finite element method, where one can f
 \end{enumerate}
 
 
-\section{Software architecture (KRYSTA)}
+\section{Software architecture}
 
 
 In recent history we have witnessed a rapid growth of software for digital machines, due in part to the development of high-level programming languages based on layers of abstractions and optimizing compilers, rendering programming easier for the user.
