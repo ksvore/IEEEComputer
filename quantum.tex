@@ -585,7 +585,6 @@ However, query complexity alone may be misleading. To establish quantum advantag
 Similar considerations apply to applications of the linear systems algorithm \cite{HHL}, which allows  sampling from solutions $\mathbf{x}$ of a well-conditioned  linear system of equations $A\mathbf{x}=\mathbf{b}$ with exponential speedup over classical algorithms -- as longs as the operation $e^{-iAt}$ can be efficiently implemented using quantum gates. For arbitrary $N\times N$ matrices this requires at least $O(N^2)$ effort, which undoes any advantage of the quantum algorithm. In addition, the algorithm only allows sampling from the solution, since reading out all the elements of $\mathbf{x}$ would take time $O(N)$ and thus again counter the speedup obtained.
 
 Practical applications of the algorithm thus require matrices $A$ that can be described algorithmically and the computation of only $O(\log N)$ bit of information from the solution  $\mathbf{x}$. Such problem include  finite difference and finite element discretization of partial differential equations, where one can determine, for example, solutions to electromagnetic scattering problems on exponentially fine meshes. 
-{\color{red} Krysta: I'm not sure which ML applications you were thinking of}
 
 \subsection{Sampling}
 
@@ -653,13 +652,13 @@ While the upper layers of the stack are agnostic to whether the hardware backend
 
 
 
-\section{Conclusion/Key directions}
-\begin{enumerate}
-\item    Establishing quantum supremacy on real hardware
-\item     Software is in development
-\item     Qubits are in development (see Rod's paper)
-\item     Won't be bad for privacy, but will enhance it -- mention blind quantum computing here
-\end{enumerate}
+\section{Conclusions and Outlook}
+
+Experimental progress in the development of qubits has developed to the point where scalable qubit technology exists. Within the next couple of years we may expect to see the development of small quantum computers with more than one hundred physical qubits. This will pave the way to first applications using short quantum algorithms that do not exceed the lifetime of these qubits and may provide the first demonstration of quantum computers outperforming classical ones on certain problems.
+
+More importantly, it will pave the way towards deve lopment of logical qubits using quantum error correction, and engineering efforts to scale to bigger robust quantum computers. In parallel to these hardware developments the necessary software is being designed and implemented. Quantum software efforts need to match the hardware developments and encompass the whole stack from low-level control of qubits to high level applications.
+
+ Quantum algorithms for quantum simulations and factoring have been optimized to the point where they can be viewed as realistic applications on small to medium scale quantum computers. For other applications, including linear systems, sampling, and machine learning algorithmic optimizations and in-depth resource estimates are still required. 
 
 While quantum algorithms are generally much less well understood than their classical cousins, the search continues for which important problems can be solved much faster on quantum computers and which cannot. Answering this question has become increasingly important, and industrial efforts are emerging that focus on the impending quantum revolution.
 
