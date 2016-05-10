@@ -370,6 +370,25 @@
 \usepackage{graphicx}
 \usepackage{braket}
 
+\usepackage[english]{babel}
+
+\usepackage{listings}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{placeins}
+\usepackage{hyperref}
+\definecolor{dgreen}{rgb}{0,.4,0}
+\definecolor{dblue}{rgb}{0,0,.7}
+\lstset{basicstyle=\ttfamily,breakatwhitespace=false,breaklines=true,language=c++,keywordstyle=\color{dblue},captionpos=b,frame=single,morekeywords={allocateQureg,control,measure,initialize,inverse,QPE,QFT},commentstyle=\color{dgreen},numbers=left,numberstyle=\tiny\color[rgb]{.3,.3,.3},xleftmargin=4ex,xrightmargin=4ex}
+
+\usepackage{braket}
+\usepackage{bbm}
+\usepackage{seqsplit}
+\usepackage{booktabs,array}
+
+\newcommand{\todo}[1]{\textcolor{red}{#1}}
+
 \begin{document}
 %
 % paper title
@@ -489,9 +508,8 @@ Quantum computers are most readily known for solving integer factorization \cite
 
 More globally and economically impactful applications arise from the simulation of physical systems. This has been the original motivation behind Feynman's seminal paper and finds applications in chemistry and materials science. Quantum computers will improve reliability of quantum chemical calculations by performing accurate simulations of molecules and materials on the scale of days to months for problems that might take billions of years on state-of-the-art supercomputers today. They can be applied to help solve critical real-world problems, such as elucidating the mechanism of biological nitrogen fixation with application to fertilizer production) or designing catalysts for carbon capture  capture and sequestration (to combat global warming).  Extensions of these approaches promise solutions for applications in materials modeling, including investigation of materials that display higher temperature superconductivity. 
 
-The last decade has witnessed an explosion in machine learning methods for learning from and making predictions based on data.  Machine learning has transformed domains such as speech recognition, computer vision, and web search.  With its foundations in computational statistics, machine learning is an area ripe for quantum leaps.  Recent results indicate that quantum algorithms may perform classification and clustering methods such as $k$-means and nearest-neighbor methods more efficiently than the classical methods.  Boltzman machine training, deep learning, and neural networks have also been shown to have quantum advantages.  The discovery of quantum algorithms for machine learning is just beginning, and the progress may accelerate with the development of a modest quantum computer.  After all, quantum algorithms presently require rigorous proofs to validate any improvements in runtime complexity over classical algorithms.  However, as seen by machine learning practitioners, often the best-performing algorithms on real-world data are heuristic in nature.  We may therefore look forward to having a modest-size quantum computer on which to test and master the art of quantum programming and quantum algorithm design. 
+The last decade has witnessed an explosion in machine learning methods for making predictions and gaining insights based on data.  Machine learning has utterly transformed domains such as speech recognition, computer vision, and web search.  With its foundations in computational statistics, machine learning is an area ripe for quantum leaps.  Recent results indicate that quantum algorithms may perform classification and clustering methods such as $k$-means and nearest-neighbor methods more efficiently than  classical methods.  Boltzman machine training, deep learning, and neural networks have also been shown to have quantum advantages.  The discovery of quantum algorithms for machine learning is in its infancy and we anticipate a proliferation of methods as quantum hardware comes online.  After all, quantum algorithms presently require rigorous proofs to validate any improvements in runtime complexity over classical algorithms.  However, as seen by machine learning practitioners, often the best-performing algorithms on real-world data are heuristic in nature.  We may therefore look forward to having a modest-size quantum computer on which to test and master the art of quantum programming and quantum algorithm design. 
 
-While quantum algorithms are generally much less well understood than their classical cousins, the search continues for which important problems can be solved much faster on quantum computers and which cannot. Answering this question has become increasingly important, and industrial efforts are emerging that focus on the impending quantum revolution. {\color{red} move to conclusions?}
 
 \section{Quantum computers as special-purpose accelerators }
 
@@ -627,7 +645,7 @@ A grand challenge for computer scientists and engineers will be to design the co
 \item     Won't be bad for privacy, but will enhance it -- mention blind quantum computing here
 \end{enumerate}
 
-
+While quantum algorithms are generally much less well understood than their classical cousins, the search continues for which important problems can be solved much faster on quantum computers and which cannot. Answering this question has become increasingly important, and industrial efforts are emerging that focus on the impending quantum revolution. {\color{red} move to conclusions?}
 
 % needed in second column of first page if using \IEEEpubid
 %\IEEEpubidadjcol
@@ -764,6 +782,48 @@ The exponential memory of $2^N$ complex numbers required to represent the state 
 
 Quantum gates, similar to classical gates typically act only on a few qubits. Their action can be described by unitary matrices operating on the vector $\mathbf{x}$ of coefficients of the wave function. Unitarity of these matrices implies that all quantum gates act reversibly.
 
+\begin{table}
+	\centering
+	\vspace{20pt}
+	\renewcommand{\arraystretch}{1}
+	\begin{tabular}{>{\centering}m{2cm} >{\centering}m{2cm} >{\centering\arraybackslash}m{2cm}}
+	\toprule
+	Gate & Matrix & Symbol\\\hline
+ NOT or X gate& \(\displaystyle\left(\begin{matrix}0 & 1\\1 & 0\end{matrix}\right)\)&\includegraphics[width=2cm]{figures/gates/x.pdf}\\
+ Y gate & \(\displaystyle\left(\begin{matrix}
+ 			0 & -i\\
+ 			i & 0
+ 			\end{matrix}\right)\)&\includegraphics[width=2cm]{figures/gates/Y.pdf}\\
+	Z gate & \(\displaystyle\left(\begin{matrix}
+			1 & 0\\
+			0 &-1
+			\end{matrix}\right)\)&\includegraphics[width=2cm]{figures/gates/Z.pdf}\\
+	Hadamard gate & \(\displaystyle\frac 1{\sqrt2}\left(\begin{matrix}
+			1 & 1\\
+			1 &-1
+			\end{matrix}\right)\)&\includegraphics[width=2cm]{figures/gates/H.pdf}\\
+	S gate& \(\displaystyle\left(\begin{matrix}
+			1 & 0\\
+			0 & i
+			\end{matrix}\right)\)&\includegraphics[width=2cm]{figures/gates/S.pdf}\\
+	T gate & \(\displaystyle\left(\begin{matrix}
+			1 & 0\\
+			0 & e^{i\pi/4}
+			\end{matrix}\right)\)&\includegraphics[width=2cm]{figures/gates/T.pdf}\\
+	Rotation-Z gate & \(\displaystyle\left(\begin{matrix}
+			e^{-i\theta/2} & 0\\
+			0 & e^{i\theta/2}
+			\end{matrix}\right)\)&{\centering\includegraphics[width=2.5cm]{figures/gates/Rz.pdf}}\\
+	Controlled NOT (CNOT) & \(\displaystyle\left(\begin{matrix}
+			1 & 0 & 0 & 0\\
+			0 & 1 & 0 & 0\\
+			0 & 0 & 0 & 1\\
+			0 & 0 & 1 & 0
+			\end{matrix}\right)\)&\includegraphics[width=2cm]{figures/gates/cnot.pdf}\\\bottomrule
+	\end{tabular}
+	\caption{Standard quantum gates with their corresponding matrices and symbols.}
+	\label{tbl:gates}
+\end{table}
 
 
 
