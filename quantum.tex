@@ -370,6 +370,25 @@
 \usepackage{graphicx}
 \usepackage{braket}
 
+\usepackage[english]{babel}
+
+\usepackage{listings}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{placeins}
+\usepackage{hyperref}
+\definecolor{dgreen}{rgb}{0,.4,0}
+\definecolor{dblue}{rgb}{0,0,.7}
+\lstset{basicstyle=\ttfamily,breakatwhitespace=false,breaklines=true,language=c++,keywordstyle=\color{dblue},captionpos=b,frame=single,morekeywords={allocateQureg,control,measure,initialize,inverse,QPE,QFT},commentstyle=\color{dgreen},numbers=left,numberstyle=\tiny\color[rgb]{.3,.3,.3},xleftmargin=4ex,xrightmargin=4ex}
+
+\usepackage{braket}
+\usepackage{bbm}
+\usepackage{seqsplit}
+\usepackage{booktabs,array}
+
+\newcommand{\todo}[1]{\textcolor{red}{#1}}
+
 \begin{document}
 %
 % paper title
@@ -756,6 +775,48 @@ The exponential memory of $2^N$ complex numbers required to represent the state 
 
 Quantum gates, similar to classical gates typically act only on a few qubits. Their action can be described by unitary matrices operating on the vector $\mathbf{x}$ of coefficients of the wave function. Unitarity of these matrices implies that all quantum gates act reversibly.
 
+\begin{table}
+	\centering
+	\vspace{20pt}
+	\renewcommand{\arraystretch}{1}
+	\begin{tabular}{>{\centering}m{2cm} >{\centering}m{2cm} >{\centering\arraybackslash}m{2cm}}
+	\toprule
+	Gate & Matrix & Symbol\\\hline
+ NOT or X gate& \(\displaystyle\left(\begin{matrix}0 & 1\\1 & 0\end{matrix}\right)\)&\includegraphics[width=2cm]{figures/gates/x.pdf}\\
+ Y gate & \(\displaystyle\left(\begin{matrix}
+ 			0 & -i\\
+ 			i & 0
+ 			\end{matrix}\right)\)&\includegraphics[width=2cm]{figures/gates/Y.pdf}\\
+	Z gate & \(\displaystyle\left(\begin{matrix}
+			1 & 0\\
+			0 &-1
+			\end{matrix}\right)\)&\includegraphics[width=2cm]{figures/gates/Z.pdf}\\
+	Hadamard gate & \(\displaystyle\frac 1{\sqrt2}\left(\begin{matrix}
+			1 & 1\\
+			1 &-1
+			\end{matrix}\right)\)&\includegraphics[width=2cm]{figures/gates/H.pdf}\\
+	S gate& \(\displaystyle\left(\begin{matrix}
+			1 & 0\\
+			0 & i
+			\end{matrix}\right)\)&\includegraphics[width=2cm]{figures/gates/S.pdf}\\
+	T gate & \(\displaystyle\left(\begin{matrix}
+			1 & 0\\
+			0 & e^{i\pi/4}
+			\end{matrix}\right)\)&\includegraphics[width=2cm]{figures/gates/T.pdf}\\
+	Rotation-Z gate & \(\displaystyle\left(\begin{matrix}
+			e^{-i\theta/2} & 0\\
+			0 & e^{i\theta/2}
+			\end{matrix}\right)\)&{\centering\includegraphics[width=2.5cm]{figures/gates/Rz.pdf}}\\
+	Controlled NOT (CNOT) & \(\displaystyle\left(\begin{matrix}
+			1 & 0 & 0 & 0\\
+			0 & 1 & 0 & 0\\
+			0 & 0 & 0 & 1\\
+			0 & 0 & 1 & 0
+			\end{matrix}\right)\)&\includegraphics[width=2cm]{figures/gates/cnot.pdf}\\\bottomrule
+	\end{tabular}
+	\caption{Standard quantum gates with their corresponding matrices and symbols.}
+	\label{tbl:gates}
+\end{table}
 
 
 
