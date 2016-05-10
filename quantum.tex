@@ -544,7 +544,7 @@ Simulating quantum models can be considered the native applications of quantum c
 
 The first applications of small quantum computers will be to simple quantum models whose exact dynamics is already intractable for classical computers for about one hundred lattice sites or orbitals.  Accurate solutions of such model systems can be used to develop, improve, and validate new classical simulation methods which can then be used in turn to simulate more complex systems than are tractable just by quantum simulations on a quantum computer. 
 
-Recent algorithmic advances have substantially improved the scaling of algorithms for time evolution of realistic electronic systems, such as small molecules or complex materials. We illustrate how quantum computers will be used for such problems by considering simulations of the active center of the enzyme nitrogenase \cite{nitrogenasepaper}. The iron molybdenum cofactor (FeMoco) of nitrogenase can split a dinitrogen molecule into two ammonia molecules under ambient conditions, while the industrial Haber-Bosch process  is energy intensive and requires high temperatures and pressures. Understanding this reaction mechanism will give new insights into ways of splitting dinitrogen and may lead to better catalysts and processes for fertilizer production.
+Recent algorithmic advances have substantially improved the scaling of algorithms for time evolution of realistic electronic systems, such as small molecules or complex materials. We illustrate how quantum computers will be used for such problems by considering simulations of the active center of the enzyme nitrogenase \cite{nitrogenase}. The iron molybdenum cofactor (FeMoco) of nitrogenase can split a dinitrogen molecule into two ammonia molecules under ambient conditions, while the industrial Haber-Bosch process  is energy intensive and requires high temperatures and pressures. Understanding this reaction mechanism will give new insights into ways of splitting dinitrogen and may lead to better catalysts and processes for fertilizer production.
 
 \begin{figure*}[t]
 \centering
@@ -622,6 +622,14 @@ It should also define the necessary interfaces between the software and hardware
 The high-level language and compilers should be machine independent and scalable, such that the upper layers of the stack are agnostic to whether the hardware backend is an ion trap, superconducting system, quantum dot, or topological quantum computer.
 The stack should enable programming of any quantum algorithm of any size for any target architecture.
 
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/coarse_toolchain}
+\caption{The proposed toolchain for quantum programming \cite{stack}: The quantum program is implemented in an embedded domain-specific language (eDSL) and then translated to hardware instructions using a series of compilers, which generate quantum intermediate representations (QIR) of the code. Pre-compiled libraries are linked against prior to creating the logical layout and applying error correction, since this will produce more efficient code. The resulting low-level quantum intermediate representation (LLQIR) is then mapped to hardware.}
+\label{fig:toolchain}
+\end{figure*}
+
+
 The significant steps of any quantum computing design flow \cite{svore2006layered} include a front end, a technology-independent optimizer, a technology-dependent optimizer, and a technology simulator or quantum device.  The interfaces between the steps require a high-level programming language and several intermediate and low-level representations.
 Figure \ref{fig:toolchain} shows a software stack for quantum computing \cite{stack}, including details on integration, e.g., tuned quantum libraries of arithmetic, subroutines, and quantum gates, on the compilers and optimizers in the stack.
 At the top is a high-level language in which one writes quantum programs.
@@ -631,12 +639,6 @@ To ensure flexibility and modularity, the high-level compilers are hardware-agno
 
 %Later work presents a more detailed software architecture \cite{jones2012layered}, however the components are specific to a quantum dot architecture and the focus is %mainly on the pipelined control cycle from the application layer down to the physical hardware layer.
 
-\begin{figure*}[t]
-\centering
-\includegraphics[width=\textwidth]{figures/coarse_toolchain}
-\caption{The proposed toolchain for quantum programming: The quantum program is implemented in an embedded domain-specific language (eDSL) and then translated to hardware instructions using a series of compilers, which generate quantum intermediate representations (QIR) of the code. Pre-compiled libraries are linked against prior to creating the logical layout and applying error correction, since this will produce more efficient code. The resulting low-level quantum intermediate representation (LLQIR) is then mapped to hardware.}
-\label{fig:toolchain}
-\end{figure*}
 
 The high-level quantum programming language may be one of several~\cite{gay2006quantum}:
 some are based on C \cite{omer1998procedural} and others based on functional languages \cite{green13,wecker14}.
