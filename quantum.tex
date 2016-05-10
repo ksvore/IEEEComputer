@@ -510,33 +510,22 @@ Given these overheads, qubits will be a rare commodity in quantum computers and 
 
 
 
- 
-% The very first letter is a 2 line initial drop letter followed
-% by the rest of the first word in caps.
-% 
-% form to use if the first word consists of a single letter:
-% \IEEEPARstart{A}{demo} file is ....
-% 
-% form to use if you need the single drop letter followed by
-% normal text (unknown if ever used by IEEE):
-% \IEEEPARstart{A}{}demo file is ....
-% 
-% Some journals put the first two words in caps:
-% \IEEEPARstart{T}{his demo} file is ....
-% 
-% Here we have the typical use of a "T" for an initial drop letter
-% and "HIS" in caps to complete the first word.
-
-
-
 
 
 
 \section{Native applications: quantum chemistry and materials science}
-The simulation of physical systems includes areas such as quantum chemistry, materials science, and high-energy physics.
-How better to understand a quantum mechanical system than with a device that is inherently quantum mechanical!
-In quantum simulation, the goal is to understand properties of a system, such as the ground state energy or the bond length, and their evolution according to Schroedinger's equation.
-Given a Hamiltonian $H$ that describes a system and the initial state of system $\ket{\psi}$, the task is to determine a given property of the state after evolving according to $H$ for time $t$: $\ket{\psi_t}=e^{-iHt}$.
+
+Simulating quantum models can be considered the native applications of quantum computers. The simulation of such models includes areas such as quantum chemistry, materials science, and high-energy physics. How better to understand a quantum mechanical system than with a device that is inherently quantum mechanical! In quantum simulation, the goal is to understand properties of a system, such as its energy, electron density, or excitation spectrum through simulation of their evolution according to Schr\"odinger's equation.  
+
+Given a (potentially time-dependent) Hamiltonian ({\it i.e.} energy function) $H(t)$ that describes a system and the initial state of system $\ket{\psi(0)}$, the task is to determine a given property of the state after evolving according to $H$ for some time $t$ using a discretized time evolution $\ket{\psi(t+\delta_t)}=e^{-iH(t)\delta_t}\ket{\psi(t)}$.
+
+
+Being discrete quantum devices, quantum computers, are by construction well suited for simulating discrete quantum systems, such as electrons in molecular orbitals or in a crystal lattice. 
+
+
+
+
+
 A quantum computer can efficiently solve for many important properties of systems.  See more below.
 
 
