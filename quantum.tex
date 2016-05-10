@@ -566,7 +566,17 @@ ADD LLOYD work?
 \begin{enumerate}
 \item    Shor
 \item    Grover: amplitude amplification technique; applications are to find minimum, to determine graph connectivity, to perform pattern matching
+
+Applications include finding the minimum of an unsorted list of integers, identifying whether a graph is connected, and finding a given pattern within a length of text. --- [I dropped applications as we will discuss it in more detail in the text]
+
+
+
 \item     Linear systems
+
+In addition, the algorithm allows sampling from the solution, since reading out the elements of $x$ would take time $N$ and therefore counter the speedup obtained.
+Applications of the algorithm include the finite element method, where one can for example determine solutions to electromagnetic scattering problems, solving large systems of equations, performing data fitting, and recent machine learning applications such as the training of deep learning models.
+
+
 \item    Sampling
 \end{enumerate}
 
@@ -574,18 +584,10 @@ ADD LLOYD work?
 \section{Software architecture (KRYSTA)}
 
 
-\begin{enumerate}
-\item     History of developing FORTRAN/etc.
-\item     Abstractions
-\item    QPLs and Q compilers
-\end{enumerate}
-
-A scalable software stack is crucial for the implementation of quantum algorithms on actual hardware.  The software will require high-level programming languages, optimizing compilers, simulators, emulators, and translation to hardware-level instructions.  The symbolic programming language FORTRAN revolutionized programming of computing devices by closing the semantic gap between human and machine.  To rapidly innovate in the space of both quantum algorithms and devices and take quantum computers from laboratories to the cloud, similar abstractions, tools, and design methodologies are required.  The landscape of quantum applications and devices is rapidly evolving.  Understanding the applications enabled by our quantum future, and how to harness them, will forever alter our economic, industrial, academic and societal landscape.
-
 In recent history we have witnessed a rapid growth of software for digital machines, due in part to the development of high-level programming languages based on layers of abstractions and optimizing compilers, rendering programming easier for the user.
-One of the oldest languges, FORTRAN \cite{} (FORmula TRANslation), was created to allow easier mapping of mathematical formulas into code.  Considered the first high-level programming language and compiler, it targeted the scientific computing community and its simplicity allowed more rapid programming and execution.  FORTRAN is attributed with having improved the speed of programming by $500\%$ and the length of programs by over $20\%$.
+One of the oldest languges, FORTRAN \cite{} (FORmula TRANslation), was created to allow easier mapping of mathematical formulas into code.  Considered the first high-level programming language and compiler, it targeted the scientific computing community and its simplicity allowed more rapid programming and execution.  FORTRAN is attributed with having improved the speed of programming by $500\%$ and the length of programs by over $20\%$. {\color{red} I don't fully understand the latter, about length of programs?}
 
-Quantum computations have been mostly described at the level of logic operations, compiled and manually optimized. 
+Quantum computations have, so far, been mostly described at the level of logic operations, compiled and manually optimized. 
 As seen with FORTRAN, a software architecture enables rapid innovation in both algorithms and hardware components.
 For emerging technologies, the development of software in advance of a fully scalable hardware architecture allows the verification and analysis of software and hardware components.  Early design decisions can result in substantial cost savings on the path to finalizing an end-to-end system.
 
@@ -596,11 +598,11 @@ The high-level language and compilers should be machine independent and scalable
 The stack should enable programming of any quantum algorithm of any size for any target architecture.
 
 The significant steps of any quantum computing design flow \cite{svore2006layered} include a front end, a technology-independent optimizer, a technology-dependent optimizer, and a technology simulator or quantum device.  The interfaces between the steps require a high-level programming language and several intermediate and low-level representations.
-Figure \ref{fig:toolchain} shows a software stack for quantum computing \cite{}, including details on integration, e.g., tuned quantum libraries of arithmetic, subroutines, and quantum gates, on the compilers and optimizers in the stack.
+Figure \ref{fig:toolchain} shows a software stack for quantum computing \cite{stack}, including details on integration, e.g., tuned quantum libraries of arithmetic, subroutines, and quantum gates, on the compilers and optimizers in the stack.
 At the top is a high-level language in which one writes quantum programs.
-Quantum programs consist of an intimate mixture of classical and quantum instructions, thus the high-level language could be an embedded domain specific language (eDSL) to maximally leverage existing classical infrastructure.
+They consist of an intimate mixture of classical and quantum instructions, thus the high-level language could be an embedded domain specific language (eDSL) to maximally leverage existing classical infrastructure.
 The bottom supports a variety of backends, including simulators, emulators, resource analyzers, or any proposed quantum hardware implementation.
-To ensure flexibility and modularity, the high-level compilers are hardware-agnostic and, combined with quantum meta functions, e.g., conditional instructions and user annotations, enable an unprecedented level of optimization of quantum code.
+To ensure flexibility and modularity, the high-level compilers are hardware-agnostic and, combined with quantum meta functions, e.g., conditional instructions and user annotations, enable a very high level of optimization of quantum code.
 
 %Later work presents a more detailed software architecture \cite{jones2012layered}, however the components are specific to a quantum dot architecture and the focus is %mainly on the pipelined control cycle from the application layer down to the physical hardware layer.
 
@@ -618,8 +620,9 @@ Both are functional languages, the former is embedded in Haskell and allows exte
 while the latter contains a domain-specific language embedded in F\#.
 %In contrast to Quipper,  LIQ$Ui\ket{} $ also features simulators for noise and resource analysis, but neither allows for hardware backends.
 
-The compilers of the stack will allow automatic translations to hardware instructions for specific backend quantum devices.  Auto-tuning of quantum libraries allows determination of the best representations for a given target backend and in turn can result in substantial cost savings in the final implmentation of the quantum algorithms on hardware.  Ultimately the software stack is designed to program and automate the control of a quantum computer, no matter the size of the algorithm or device.
-A grand challenge for computer scientists and engineers will be to design the components of the quantum stack, such that the task of implementing a quantum algorithm and optimizing it becomes streamlined and efficient. The design will require leveraging the advances in the digital space, while also developing novel solutions for the quantum domain.
+The compilers of the stack will allow automatic translations to hardware instructions for specific backend quantum devices.  The development of standard libraries for quantum subroutines will speed up the development of new quantum programs.
+Auto-tuning of these quantum libraries allows determination of the best representations for a given target backend and in turn can result in substantial cost savings in the final implementation of the quantum algorithms on any hardware  \cite{stack}.  Ultimately the software stack needs to be designed to program and automate the control of a quantum computer, no matter the size of the algorithm or device.
+A grand challenge for computer scientists and engineers will be to design the components of the quantum stack, such that the task of implementing a quantum algorithm and optimizing it becomes streamlined and efficient. The design will require leveraging the advances in the classical space, while also developing novel solutions for the quantum domain.
 
 \section{Conclusion/Key directions}
 \begin{enumerate}
@@ -739,32 +742,32 @@ A grand challenge for computer scientists and engineers will be to design the co
 
 
 \appendices
-\section{Suggested quantum applications/algorithms}
+\section{Quantum algorithms}
+The superiority of quantum computers over classical ones is due to the existence of quantum algorithms that solve a range of problems  better  than the best known classical algorithms \cite{jordan2011quantum} . Below we list a selection of these algorithms.
 
-\begin{enumerate}
-\item    Grover:
+\begin{itemize}
+\item {\bf Grover search}:
 Searching a database of unstructured items is a key problem in computer science.  Given the ability to evaluate a function $f: \{0,1\}^n\rightarrow \{0,1\}$, the task is to find $x$ such that $f(x)=1$.  If such an $x$ does not exist, then return that no such item exists.   
-Grover's algorithm solves the unstructured search problem on a quantum computer with only $O(\sqrt{N})$ evalutions of $f$ in the worst case, while classically $O(N)$ evaluations are required.  Applications include finding the minimum of an unsorted list of integers, identifying whether a graph is connected, and finding a given pattern within a length of text.
+Grover's algorithm solves the unstructured search problem on a quantum computer with only $O(\sqrt{N})$ evaluations of $f$ in the worst case, while classically $O(N)$ evaluations are required.  
 
-\item     Linear systems:
-The task of solving a system of linear equations is given an $N\times N$ matrix $A$ and a $N$-dimensional vector $b$, find $x$ such that $Ax=b$.
-Classically, it requires time polynomial in $N$ using methods like Gaussian elimination.
-Quantumly, it requires time polynomial in log $N$, albeit there are some constraints on the size of $A$ and its condition number \cite{}. 
-In addition, the algorithm allows sampling from the solution, since reading out the elements of $x$ would take time $N$ and therefore counter the speedup obtained.
-Applications of the algorithm include the finite element method, where one can for example determine solutions to electromagnetic scattering problems, solving large systems of equations, performing data fitting, and recent machine learning applications such as the training of deep learning models.
+\item {\bf Period finding}: Given a periodic function $f(x)=f(x+r)$ find the period $r$ . Classically this requires $O(r)$ function evaluations. Quantumly, using Shor's period finding algorithm that is at the root of his factoring algorithm the same problem can be solved in $O(\log r)$ function evaluations. {\color{red} Krysta, please check this scaling.}
 
-\item    Sampling:
-MATTHIAS - will you add here?
 
-\item       Walks:
-A walk, or random walk, is a succession of random steps on a given graph.
-A quantum walk involves a coherent evolution to determine each step.
-Quantum walks can outperform random walks on tasks including the hitting time, determining the hitting time from a source to destination vertex, and the mixing time, spreading from a source to all vertices in a graph, of certain graphs such as glued trees and the hypercube.  Applications include the evaluation of Boolean formulas and the simulation of Markov chains.
+\item {\bf Linear systems}: Given an $N\times N$ matrix $A$ and a $N$-dimensional vector $b$, find $x$ such that $Ax=b$.
+Classically, it requires time polynomial in $N$ using methods like Gaussian elimination or iterative solvers. Quantumly, for well-conditioned matrices whose condition number $\kappa$ grows at most as $\log N$ it requires time polynomial in $\log N$ to sample from the solution \cite{}. 
 
-\item       Etc.
-MATTHIAS - do you want to talk about annealing applications more explicitly?
 
-\end{enumerate}
+
+\item  {\bf  Sampling from a distribution}: Classically the number of samples $N$ needed to estimate the mean of a random variable with error $\epsilon$  scales as $N\sim \epsilon^{-2}$. Quantumly, if a wave function can be prepared to represent the distributions then the expected value can be measured with an effort  $\sim\epsilon^{-1}$ that is quadratically smaller.
+
+\item       {\bf Quantum walks}:
+A walk, or random walk, is a succession of random steps on a given graph. Quantum walks, the quantum generalization of classical random walks, produce a quantum superposition whose probability distribution corresponds to that of a classical random walk. They can spread significantly faster than classical random walks and thus reduce hitting times and mixing times in walk-based algorithms.
+
+
+\item   {\bf Quantum tunneling}: Escaping from local minima is an important problem in heuristic optimization algorithms. Quantum systems can ``tunnel'' between local minima faster than classical local search algorithms can climb the barrier separating them, if the barrier is tall but narrow. It is currently unknown whether this can lead to faster solutions for hard optimization problems of practical interest.
+
+
+\end{itemize}
 
 \section{Quantum architecture from a classical point of view}
 \label{sec:box1}
