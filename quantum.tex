@@ -505,7 +505,7 @@ Faced with the challenge of simulation of quantum systems on classical computers
 
 Richard Feynman's seminal paper already envisaged a digital quantum computer, overcoming calibration and design limitations of analog quantum devices by generalizing the bits and gates of classical computers to quantum bits (qubits) and quantum gates. Already we have a diverse range of quantum algorithms that outperform their classical counterparts; we summarize them in Box \ref{sec:box2}.
 
-Quantum computers are most readily known for solving integer factorization \cite{Shor1994}, where given an integer $N=p\times q$, the task is to determine the prime numbers $p$ and $q$.  This problem forms a mainstay of e-commerce today, as it underlies the most widely used public-key cryptosystem RSA.  A quantum computer consisting of roughly one billion physical qubits {\color{red}(see Rod Van Meter's article)} would be able to break a 2000-bit key RSA in a short time \cite{}.  While quantum algorithms for cryptographic attacks are certainly an area of quantum advantage, their significance is sure to decrease over time.  Already, post-quantum cryptosystems are in development that aim for security against a quantum computer.  Companies and governments around the world are beginning to actively transition to post-quantum cryptography methods, as the changes will require years worth of software upgrades.  
+Quantum computers are most readily known for solving integer factorization \cite{Shor1994}, where given an integer $N=p\times q$, the task is to determine the prime numbers $p$ and $q$.  This problem forms a mainstay of e-commerce today, as it underlies the most widely used public-key cryptosystem RSA.  A quantum computer consisting of roughly one billion physical qubits {\color{red}(see Rod Van Meter's article)} would be able to break a 2000-bit key RSA in a short time.  While quantum algorithms for cryptographic attacks are certainly an area of quantum advantage, their significance is sure to decrease over time.  Already, post-quantum cryptosystems are in development that aim for security against a quantum computer.  Companies and governments around the world are beginning to actively transition to post-quantum cryptography methods, as the changes will require years worth of software upgrades.  
 
 More globally and economically impactful applications arise from the simulation of physical systems. This was the original motivation behind Feynman's seminal paper and finds applications in chemistry and materials science. Quantum computers will improve reliability of quantum chemical calculations by performing accurate simulations of molecules and materials on the scale of days to months for problems that might take billions of years on state-of-the-art supercomputers today. They can be applied to help solve critical real-world problems, such as elucidating the mechanism of biological nitrogen fixation with application to fertilizer production or designing catalysts for carbon capture  capture and sequestration (to combat global warming).  Extensions of these approaches promise solutions for applications in materials modeling, including investigation of materials that display higher temperature superconductivity. 
 
@@ -521,7 +521,7 @@ Quantum computers are unlike their classical cousins.  While in principle they c
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\columnwidth]{figures/cryostat}
+\includegraphics[width=0.7\columnwidth]{figures/cryostat}
 \caption{The inside of a dilution refrigerator that is used to cool a quantum computer to milli-Kelvin temperatures. Various stages of the cryostat host the classical control logic and the quantum chips and operate at different temperatures. All are connected to a classical frontend (super)-computer that runs the classical parts of computations in a hybrid quantum-classical code and controls the quantum processor that acts as an accelerator. Image credit: C. Marcus (NBI).
 }
 \label{fig:cryo}
@@ -567,7 +567,7 @@ To elucidate reaction mechanisms one needs to accurately calculate the energy of
 Similar hybrid algorithms have been developed for the simulation of crystalline materials, where approximate classical electronic structure methods based on standard density functional theory can be augmented by quantum computations of the correlated conduction bands of transition metal atoms to understand, design and predict novel materials with exotic properties. These may include higher temperature superconductors, novel functional materials with switchable properties and non-toxic dyes. While it may seem tempting to simulate all electrons of a material on a quantum computer, hybrid methods that solve as much as possible using classical computers have much more economical resource requirements.  
 
 
-\section{Quantum accelerated applications}
+\section{Quantum accelerated classical applications}
 While simulating quantum physics was the initial motivation for quantum computers, the power of quantum mechanics can also be applied to solving purely classical computational problems by making use of quantum superposition and entanglement. Here we present a selection of likely and potential applications, based on some of the quantum algorithms in Box \ref{sec:box2}.
 
 \subsection{Cryptographic applications}
@@ -589,12 +589,12 @@ Practical applications of the algorithm thus require matrices $A$ that can be de
 
 \subsection{Sampling}
 
-\section{Software architecture}
+Statistical sampling using Monte Carlo methods plays an important role in many application areas, including the wide field of machine learning. Quantum computers offer two possibilities for quadratic speedup in these applications. 
 
-Until recently there has been a separation between quantum algorithm theory and experiment, with theory focused on mathematical proofs of algorithmic improvements and experiment focused on controlling qubit lifetimes.  In turn, quantum computations have thus far been mostly described at the level of mathematics and logic gate operations (see Box \ref{sec:box1}), compiled and manually optimized for a small quantum device or simulator.  While some quantum programming languages and compilers exist, a complete software architecture remains to be developed.
-As hardware steadily advances past single-qubit devices towards 100-qubit devices, a challenge is presented for computer scientists, engineers, and developers to design and architect a software framework for programming and controlling a scalable, fault-tolerant quantum computer.
+To accelerate sampling one prepares qubits in a superposition that corresponds to the desired distribution. Naive readout of the qubits would then simply sample from that superposition, and like any stochastic sampling algorithm the error on the sample mean would decrease like $1/\sqrt{M}$ with the number of samples $M$. Using interferometric methods on a quantum computer one can instead achieve errors that decrease quadratically faster, as $1/M$, by making use of the a quantum analog of the Fourier sampling theorem.
 
- 
+The second potential for acceleration is a quadratic speedup in the mixing times of Markov chains by implementing them as quantum walks. This finds applications, for example, in stochastic optimization methods like simulated annealing \cite{qsa}, where  a quadratic acceleration is highly desired for hard optimization problems. 
+
 \begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{figures/coarse_toolchain}
@@ -602,8 +602,20 @@ As hardware steadily advances past single-qubit devices towards 100-qubit device
 \label{fig:toolchain}
 \end{figure*}
 
+\subsection{Privacy}
+
+In an age of increasing awareness of privacy the broadest impact may not even come from quantum algorithms outperforming their classical counterparts but in  privacy for computing. Indeed, blind quantum computing \cite{blind} allows the user of a quantum computer to run quantum algorithms without the operator of the  quantum computer being able to detect what is being computed. Provable privacy and security of cloud computing may be more important for many users than accelerating calculations with quantum speedup. On the contrary, in many settings one may even be willing to take a performance hit in return for perfect security. One may speculate that this could ultimately, be one of the biggest application for quantum computers.
+
+ 
+\section{Software architecture}
+
+
+Until recently there has been a separation between quantum algorithm theory and experiment, with theory focused on mathematical proofs of algorithmic improvements and experiment focused on controlling qubit lifetimes.  In turn, quantum computations have thus far been mostly described at the level of mathematics and logic gate operations (see Box \ref{sec:box1}), compiled and manually optimized for a small quantum device or simulator.  While some quantum programming languages and compilers exist, a complete software architecture remains to be developed.
+As hardware steadily advances past single-qubit devices towards 100-qubit devices, a challenge is presented for computer scientists, engineers, and developers to design and architect a software framework for programming and controlling a scalable, fault-tolerant quantum computer.
+
+ 
 High-level programming languages and optimizing compilers are designed to provide layers of abstraction of the computation, therefore creating a simple, modular programming environment. The development of software in advance of a fully scalable hardware architecture allows the verification and analysis of software components and rapid innovation in algorithm design.
-The idea dates back to FORTRAN \cite{} (FORmula TRANslation), one of the oldest programming languages and compilers.  FORTRAN was created to transition users from mathematical formulas and machine code into algorithm design and specification.  FORTRAN's simplicity allowed more rapid programming and execution, improving programming speed by $500\%$ and reducing the length of programs by over $20\%$.
+The idea dates back to FORTRAN (FORmula TRANslation), one of the oldest programming languages and compilers.  FORTRAN was created to transition users from mathematical formulas and machine code into algorithm design and specification.  FORTRAN's simplicity allowed more rapid programming and execution, improving programming speed by $500\%$ and reducing the length of programs by over $20\%$.
 
 Quantum computing requires a similar software revolution, as the algorithms and hardware are complex systems.
 A computer grounded in quantum mechanical principles carries with it a unique set of computational attributes, such as superposition, entanglement, and no cloning to name a few.  Novel constructs for programming, optimizing, and controlling quantum hardware are necessary to fully harness and manipulate quantum states for algorithmic advantage. Debugging tools will require innovative approaches due to the entanglement of qubits and the inability to copy.  In this regard, simulators and emulators will be critical for the design and testing of quantum algorithms and circuits. Early design decisions can result in substantial cost savings on the path to finalizing an end-to-end system, and enable the verification, analysis, and redesign of key components of the system.
@@ -769,7 +781,7 @@ where $\alpha$ and $\beta$ are two complex numbers, normalized such that
 \begin{equation}
 |\alpha|^2+|\beta|^2=1.
 \end{equation}
- Identifying the two classical states 0 and 1 with two-dimensional complex valued vectors vectors 
+ Identifying the two classical states 0 and 1 with two-dimensional complex valued vectors 
  \begin{equation}
  |0\rangle = \left(\begin{array}{c}1\\0\end{array}\right) \qquad {\rm and} \qquad  |1\rangle = \left(\begin{array}{c}0\\1\end{array}\right)
  \end{equation}
@@ -852,7 +864,7 @@ Grover's algorithm solves the unstructured search problem on a quantum computer 
 
 
 \item {\bf Linear systems}: Given an $N\times N$ matrix $A$ and a $N$-dimensional vector $\mathbf{b}$, find $\mathbf{x}$ such that $A\mathbf{x}=\mathbf{b}$.
-Classically, it requires time polynomial in $N$ using methods like Gaussian elimination or iterative solvers. Quantumly, for well-conditioned matrices whose condition number $\kappa$ grows at most as $\log N$ it requires time polynomial in $\log N$ to sample from the solution \cite{}. 
+Classically, it requires time polynomial in $N$ using methods like Gaussian elimination or iterative solvers. Quantumly, for well-conditioned matrices whose condition number $\kappa$ grows at most as $\log N$ it requires time polynomial in $\log N$ to sample from the solution \cite{HHL}. 
 
 
 
