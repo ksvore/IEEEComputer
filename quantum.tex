@@ -466,7 +466,9 @@
 % in the abstract or keywords.
 \begin{abstract}
 The coming quantum revolution will overturn our notions of computational methods and devices. Still in early stages of development, quantum computers use the quantum mechanical properties of superposition and entanglement to solve problems that are likely to be forever out of reach of classical computers.  Already we have a diverse range of quantum algorithms that outperform their classical counterparts, from cryptography to chemistry and materials science. Quantum computers will operate as co-processors, receiving instructions from a stack of classical processors to fault-tolerantly implement an algorithm.  A scalable software stack with high-level programming languages, optimizing compilers, simulators, emulators, and translation to hardware-level instructions will be crucial in the realization of algorithms in hardware.  
-As the landscape of quantum applications and devices rapidly evolves, we must be developing the tools necessary for scalability. Understanding the applications enabled by our quantum future, and how to harness them, will forever alter our economic, industrial, academic and societal landscape.\end{abstract}
+%As the landscape of quantum applications and devices rapidly evolves, we must be developing the tools necessary for scalability. 
+Understanding the applications enabled by our quantum future, and how to harness them, will alter our economic, industrial, academic and societal landscape.
+\end{abstract}
 
 % Note that keywords are not normally used for peerreview papers.
 \begin{IEEEkeywords}
@@ -496,18 +498,18 @@ As the landscape of quantum applications and devices rapidly evolves, we must be
 
 The arguably simplest device may be a {\em quantum random number generator} which uses the property of superposition:  a quantum bit (or qubit for short) can be created in a state $\frac{1}{\sqrt{2}}(|0\rangle + |1\rangle)$ that is the superposition  of the values 0 and 1 of a classical bit (see Box \ref{sec:box1}). Upon measuring the value of the qubit, the superposition collapses into one of the two classical states, and the measurement gives either the value 0 or 1, each with probability 1/2. This procedure realizes a true and perfect random number generator, which is impossible classically due to the deterministic nature of classical physics.\footnote{While chaotic classical processes might look random enough for many applications, only with quantum random numbers do we have the assurance of perfect randomness.}
 
-Entangling two qubits $A$ and $B$ in a superposition denoted $\frac{1}{\sqrt{2}}(|0\rangle_A|0\rangle_B + |1\rangle_A|1\rangle_B)$, such that they are either {\em both} 0 or {\em both} 1, can be used for cryptography. Giving one of the qubits to Alice and one to Bob, the qubits remain entangled no matter how far apart they are. Measuring their individual qubits, Alice and Bob will get a random result -- however both of them get the {\em same} random value. This can be used for {\em quantum teleportation} or as one way of establishing a shared secret key for  {\em secure  communication}, again surpassing classical technology. 
+Entangling two qubits $A$ and $B$ in a superposition denoted $\frac{1}{\sqrt{2}}(|0\rangle_A|0\rangle_B + |1\rangle_A|1\rangle_B)$, such that they are either {\em both} 0 or {\em both} 1, can be used for cryptography. Giving one of the qubits to Alice and one to Bob, the qubits remain entangled no matter how far apart they are. Measuring their individual qubits, Alice and Bob will get a random result -- however both of them obtain the {\em same} random value. This can be used for {\em quantum teleportation} or to establish a shared secret key for  {\em provably secure  communication}, again surpassing classical technology. 
 %\cite{RevModPhys.81.1301,EkertRenner2014}. 
 
 
 Faced with the challenge of simulation of quantum systems on classical computers, Richard Feynman in 1982 \cite{Feynman1982} suggested to use quantum devices to simulate physics problems. Analog implementations of this idea in {\em quantum simulators }  
 %\cite{RevModPhys.86.153}  
-have  been successfully used to build tunable analog realizations of complex quantum models. Quantum simulators can also be used to solve purely classical problems. One example is {\em quantum annealers} to solve hard optimization problems. However, they have not  yet shown any advantage over classical computers.
+have  been successfully used to build tunable realizations of complex quantum models. Quantum simulators can also be used to solve purely classical problems. One example is a {\em quantum annealing} to solve hard optimization problems. However, quantum annealers have not yet shown any advantage over classical computers.
 % \cite{speedup}. 
 
 \section{Quantum computers and their applications}
 
-Richard Feynman's seminal paper already envisaged a digital quantum computer, overcoming calibration and design limitations of analog quantum devices by generalizing the bits and gates of classical computers to quantum bits (qubits) and quantum gates. Already we have a diverse range of quantum algorithms that outperform their classical counterparts; we summarize them in Box \ref{sec:box2}.
+Richard Feynman's seminal paper already envisaged a digital quantum computer, overcoming calibration and design limitations of analog quantum devices by generalizing the bits and gates of classical computers to quantum bits (qubits) and quantum gates. Already we have a diverse range of quantum algorithms that outperform their classical counterparts; we summarize some of them in Box \ref{sec:box2}.
 
 Quantum computers are most readily known for solving integer factorization \cite{Shor1994}, where given an integer $N=p\times q$, the task is to determine the prime numbers $p$ and $q$.  This problem forms a mainstay of e-commerce today, as it underlies the most widely used public-key cryptosystem RSA.  A quantum computer consisting of roughly one billion physical qubits {\color{red}(see Rod Van Meter's article)} would be able to break a 2000-bit key RSA in a short time.  While quantum algorithms for cryptographic attacks are certainly an area of quantum advantage, their significance is sure to decrease over time.  Already, post-quantum cryptosystems are in development that aim for security against a quantum computer.  Companies and governments around the world are beginning to actively transition to post-quantum cryptography methods, as the changes will require years worth of software upgrades.  
 
@@ -531,7 +533,7 @@ Quantum computers are unlike their classical cousins.  While in principle they c
 \label{fig:cryo}
 \end{figure}
 
-A quantum computer will thus operate as a co-processor, receiving its instructions and cues from a stack of classical processors. To suppress noise and errors and keep the qubits in a superposition most designs for quantum computers require the qubits to be cooled to very low temperatures. This requires the use of dilution refrigerators, as shown in Figure \ref{fig:cryo}, and means that large-scale quantum computers will be operated in data centers and accessed remotely as a cloud service. Locally one may just have a limited number of qubits to establish secure communication or to use as quantum money.
+A quantum computer will thus operate as a co-processor, receiving its instructions and cues from a stack of classical processors. To suppress noise and errors and keep the qubits in a superposition most designs for quantum computers require the qubits to be cooled to very low temperatures. This calls for the use of dilution refrigerators, as shown in Figure \ref{fig:cryo}, and means that large-scale quantum computers will be operated in data centers and accessed remotely as a cloud service. Locally one may just have a limited number of qubits to establish secure communication or to use as quantum money.
 
 \begin{figure*}[tb]
 \centering
@@ -547,7 +549,7 @@ is needed to extend the lifetime of quantum information.  QEC remarkably allows 
 
 Topological qubits,
  %\cite{tqc}
-which  encode  quantum information in a non-local property of a quantum state, are a promising way of reducing the QEC overhead by being robust to any source of local noise.  While QEC works at the level of mathematics in software, topological qubits have an intrinsic, hardware-level of protection.  The hardware protection allows the qubits to achieve longer lifetimes and lower rates of errors.  With a lower rate of error on the qubits, the overhead of QEC may be dramatically reduced by up to several orders of magnitude --- a topological quantum computer may use roughly a factor of 1000 fewer physical qubits to implement a given quantum algorithm than a superconduting qubit system or ion trap device.
+which  encode  quantum information in a non-local property of a quantum state, are a promising way of reducing the QEC overhead by being robust to any source of local noise.  While QEC works at the level of mathematics in software, topological qubits have an intrinsic, hardware-level of protection that allows the qubits to achieve longer lifetimes and lower rates of errors.  With a lower rate of error the overhead of QEC may be dramatically reduced. A topological quantum computer may use roughly a factor of 1000 fewer physical qubits to implement a given quantum algorithm than a superconduting qubit system or ion trap device.
 
 Given the cost of quantum fault tolerance, qubits will be a rare commodity in quantum computers, leading to a radical shift in design from their classical counterparts where memory is cheap. Instead of moving data to computational units, early quantum computers will move operations to the data, applying gates directly to the memory qubits.  
 In many electronic systems, the firmware that controls and manipulates the computer or device is rarely updated.  However, in a quantum computer, the firmware is inherently being optimized and updated continually during computation to reconfigure the device for the next steps.
