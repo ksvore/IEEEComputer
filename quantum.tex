@@ -771,13 +771,33 @@ A walk, or random walk, is a succession of random steps on a given graph. Quantu
 
 \section{Quantum architecture from a classical point of view}
 \label{sec:box1}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/simd}
+\caption{Design pattern for many quantum algorithms: Starting from a single classical initial state, an entangling operation is performed to create a quantum superposition of many input states. A quantum algorithm is then performed on this superposition. Since reading out the superposition would give just the result for one random input a collective reduction operation is next performed, before the quantum superposition is collapsed to a single classical result in a measurement process. {\color{red} Shall I ask Thomas to make this figure in the style of the other one?} }
+\label{fig:simd}
+\end{figure}
+
+
+The advantage of quantum computers over classical ones is sometimes over-simplified to be due to the former being able to perform computations on all possible input simultaneously. More precisely, many quantum algorithms can be viewed as instances of the design pattern shown in figure \ref{fig:simd}. At a high level such a quantum program can be viewed to be similar to MapReduce, but working on all possible values on a single quantum CPU. After a quantum superposition of all input values is prepared, a computation is performed simultaneously on all these values, before summary information is computed in a reduction step and read out. 
+While conceptually similar to MapReduce there are a number of important differences that show both the powers and limitations of quantum computers.
+
+The up to exponential speedup of a quantum computer over a classical one is due to its ability to perform operations on a superposition of exponential many input values on a single quantum processor. As each quantum gates acts on {\em all} input values, these computations can be viewed as an extreme form of single instruction, multiple data (SIMD) parallelism. This analogy immediately points out some of the issues faced by the designer of quantum algorithms. Conditional instructions have to implemented using masking registers (called control qubits), both branches of an if-else statement have to be executed and any loops have to be iterated for the worst case.
+
+Quantum gates being unitary operations are by definition reversible. This requires that any classical function that a quantum computer computer should perform is first converted to a reversible classical function, which can potentially incur large overheads in memory (for ancilla registers) and runtime.
+
+The next challenge is readout of the results. When a quantum superposition is read out 
+
+
+
+
+
+
+
 \begin{enumerate}
-\item      What do they take advantage of? (CALL OUT BOX)
-\item  Parallelism - massive SIMD architecture
-\item  Reversible
 \item  Reduction (Prepare superposition, computer, reduce)
 \item  There are only a limited number
-\item  Give analogy to Map Reduce structure in SIMD setting
 \end{enumerate}
 % use section* for acknowledgement
 \section*{Acknowledgment}
