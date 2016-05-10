@@ -534,9 +534,11 @@ Cryogenic temperatures alone are insufficient to keep qubits in superposition fo
 Topological qubits \cite{tqc}, which  encode  quantum information in a non-local property of a quantum state, are a promising way of reducing the QEC overhead by being robust to any source of local noise.  While QEC works at the level of mathematics in software, topological qubits have an intrinsic, hardware-level of protection.  The hardware protection allows the qubits to achieve longer lifetimes and lower rates of errors.  With a lower rate of error on the qubits, the overhead of QEC may be dramatically reduced by up to several orders of magnitude --- a topological quantum computer may use roughly a factor of 1000 fewer physical qubits to implement a given quantum algorithm than a superconduting qubit system or ion trap device.
 
 Given the cost of quantum fault tolerance, qubits will be a rare commodity in quantum computers, leading to a radical shift in design from their classical counterparts where memory is cheap. Instead of moving data to computational units, early quantum computers will move operations to the data, applying gates directly to the memory qubits.  
+In many electronic systems, the firmware that controls and manipulates the computer or device is rarely updated.  However, in a quantum computer, the firmware is inherently being optimized and updated continually, sending constant signals to the qubits.
+{\color{red} Matthias: I think we should compare at the level of firmware here, please take a stab at fixing up what I have written above }
 
-
- An even bigger difference exists in the design of quantum algorithms themselves. To make use of the  exponential parallelism inherent in a quantum superposition, computations need to be reversible and follow certain design patterns that are discussed in Box \ref{sec:box3}. 
+ An even bigger difference exists in the design of quantum algorithms themselves. To make use of the  exponential parallelism inherent in a quantum superposition, computations need to be reversible and follow certain design patterns that are discussed in Box \ref{sec:box3}.  Most notably, quantum algorithms are inherently probabilistic and must be designed so as to produce the correct answer with high probability.  A quantum algorithm can then be run several times to improve the probability of success.
+{\color{red} Matthias: I think it would be good to give a short sentence on the key differences, as this comes up later in the SW section.}
 
 
 
