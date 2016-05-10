@@ -863,7 +863,7 @@ A walk, or random walk, is a succession of random steps on a given graph. Quantu
 \begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{figures/simd}
-\caption{Design pattern for many quantum algorithms: Starting from a single classical initial state, an entangling operation is performed to create a quantum superposition of many input states. A quantum algorithm is then performed on this superposition. Since reading out the superposition would give just the result for one random input a collective reduction operation is next performed, before the quantum superposition is collapsed to a single classical result in a measurement process. {\color{red} I need to modify the caption to explain the nice additional row added by Thomas} }
+\caption{Design pattern for many quantum algorithms: Starting from a single classical initial state, an entangling operation is performed to create a quantum superposition of many input states from a given classical state.  A quantum algorithm is then performed on this superposition. Since reading out the superposition would give just the result for one random input a collective reduction operation is next performed, before the quantum superposition is collapsed to a single classical result in a measurement process. If the final wave function is not concentrated on a single classical state then the final result measurement be probabilistic, determined by the squares of the wave function entries.  The lower part of the figure represents the wave function of size $2^N$ (here for $N=3$ qubits), illustrating the SIMD analogy of quantum parallelism. }
 \label{fig:simd}
 \end{figure*}
 
@@ -888,8 +888,7 @@ To profit from quantum parallelism a quantum algorithm thus has to perform a glo
 % use section* for acknowledgement
 \section*{Acknowledgment}
 
-
-The authors would like to thank Thomas Haener and Damian S.
+The authors would like to thank D. Carmean, T. H\"aner, D. Steiger for discussion and T. H\"aner for help in preparing figures for this article.
 
 
 % Can use something like this to put references on a page
