@@ -529,6 +529,14 @@ Quantum computers are unlike their classical cousins.  While in principle they c
 
 A quantum computer will thus operate as a co-processor, receiving its instructions and cues from a stack of classical processors. To suppress noise and errors and keep the qubits in a superposition most designs for quantum computers require the qubits to be cooled to very low temperatures. This requires the use of dilution refrigerators, as shown in Figure \ref{fig:cryo}, and means that large-scale quantum computers will be operated in data centers and accessed remotely as a cloud service. Locally one may just have a limited number of qubits to establish secure communication or to use as quantum money.
 
+\begin{figure*}[tb]
+\centering
+\includegraphics[width=\textwidth]{figures/femoco}
+\caption{The nitrogenase MoFe protein from {\it Clostridium pasteurianum} (left), the close protein environment of the FeMoco (center), and the structural model of FeMoco that would be simulated in a quantum computer. Figure taken from Ref. \cite{nitrogenase}.}
+\label{fig:femoco}
+\end{figure*}
+
+
 Cryogenic temperatures alone are insufficient to keep qubits in superposition for the runtime of a non-trivial quantum algorithm and quantum error correction (QEC) \cite{qec} is needed to extend the lifetime of quantum information.  QEC remarkably allows an arbitrarily large quantum computation to be performed efficiently as long as the rate of errors occurring on the physical qubits are below a given threshold value. The no-cloning theorem of quantum information, which makes quantum communication provably secure, unfortunately also makes QEC harder than classical fault tolerance. QEC can incur a large overhead and thousands or more ``physical'' qubits may be needed to realize a single error-protected ``logical'' qubit. The classical processors must also continually monitor the ``logical" qubits and determine if they have been corrupted.  This is done by learning the location and type of errors in the system through measurement information obtained from the quantum computer.  The classical processors run a classical decoding algorithm, such as an approximation to maximum likelihood estimation or minimum weight perfect matching, to determine the most likely correction pattern that removes the errors on the qubits. 
 
 Topological qubits \cite{tqc}, which  encode  quantum information in a non-local property of a quantum state, are a promising way of reducing the QEC overhead by being robust to any source of local noise.  While QEC works at the level of mathematics in software, topological qubits have an intrinsic, hardware-level of protection.  The hardware protection allows the qubits to achieve longer lifetimes and lower rates of errors.  With a lower rate of error on the qubits, the overhead of QEC may be dramatically reduced by up to several orders of magnitude --- a topological quantum computer may use roughly a factor of 1000 fewer physical qubits to implement a given quantum algorithm than a superconduting qubit system or ion trap device.
@@ -541,7 +549,6 @@ In many electronic systems, the firmware that controls and manipulates the compu
 {\color{red} Matthias: I think it would be good to give a short sentence on the key differences, as this comes up later in the SW section.}
 
 
-
 \section{Native applications: quantum chemistry and materials science}
 
 Simulating quantum models can be considered the native application of quantum computers. How better to understand a quantum mechanical system than with a device that is inherently quantum mechanical! The simulation of such models includes areas such as quantum chemistry, materials science, and high-energy physics. In quantum simulation, the goal is to understand properties of a system, such as its energy, electron density, or excitation spectrum through simulation of their evolution according to Schr\"odinger's equation.  
@@ -550,37 +557,11 @@ The first applications of small quantum computers will be to simple quantum mode
 
 Recent algorithmic advances have substantially improved the scaling of algorithms for time evolution of realistic electronic systems, such as small molecules or complex materials. We illustrate how quantum computers will be used for such problems by considering simulations of the active center of the enzyme nitrogenase \cite{nitrogenase}. The iron molybdenum cofactor (FeMoco) of nitrogenase can split a dinitrogen molecule into two ammonia molecules under ambient conditions, while the industrial Haber-Bosch process  is energy intensive and requires high temperatures and pressures. Understanding this reaction mechanism will give new insights into ways of splitting dinitrogen and may lead to better catalysts and processes for fertilizer production.
 
-\begin{figure*}[t]
-\centering
-\includegraphics[width=\textwidth]{figures/femoco}
-\caption{The nitrogenase MoFe protein from {\it Clostridium pasteurianum} (left), the close protein environment of the FeMoco (center), and the structural model of FeMoco that would be simulated in a quantum computer. Figure taken from Ref. \cite{nitrogenase}.}
-\label{fig:femoco}
-\end{figure*}
 
 
-To elucidate reaction mechanisms one needs to accurately calculate the energy of FeMoco for many configurations of the molecule, shown in figure \ref{fig:femoco} along various candidate reaction pathways. 
+To elucidate reaction mechanisms one needs to accurately calculate the energy of FeMoco for many configurations of the molecule, shown in figure \ref{fig:femoco} along various candidate reaction pathways. Fortunately most of the protein (left part of the figure) can be efficiently simulated using approximate methods on classical supercomputers. The unsolved challenge is the accurate calculation of the energies of the active center (shown on the right), consisting of seven iron and one molybdenum atom. The complex correlated nature of electrons in this complex defies classical approximation methods. A quantum computer, acting as a co-processor to calculate accurate energies for this part of the protein, will augment classical simulations of the remainder of the molecule. Given the relevance of catalytic processes in the chemical industry, finding new catalytic processes -- not only for fertilizer production but also for carbon capture and other important applications -- using quantum computers will more than recover the investments needed for their development.
 
- give one example, with only about 200 qubits in the main quantum processor one will be able to 
- 
- 
-
-\begin{enumerate}
-\item      Native application
-\item     Catalysis
-\begin{enumerate}
-                               \item         Nitrogenase
-                           \item        Carbon capture
-\end{enumerate}
-\item      Materials
- \begin{enumerate}
-                           \item         Room temp SC
-\end{enumerate}
-\end{enumerate}
-
-
- Carbon Capture (to combat global warming), on the scale of days or months as opposed to billions of years on state-of-the-art supercomputers today.  Extensions of these approaches promise solutions for applications in materials modeling, including investigation of materials that display room-temperature superconductivity. 
-
-
+Similar hybrid algorithms have been developed for the simulation of crystalline materials, where approximate classical electronic structure methods based on standard density functional theory can be augmented by quantum computations of the correlated conduction bands of transition metal atoms to understand, design and predict novel materials with exotic properties. These may include higher temperature superconductors, novel functional materials with switchable properties and non-toxic dyes. While it may seem tempting to simulate all electrons of a material on a quantum computer, hybrid methods that solve as much as possible using classical computers have much more economical resource requirements.  
 
 
 \section{Quantum accelerated applications}
