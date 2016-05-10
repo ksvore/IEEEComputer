@@ -498,7 +498,7 @@ Cryogenic temperatures alone are insufficient to keep qubits in superposition fo
 
 Given these overheads, qubits will be a rare commodity in quantum computers and this leads to radical differences in their design compared  to classical computers where memory is cheap. Instead of moving data to computational units, early quantum computers will move operations to the data, applying gates directly to the memory qubits.
 
- An even bigger difference exists in the design of quantum algorithms themselves. To make use of the  exponential parallelism inherent in a quantum superposition, computations need to be reversible and follow certain design patterns that are discussed in Box \ref{sec:box1}. 
+ An even bigger difference exists in the design of quantum algorithms themselves. To make use of the  exponential parallelism inherent in a quantum superposition, computations need to be reversible and follow certain design patterns that are discussed in Box \ref{sec:box3}. 
 
 
 
@@ -742,8 +742,39 @@ A grand challenge for computer scientists and engineers will be to design the co
 
 
 \appendices
+\section{Quantum bits and quantum gates}
+\label{sec:box1}
+While a classical bit $x$ can take only one of the two values $0$ or $1$, a quantum bit can be in a superposition
+\begin{equation}
+|q\rangle = \alpha |0\rangle +\beta|1\rangle,
+\end{equation}
+where $\alpha$ and $\beta$ are two complex numbers, normalized such that
+\begin{equation}
+|\alpha|^2+|\beta|^2=1.
+\end{equation}
+ Identifying the two classical states 0 and 1 with two-dimensional complex valued vectors vectors 
+ \begin{equation}
+ |0\rangle = \left(\begin{array}{c}1\\0\end{array}\right) \qquad {\rm and} \qquad  |1\rangle = \left(\begin{array}{c}0\\1\end{array}\right)
+ \end{equation}
+  the state of the qubit can be described by the vector 
+  \begin{equation}
+  |q\rangle = \left(\begin{array}{c}\alpha\\\beta\end{array}\right),
+  \end{equation} which is also called the wave function of the qubit. Generalizing to a qubit register $| \mathbf{x}\rangle=|x_0\ldots x_{N-1}\rangle$ consisting of $N$ individual qubits a $2^N$ dimensional complex vector of coefficients $c_i$ is needed to describe all possible superpositions
+  \begin{equation}
+  |\mathbf{x}\rangle = \sum_{i=0}^{2^N-1} c_i |\mathbf{i}\rangle,
+  \end{equation}
+where the $k$-th bit of the integer $i$ corresponds to the values of the $k$-th qubit.
+
+The exponential memory of $2^N$ complex numbers required to represent the state of just $N$ qubits hints at the potential for exponentially larger computational power of quantum computers compared to classical ones. However, when reading out a quantum register one does not obtain all $2^N$ complex numbers, but just $N$ bits of information. Of all the $2^N$ classical values in the superposition one value $i$ is chosen at random in a measurement, according to a probability distribution given by the squares of the wave function entries $|c_i|^2$.
+
+Quantum gates, similar to classical gates typically act only on a few qubits. Their action can be described by unitary matrices operating on the vector $\mathbf{x}$ of coefficients of the wave function. Unitarity of these matrices implies that all quantum gates act reversibly.
+
+
+
+
 \section{Quantum algorithms}
-The superiority of quantum computers over classical ones is due to the existence of quantum algorithms that solve a range of problems  better  than the best known classical algorithms \cite{jordan2011quantum} . Below we list a selection of these algorithms.
+\label{sec:box2}
+The superiority of quantum computers over classical ones is due to the existence of quantum algorithms that solve a range of problems  better  than the best known classical algorithms \cite{jordan2011quantum}. Below we list a selection of these algorithms.
 
 \begin{itemize}
 \item {\bf Grover search}:
@@ -769,8 +800,8 @@ A walk, or random walk, is a succession of random steps on a given graph. Quantu
 
 \end{itemize}
 
-\section{Quantum architecture from a classical point of view}
-\label{sec:box1}
+\section{Quantum algorithms from a classical point of view}
+\label{sec:box3}
 
 \begin{figure}[t]
 \centering
@@ -787,7 +818,9 @@ The up to exponential speedup of a quantum computer over a classical one is due 
 
 Quantum gates being unitary operations are by definition reversible. This requires that any classical function that a quantum computer computer should perform is first converted to a reversible classical function, which can potentially incur large overheads in memory (for ancilla registers) and runtime.
 
-The next challenge is readout of the results. When a quantum superposition is read out 
+Naively the next step might might be thought to be the readout of the results. However, recall (see Box \ref{sec:box1}) that when reading out an $N$-qubit quantum register one only obtains $N$ classical bits of information and one of the computational states making up the superposition is chosen at random. If the computation has applied a classical function to a superposition of inputs then this is  equivalent to reading out the function value for a random input, which defeats the purpose of performing calculations in a superposition. 
+
+To profit from quantum parallelism a quantum algorithm thus has to perform a global reduction function to all the qubits before reading out the quantum registers in a measurement. Such reduction operations include quantum Fourier transforms, used in Shor's period finding algorithm, or amplitude amplification used in Grover's search. Growing the limited selection of such operations is one of the challenges in designing new quantum algorithms.
 
 
 
@@ -795,10 +828,6 @@ The next challenge is readout of the results. When a quantum superposition is re
 
 
 
-\begin{enumerate}
-\item  Reduction (Prepare superposition, computer, reduce)
-\item  There are only a limited number
-\end{enumerate}
 % use section* for acknowledgement
 \section*{Acknowledgment}
 
