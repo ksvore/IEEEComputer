@@ -502,7 +502,7 @@ Faced with the challenge of simulation quantum systems on classical computers, R
 
 \section{Quantum computers and their applications}
 
-Richard Feynman \cite{Feynman1982} in his seminal paper already envisaged a digital quantum computer, overcoming calibration and design limitations of analog quantum devices by generalizing the bits and gates of classical computers to quantum bits (qubits) and quantum gates. Already we have a diverse range of quantum algorithms that outperform the classical counterparts, and summarize them in Box \ref{sec:box2}.
+Richard Feynman's seminal paper already envisaged a digital quantum computer, overcoming calibration and design limitations of analog quantum devices by generalizing the bits and gates of classical computers to quantum bits (qubits) and quantum gates. Already we have a diverse range of quantum algorithms that outperform the classical counterparts, and summarize them in Box \ref{sec:box2}.
 
 Quantum computers are most readily known for solving integer factorization \cite{Shor1994}, where given an integer $N=p\times q$, the task is to determine the prime numbers $p$ and $q$.  This problem forms a mainstay of e-commerce today, as it underlies the most widely used public-key cryptosystem RSA.  A quantum computer consisting of roughly one billion physical qubits {\color{red}(see Rod's article)} would be able to break a 2000-bit key RSA in a short time \cite{}.  While quantum algorithms for cryptographic attacks are certainly an area of quantum advantage over classical counterparts, their significance will decrease over time.  Already, post-quantum cryptosystems are in development that aim for security against a quantum computer.  Companies and governments around the world are already beginning a move to post-quantum crypto.  
 
@@ -645,7 +645,7 @@ A grand challenge for computer scientists and engineers will be to design the co
 \item     Won't be bad for privacy, but will enhance it -- mention blind quantum computing here
 \end{enumerate}
 
-While quantum algorithms are generally much less well understood than their classical cousins, the search continues for which important problems can be solved much faster on quantum computers and which cannot. Answering this question has become increasingly important, and industrial efforts are emerging that focus on the impending quantum revolution. {\color{red} move to conclusions?}
+While quantum algorithms are generally much less well understood than their classical cousins, the search continues for which important problems can be solved much faster on quantum computers and which cannot. Answering this question has become increasingly important, and industrial efforts are emerging that focus on the impending quantum revolution.
 
 % needed in second column of first page if using \IEEEpubid
 %\IEEEpubidadjcol
@@ -778,52 +778,54 @@ where $\alpha$ and $\beta$ are two complex numbers, normalized such that
   \end{equation}
 where the $k$-th bit of the integer $i$ corresponds to the values of the $k$-th qubit.
 
-The exponential memory of $2^N$ complex numbers required to represent the state of just $N$ qubits hints at the potential for exponentially larger computational power of quantum computers compared to classical ones. However, when reading out a quantum register one does not obtain all $2^N$ complex numbers, but just $N$ bits of information. Of all the $2^N$ classical values in the superposition one value $i$ is chosen at random in a measurement, according to a probability distribution given by the squares of the wave function entries $|c_i|^2$.
+The exponential memory of $2^N$ complex numbers required to represent the state of just $N$ qubits hints at the potential for exponentially larger computational power of quantum computers compared to classical ones. Current high end supercomputers are barely able to represent the state of $N\approx50$ qubits and simulating $N=60$ qubits is beyond the powers of planned exa-scale machines. Already small scale quantum computers with about one hundred qubits thus already offer computational capabilities that go beyond that of any classical computer for certain applications.
 
-Quantum gates, similar to classical gates typically act only on a few qubits. Their action can be described by unitary matrices operating on the vector $\mathbf{x}$ of coefficients of the wave function. Unitarity of these matrices implies that all quantum gates act reversibly.
 
-\begin{table}
+Despite requiring $2^N$ complex numbers to represent a quantum state on a classical computers, when reading out a quantum register one obtains just $N$ bits of information. Of all the $2^N$ classical values in the superposition one value $i$ is chosen at random in a measurement, according to a probability distribution given by the squares of the wave function entries $|c_i|^2$.
+
+
+\begin{figure}[tb]
 	\centering
 	\vspace{20pt}
 	\renewcommand{\arraystretch}{1}
 	\begin{tabular}{>{\centering}m{2cm} >{\centering}m{2cm} >{\centering\arraybackslash}m{2cm}}
 	\toprule
-	Gate & Matrix & Symbol\\\hline
- NOT or X gate& \(\displaystyle\left(\begin{matrix}0 & 1\\1 & 0\end{matrix}\right)\)&\includegraphics[width=2cm]{figures/gates/x.pdf}\\
- Y gate & \(\displaystyle\left(\begin{matrix}
+	symbol & name & matrix  \\\hline
+ \includegraphics[width=2cm]{figures/gates/x.pdf} & NOT & \(\displaystyle\left(\begin{matrix}0 & 1\\1 & 0\end{matrix}\right)\)\\
+ \includegraphics[width=2cm]{figures/gates/Y.pdf} & Pauli-Y  & \(\displaystyle\left(\begin{matrix}
  			0 & -i\\
  			i & 0
- 			\end{matrix}\right)\)&\includegraphics[width=2cm]{figures/gates/Y.pdf}\\
-	Z gate & \(\displaystyle\left(\begin{matrix}
+ 			\end{matrix}\right)\)\\
+\includegraphics[width=2cm]{figures/gates/Z.pdf}\ & Pauli-Z  & \(\displaystyle\left(\begin{matrix}
 			1 & 0\\
 			0 &-1
-			\end{matrix}\right)\)&\includegraphics[width=2cm]{figures/gates/Z.pdf}\\
-	Hadamard gate & \(\displaystyle\frac 1{\sqrt2}\left(\begin{matrix}
+			\end{matrix}\right)\)\\
+	\includegraphics[width=2cm]{figures/gates/H.pdf} & Hadamard & \(\displaystyle\frac 1{\sqrt2}\left(\begin{matrix}
 			1 & 1\\
 			1 &-1
-			\end{matrix}\right)\)&\includegraphics[width=2cm]{figures/gates/H.pdf}\\
-	S gate& \(\displaystyle\left(\begin{matrix}
-			1 & 0\\
-			0 & i
-			\end{matrix}\right)\)&\includegraphics[width=2cm]{figures/gates/S.pdf}\\
-	T gate & \(\displaystyle\left(\begin{matrix}
+			\end{matrix}\right)\)\\
+	\includegraphics[width=2cm]{figures/gates/T.pdf} & T & \(\displaystyle\left(\begin{matrix}
 			1 & 0\\
 			0 & e^{i\pi/4}
-			\end{matrix}\right)\)&\includegraphics[width=2cm]{figures/gates/T.pdf}\\
-	Rotation-Z gate & \(\displaystyle\left(\begin{matrix}
+			\end{matrix}\right)\)\\
+	{\centering\includegraphics[width=2.5cm]{figures/gates/Rz.pdf}} & Z-Rotation & \(\displaystyle\left(\begin{matrix}
 			e^{-i\theta/2} & 0\\
 			0 & e^{i\theta/2}
-			\end{matrix}\right)\)&{\centering\includegraphics[width=2.5cm]{figures/gates/Rz.pdf}}\\
-	Controlled NOT (CNOT) & \(\displaystyle\left(\begin{matrix}
+			\end{matrix}\right)\)\\
+	\includegraphics[width=2cm]{figures/gates/cnot.pdf} & controlled NOT (CNOT) & \(\displaystyle\left(\begin{matrix}
 			1 & 0 & 0 & 0\\
 			0 & 1 & 0 & 0\\
 			0 & 0 & 0 & 1\\
 			0 & 0 & 1 & 0
-			\end{matrix}\right)\)&\includegraphics[width=2cm]{figures/gates/cnot.pdf}\\\bottomrule
+			\end{matrix}\right)\)\\ \bottomrule
 	\end{tabular}
-	\caption{Standard quantum gates with their corresponding matrices and symbols.}
+	\caption{Standard quantum gates with their corresponding matrices and symbols. Similar to classical logic circuits lines denotes qubits and boxes gates acting on the qubits. Quantum gates operating on $n$ qubits can be represented by unitary matrices of simension $2^n\times 2^n$. We use a basis $\{|0\rangle, |1\rangle\}$ for the two states of a single qubit and   $\{|00\rangle, |01\rangle, |10\rangle,|11\rangle\}$ for the four states of two qubits.
+	}
 	\label{tbl:gates}
-\end{table}
+\end{figure}
+
+Quantum gates, similar to classical gates typically act only on a few qubits. Their action can be described by unitary matrices operating on the vector $\mathbf{x}$ of coefficients of the wave function. A selection of commonly used gates is shown in figure \ref{tbl:gates}. 
+Unitarity of these matrices implies that all quantum gates act reversibly.
 
 
 
