@@ -502,60 +502,71 @@ Entangling two qubits $A$ and $B$ in a superposition denoted $\frac{1}{\sqrt{2}}
 %\cite{RevModPhys.81.1301,EkertRenner2014}. 
 
 
-Faced with the challenge of simulation of quantum systems on classical computers, Richard Feynman in 1982 \cite{Feynman1982} suggested to use quantum devices to simulate physics problems. Analog implementations of this idea in {\em quantum simulators }  
-%\cite{RevModPhys.86.153}  
-have  been successfully used to build tunable realizations of complex quantum models. Quantum simulators can also be used to solve purely classical problems. One example is a {\em quantum annealing} to solve hard optimization problems. However, quantum annealers have not yet shown any advantage over classical computers.
-% \cite{speedup}. 
+Faced with the challenge of simulation of quantum systems on classical computers, Richard Feynman in 1982 \cite{Feynman1982} suggested to build computers that use quantum effects to compute, 
+%use quantum devices to simulate physics problems. 
+%Analog implementations of this idea in {\em quantum simulators }  
+%%\cite{RevModPhys.86.153}  
+%have  been successfully used to build tunable realizations of complex quantum models. Quantum simulators can also be used to solve purely classical problems. One example is a {\em quantum annealing} to solve hard optimization problems. However, quantum annealers have not yet shown any advantage over classical computers.
+%% \cite{speedup}. 
+%
+%\section{Quantum computers and their applications}
+%Richard Feynman's seminal paper already envisaged a digital quantum computer, overcoming calibration and design limitations of analog quantum devices by 
+generalizing the bits and gates of classical computers to quantum bits (qubits) and quantum gates. It turns out that such quantum computers have applications well beyond physics problems, and we already have a diverse range of quantum algorithms that outperform their classical counterparts (see Box \ref{sec:box2}).
 
-\section{Quantum computers and their applications}
+Quantum computers are most readily known for solving integer factorization \cite{Shor1994}, where given an integer $N=p\times q$, the task is to determine the prime numbers $p$ and $q$.  This problem forms a mainstay of e-commerce today, as it underlies the most widely used public-key cryptosystem RSA.  A quantum computer consisting of roughly one billion physical qubits {\color{red}(see Rod Van Meter's article)} would be able to break a 2000-bit key RSA in a short time.  While quantum algorithms for cryptographic attacks are certainly an area of quantum advantage, their significance is sure to decrease over time.  Already, post-quantum cryptosystems are in development that aim for security against a quantum computer and companies and governments around the world are beginning to actively transition to such post-quantum cryptography methods.
+%, as the changes will require years worth of software upgrades.  
 
-Richard Feynman's seminal paper already envisaged a digital quantum computer, overcoming calibration and design limitations of analog quantum devices by generalizing the bits and gates of classical computers to quantum bits (qubits) and quantum gates. Already we have a diverse range of quantum algorithms that outperform their classical counterparts; we summarize some of them in Box \ref{sec:box2}.
+More globally and economically impactful applications arise from the simulation of physical systems, which was the original motivation behind Feynman's seminal paper. Quantum computers will improve reliability of quantum chemical calculations by performing accurate simulations of molecules and materials on the scale of days to months for problems that might take billions of years on state-of-the-art supercomputers today. They can be applied to help solve critical real-world problems, such as elucidating the mechanism of biological nitrogen fixation with application to fertilizer production or designing catalysts for carbon capture  capture and sequestration (to combat global warming).  Extensions of these approaches promise solutions for applications in materials modeling, including investigation of materials that display higher temperature superconductivity. 
 
-Quantum computers are most readily known for solving integer factorization \cite{Shor1994}, where given an integer $N=p\times q$, the task is to determine the prime numbers $p$ and $q$.  This problem forms a mainstay of e-commerce today, as it underlies the most widely used public-key cryptosystem RSA.  A quantum computer consisting of roughly one billion physical qubits {\color{red}(see Rod Van Meter's article)} would be able to break a 2000-bit key RSA in a short time.  While quantum algorithms for cryptographic attacks are certainly an area of quantum advantage, their significance is sure to decrease over time.  Already, post-quantum cryptosystems are in development that aim for security against a quantum computer.  Companies and governments around the world are beginning to actively transition to post-quantum cryptography methods, as the changes will require years worth of software upgrades.  
+The last decade has witnessed an explosion in classical machine learning methods for making predictions and gaining insights based on data.  Machine learning has utterly transformed domains such as speech recognition, computer vision, and web search.  With its foundations in computational statistics, machine learning is an area ripe for quantum improvements.  Recent results indicate that quantum algorithms may perform classification and clustering methods such as $k$-means and nearest-neighbor methods more efficiently than  classical methods.  Boltzmann machine training, deep learning, and neural networks have also been shown to have quantum advantages.  
+%The discovery of quantum algorithms for machine learning is just beginning and
+ %We anticipate a proliferation of methods as quantum hardware comes online.  
 
-More globally and economically impactful applications arise from the simulation of physical systems. This was the original motivation behind Feynman's seminal paper and finds applications in chemistry and materials science. Quantum computers will improve reliability of quantum chemical calculations by performing accurate simulations of molecules and materials on the scale of days to months for problems that might take billions of years on state-of-the-art supercomputers today. They can be applied to help solve critical real-world problems, such as elucidating the mechanism of biological nitrogen fixation with application to fertilizer production or designing catalysts for carbon capture and sequestration (to combat global warming).  Extensions of these approaches promise solutions for applications in materials modeling, including investigation of materials that display higher temperature superconductivity. 
-
-The last decade has witnessed an explosion in classical machine learning methods for making predictions and gaining insights based on data.  Machine learning has utterly transformed domains such as speech recognition, computer vision, and web search.  With its foundations in computational statistics, machine learning is an area ripe for quantum improvements.  Recent results indicate that quantum algorithms may perform classification and clustering methods such as $k$-means and nearest-neighbor methods more efficiently than  classical methods.  Boltzmann machine training, deep learning, and neural networks have also been shown to have quantum advantages.  The discovery of quantum algorithms for machine learning is just beginning and we anticipate a proliferation of methods as quantum hardware comes online.  
-
-By and large, quantum algorithms presently require rigorous proofs to validate any improvements in runtime complexity over classical algorithms.  However, as seen by machine learning practitioners, often the best-performing algorithms on real-world data are heuristic in nature.  We may therefore look forward to having a modest-size quantum computer on which to test and master the art of quantum programming and quantum algorithm design.  The fruits of such labor will bear quantum algorithms for many real-world applications, as a generation of programmers look to quantum hardware for novel improvements in speed and accuracy.
+By and large, quantum algorithms presently require rigorous proofs to validate any improvements in runtime complexity over classical algorithms.  However,
+% as seen by machine learning practitioners, 
+often the best-performing algorithms on real-world data are heuristic in nature.  We may therefore look forward to having a modest-size quantum computer on which to test and master the art of quantum programming and quantum algorithm design.  The fruits of such labor will bear quantum algorithms for many real-world applications, as a generation of programmers look to quantum hardware for novel improvements in speed and accuracy.
 
 
 \section{Quantum computers as special-purpose accelerators }
 
 
 Quantum computers are unlike their classical cousins.  While in principle they can perform any computation that a classical computer can perform, we should not expect them to power future personal computers or phones. Classical computers will remain cheaper, smaller and more portable than quantum computers for many of these tasks. Quantum computers play out their strength when running special quantum algorithms that solve certain computational tasks faster (in some cases exponentially faster) than any classical computer by acting on a superposition of values.  
+%
+%\begin{figure}[t]
+%\centering
+%\includegraphics[width=0.7\columnwidth]{figures/cryostat}
+%\caption{The inside of a dilution refrigerator that is used to cool a quantum computer to milli-Kelvin temperatures. Various stages of the cryostat host the classical control logic and the quantum chips and operate at different temperatures. All are connected to a classical frontend (super)-computer that runs the classical parts of computations in a hybrid quantum-classical code and controls the quantum processor that acts as an accelerator. Image credit: C. Marcus (NBI).
+%}
+%\label{fig:cryo}
+%\end{figure}
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.7\columnwidth]{figures/cryostat}
-\caption{The inside of a dilution refrigerator that is used to cool a quantum computer to milli-Kelvin temperatures. Various stages of the cryostat host the classical control logic and the quantum chips and operate at different temperatures. All are connected to a classical frontend (super)-computer that runs the classical parts of computations in a hybrid quantum-classical code and controls the quantum processor that acts as an accelerator. Image credit: C. Marcus (NBI).
-}
-\label{fig:cryo}
-\end{figure}
-
-A quantum computer will thus operate as a co-processor, receiving its instructions and cues from a stack of classical processors. To suppress noise and errors and keep the qubits in a superposition most designs for quantum computers require the qubits to be cooled to very low temperatures. This calls for the use of dilution refrigerators, as shown in Figure \ref{fig:cryo}, and means that large-scale quantum computers will be operated in data centers and accessed remotely as a cloud service. Locally one may just have a limited number of qubits to establish secure communication or to use as quantum money.
-
-\begin{figure*}[tb]
-\centering
-\includegraphics[width=\textwidth]{figures/femoco}
-\caption{The nitrogenase MoFe protein from {\it Clostridium pasteurianum} (left), the close protein environment of the FeMoco (center), and the structural model of FeMoco that would be simulated in a quantum computer. Figure taken from Ref. \cite{nitrogenase}.}
-\label{fig:femoco}
-\end{figure*}
-
+A quantum computer will thus operate as a co-processor, receiving its instructions and cues from a stack of classical processors. To suppress noise and errors and keep the qubits in a superposition most designs for quantum computers require the qubits to be cooled to very low temperatures. This calls for the use of dilution refrigerators
+%, as shown in Figure \ref{fig:cryo}, 
+and means that large-scale quantum computers will be operated in data centers and accessed remotely as a cloud service. Locally one may just have a limited number of qubits to establish secure communication or to use as quantum money.
+%
+%\begin{figure*}[tb]
+%\centering
+%\includegraphics[width=\textwidth]{figures/femoco}
+%\caption{The nitrogenase MoFe protein from {\it Clostridium pasteurianum} (left), the close protein environment of the FeMoco (center), and the structural model of FeMoco that would be simulated in a quantum computer. Figure taken from Ref. \cite{nitrogenase}.}
+%\label{fig:femoco}
+%\end{figure*}
+%
 
 Cryogenic temperatures alone are insufficient to keep qubits in superposition for the runtime of a non-trivial quantum algorithm and quantum error correction (QEC) 
 %\cite{qec} 
-is needed to extend the lifetime of quantum information.  QEC remarkably allows an arbitrarily large quantum computation to be performed efficiently as long as the rate of errors occurring on the physical qubits are below a given threshold value. The no-cloning theorem of quantum information, which makes quantum communication provably secure, unfortunately also makes QEC harder than classical fault tolerance. QEC can incur a large overhead and thousands or more ``physical'' qubits may be needed to realize a single error-protected ``logical'' qubit. The classical processors must also continually monitor the ``logical" qubits and determine if they have been corrupted.  This is done by learning the location and type of errors in the system through measurement information obtained from the quantum computer.  The classical processors run a classical decoding algorithm, such as an approximation to maximum likelihood estimation or minimum weight perfect matching, to determine the most likely correction pattern that removes the errors on the qubits. 
+is needed to extend the lifetime of quantum information.  QEC remarkably allows an arbitrarily large quantum computation to be performed efficiently as long as the rate of errors occurring on the physical qubits are below a given threshold value. The no-cloning theorem of quantum information, which makes quantum communication provably secure, unfortunately also makes QEC harder than classical fault tolerance. QEC can incur a large overhead and thousands or more ``physical'' qubits may be needed to realize a single error-protected ``logical'' qubit. 
+%The classical processors must also continually monitor the ``logical" qubits and determine if they have been corrupted.  This is done by learning the location and type of errors in the system through measurement information obtained from the quantum computer.  The classical processors run a classical decoding algorithm, such as an approximation to maximum likelihood estimation or minimum weight perfect matching, to determine the most likely correction pattern that removes the errors on the qubits. 
 
 Topological qubits,
  %\cite{tqc}
-which  encode  quantum information in a non-local property of a quantum state, are a promising way of reducing the QEC overhead by being robust to any source of local noise.  While QEC works at the level of mathematics in software, topological qubits have an intrinsic, hardware-level of protection that allows the qubits to achieve longer lifetimes and lower rates of errors.  With a lower rate of error the overhead of QEC may be dramatically reduced. A topological quantum computer may use roughly a factor of 1000 fewer physical qubits to implement a given quantum algorithm than a superconduting qubit system or ion trap device.
+which  encode  quantum information in a non-local property of a quantum state, are a promising way of reducing the QEC overhead by being robust to any source of local noise.  While QEC works at the level of software, topological qubits have an intrinsic, hardware-level of protection that allows the qubits to achieve longer lifetimes and lower rates of errors.  With a lower rate of error the overhead of QEC may be dramatically reduced by several orders of magnitude.
+% A topological quantum computer may use roughly a factor of 1000 fewer physical qubits to implement a given quantum algorithm than a superconducting qubit system or ion trap device.
 
 Given the cost of quantum fault tolerance, qubits will be a rare commodity in quantum computers, leading to a radical shift in design from their classical counterparts where memory is cheap. Instead of moving data to computational units, early quantum computers will move operations to the data, applying gates directly to the memory qubits.  
 In many electronic systems, the firmware that controls and manipulates the computer or device is rarely updated.  However, in a quantum computer, the firmware is inherently being optimized and updated continually during computation to reconfigure the device for the next steps.
 
- An even bigger difference exists in the design of quantum algorithms themselves. To make use of the  exponential parallelism inherent in a quantum superposition, computations need to be reversible, SIMD-like and follow certain design patterns that are discussed in Box \ref{sec:box3}.   Most notably, readout is severely limited in a quantum computer. While an $N$-qubit quantum computer can act on a superposition of $O(2^N)$ values, only $N$ bits of information can be read out, requiring reduction operations to compute the relevant results.
- Quantum algorithms are also inherently probabilistic and must be designed so as to produce the correct answer with high probability.  A quantum algorithm can then be run several times to improve the probability of success. 
+ An even bigger difference exists in the design of quantum algorithms themselves. To make use of the  exponential parallelism inherent in a quantum superposition, computations need to be reversible, SIMD-like and follow certain design patterns that are discussed in Box \ref{sec:box3}.   %Most notably, readout is severely limited in a quantum computer. While an $N$-qubit quantum computer can act on a superposition of $O(2^N)$ values, only $N$ bits of information can be read out, requiring reduction operations to compute the relevant results.
+% Quantum algorithms are also inherently probabilistic and must be designed so as to produce the correct answer with high probability.  A quantum algorithm can then be run several times to improve the probability of success. 
  
  
  
@@ -564,15 +575,34 @@ In many electronic systems, the firmware that controls and manipulates the compu
 
 \section{Native applications: quantum chemistry and materials science}
 
-Simulating quantum models can be considered the native application of quantum computers. How better to understand a quantum mechanical system than with a device that is inherently quantum mechanical! The simulation of such models includes areas such as quantum chemistry, materials science, and high-energy physics. In quantum simulation, the goal is to understand properties of a system, such as its energy, electron density, or excitation spectrum through simulation of their evolution according to Schr\"odinger's equation.  
+Simulating quantum models can be considered the native application of quantum computers. How better to understand a quantum mechanical system than with a device that is inherently quantum mechanical! %The simulation of such models includes areas such as quantum chemistry, materials science, and high-energy physics. In quantum simulation, 
+%The goal is to understand properties of a system, such as its energy, electron density, or excitation spectrum through simulation of their evolution according to Schr\"odinger's equation.  
 
-The first applications of small quantum computers will be to simple quantum models whose exact dynamics is already intractable for classical computers for about one hundred lattice sites or orbitals.  Accurate solutions of such model systems can be used to develop, improve, and validate new classical simulation methods which can then be used in turn to simulate more complex systems than are tractable just by quantum simulations on a quantum computer. 
+The first applications of small quantum computers will be to simple quantum models whose exact dynamics is already intractable for classical computers for about one hundred lattice sites or orbitals.  Accurate solutions of such model systems can be used to develop and validate new classical simulation methods which can then, in turn, simulate more complex systems than are tractable by a small quantum computer. 
 
-Recent algorithmic advances have substantially improved the scaling of algorithms for time evolution of realistic electronic systems, such as small molecules or complex materials. Following Ref. \cite{nitrogenase}we illustrate how quantum computers will be used for such problems by considering simulations of the active center of the enzyme nitrogenase. The iron molybdenum cofactor (FeMoco) of nitrogenase can split a dinitrogen molecule into two ammonia molecules under ambient conditions, while the industrial Haber-Bosch process  is energy intensive and requires high temperatures and pressures. %Understanding this reaction mechanism will give new insights into ways of splitting dinitrogen and may lead to better catalysts and processes for fertilizer production.
+Recent algorithmic advances have substantially improved the scaling of algorithms for molecules or complex materials. A concrete example that has been worked out in detail  \cite{nitrogenase} is how to use quantum computers to understand biological nitrogen fixation. 
+%Following Ref. \cite{nitrogenase} we illustrate how quantum computers will be used for such problems by considering simulations of the active center of the enzyme nitrogenase. 
+The iron molybdenum cofactor (FeMoco) of the enzyme nitrogenase can split a dinitrogen molecule into two ammonia molecules under ambient conditions, while the industrial Haber-Bosch process is energy intensive and requires high temperatures and pressures. %Understanding this reaction mechanism will give new insights into ways of splitting dinitrogen and may lead to better catalysts and processes for fertilizer production.
+To elucidate how FeMoco achieves this feat one needs to accurately calculate the energy for many configurations of the molecule 
+%(shown in Figure \ref{fig:femoco}) 
+along candidate reaction pathways. While, most of the protein
+% (left part of the figure) 
+can be simulated using approximate methods on classical supercomputers, accurate calculation of the active center of FeMoco,
+%(shown on the right), 
+containing iron and molybdenum atoms, %. The correlated nature of electrons in this complex 
+so far defies classical methods, but will be feasible using a quantum computer as a co-processor.
+ %to calculate accurate energies for this part of the protein, 
+%will be able augment classical simulations and shed light on this problem. 
+Given the relevance of catalytic processes in the chemical industry, quantum computers may find many commercially relevant applications in this area.
 
-To elucidate reaction mechanisms one needs to accurately calculate the energy of FeMoco for many configurations of the molecule (shown in Figure \ref{fig:femoco}) along candidate reaction pathways. Fortunately, most of the protein (left part of the figure) can be simulated using approximate methods on classical supercomputers. The unsolved challenge is the accurate calculation of the energies of the active center (shown on the right), containing iron and molybdenum atoms. The correlated nature of electrons in this complex defies classical approximation methods. A quantum computer, acting as a co-processor to calculate accurate energies for this part of the protein, will augment classical simulations of the remainder of the molecule. Given the relevance of catalytic processes in the chemical industry, finding new catalytic processes -- not only for fertilizer production but also for carbon capture and other important applications -- quantum computers will find many commercially relevant applications here.
-
-Similar hybrid algorithms have been developed for the simulation of crystalline materials, where approximate classical electronic structure methods based on standard density functional theory can be augmented by quantum computations of the correlated conduction bands of transition metal atoms to understand, design and predict novel materials with exotic properties. These may include higher temperature superconductors, novel functional materials with switchable properties and non-toxic dyes. While it may seem tempting to simulate all electrons of a material on a quantum computer, hybrid methods that solve as much as possible using classical computers have much more economical resource requirements.  
+Similar algorithms have been developed for the simulation of crystalline materials, where approximate classical 
+%electronic structure 
+methods 
+%based on standard density functional theory 
+can be augmented by quantum computations
+% of the correlated conduction bands of transition metal atoms 
+to understand and design novel materials with exotic properties. These may include higher temperature superconductors, novel functional materials with switchable properties and non-toxic dyes. 
+%While it may seem tempting to simulate all electrons of a material on a quantum computer, hybrid methods that solve as much as possible using classical computers have much more economical resource requirements.  
 
 
 \section{Quantum accelerated classical applications}
@@ -586,21 +616,23 @@ Shor's algorithm \cite{Shor1994} for integer factorization was the first demonst
 
 Another famous example of a quantum algorithm outperforming classical ones is Grover's algorithm \cite{Grover1996} for searching the index of an item in an unsorted collection. While classically $O(N)$ queries are needed, a quantum computer can solve this problem with just $O(\sqrt{N})$ queries. Applications are finding minimal (optimal) values,  determining graph connectivity, and pattern matching.
 
-However, query complexity alone may be misleading. To establish quantum advantage for an application one has to take into account the cost of implementing the queries. Indeed, for naive database lookup, each quantum query has to access the complete database, with $O(N)$ complexity, thus raising the full cost to $O(N^{3/2})$ and bringing it to be worse than the classical complexity $O(N)$. Applications of Grover's algorithms will thus be to {\rm implicit} searches, where the value at a given index can be calculated efficiently \cite{MarkovGrover}. 
+However, query complexity alone may be misleading. %To establish quantum advantage for an application one has to take into account the cost of implementing the queries.
+ Indeed, for naive database lookup, each quantum query has to access the complete database, with $O(N)$ complexity, thus raising the full cost to $O(N^{3/2})$ and bringing it to be worse than the classical complexity $O(N)$. Applications of Grover's algorithms will thus be {\rm implicit} searches, where the value at a given index can be calculated efficiently \cite{MarkovGrover}. 
 
 \subsection{Linear systems}
 
-Similar considerations apply to the linear systems algorithm \cite{HHL}, which allows  sampling from solutions $\mathbf{x}$ of a well-conditioned  linear system of equations $A\mathbf{x}=\mathbf{b}$ with exponential speedup over classical algorithms -- as long as the operation $e^{-iAt}$ can be efficiently implemented using quantum gates. For arbitrary $N\times N$ matrices this requires at least $O(N^2)$ effort, which undoes any advantage of the quantum algorithm. In addition, the algorithm only allows sampling from the solution, since reading out all the elements of $\mathbf{x}$ would take time $O(N)$ and thus again counter the speedup obtained.
-
-Practical applications of the algorithm thus require matrices $A$ that can be described algorithmically and the computation of only $O(\log N)$ bits of information from the solution  $\mathbf{x}$. Such problems include  finite difference and finite element discretization of partial differential equations, where one can determine, for example, solutions to electromagnetic scattering problems on exponentially fine meshes. 
+Similar considerations apply to the linear systems algorithm \cite{HHL}, which allows  sampling from solutions $\mathbf{x}$ of a well-conditioned  linear system of equations $A\mathbf{x}=\mathbf{b}$ with exponential speedup over classical algorithms -- as long as the operation $e^{-iAt}$ can be efficiently implemented using quantum gates. For arbitrary $N\times N$ matrices this requires at least $O(N^2)$ effort, which undoes any advantage of the quantum algorithm. %In addition, the algorithm only allows sampling from the solution, since reading out all the elements of $\mathbf{x}$ would take time $O(N)$ and thus again counter the speedup obtained.
+Practical applications of the algorithm thus require matrices $A$ that can be described algorithmically. %and the computation of only $O(\log N)$ bits of information from the solution  $\mathbf{x}$. 
+Such problems include  finite difference and finite element discretization of partial differential equations, where one can determine, for example, solutions to electromagnetic scattering problems on exponentially fine meshes. 
 
 \subsection{Sampling}
 
 Statistical sampling using Monte Carlo methods plays an important role in many application areas, including the wide field of machine learning. Quantum computers offer two possibilities for quadratic speedup in these applications. 
 
-To accelerate sampling one prepares qubits in a superposition that corresponds to the desired distribution. Naive readout of the qubits  samples from that superposition with the error on the sample mean decreasing as $1/\sqrt{M}$ with the number of samples $M$. Employing interferometric methods on a quantum computer one can instead achieve errors that decrease quadratically faster, as $1/M$, by making use of the a quantum analog of the Fourier sampling theorem.
+To accelerate sampling one prepares qubits in a superposition corresponding to the desired distribution. Naive readout of the qubits  samples from that superposition with the error on the sample mean decreasing as $1/\sqrt{M}$ with the number of samples $M$. %Employing %interferometric methods on 
+A quantum computer can achieve errors that decrease quadratically faster, as $1/M$, by making use of the a quantum analog of the Fourier sampling theorem.
 
-The second potential for acceleration is a quadratic speedup in the mixing times of Markov chains when implementing them as quantum walks. This finds applications, for example, in stochastic optimization methods like simulated annealing \cite{qsa}, where  a quadratic acceleration is highly desired for hard optimization problems. 
+Quantum computers can also obtain a quadratic speedup in the mixing times of Markov chains when implementing them as quantum walks. This finds applications, for example, in stochastic optimization methods like simulated annealing \cite{qsa}, where  a quadratic acceleration is highly desired for hard optimization problems. 
 
 \begin{figure*}[t]
 \centering
@@ -622,34 +654,37 @@ As hardware steadily advances past single-qubit devices towards 100-qubit device
 
  
 High-level programming languages and optimizing compilers are designed to provide layers of abstraction of the computation, therefore creating a simple, modular programming environment. The development of software in advance of a fully scalable hardware architecture allows the verification and analysis of software components and rapid innovation in algorithm design.
-The idea dates back to FORTRAN (FORmula TRANslation), one of the oldest programming languages and compilers.  FORTRAN was created to transition users from mathematical formulas and machine code into algorithm design and specification.  FORTRAN's simplicity allowed more rapid programming and execution, improving programming speed by $500\%$ and reducing the length of programs by over $20\%$.
+The idea dates back to FORTRAN (FORmula TRANslation),
+% one of the oldest programming languages and compilers.  FORTRAN 
+ which was created to transition users from mathematical formulas and machine code into algorithm design and specification.  FORTRAN's simplicity allowed more rapid programming and execution, improving programming speed by $500\%$ and reducing the length of programs.% by over $20\%$.
 
 Quantum computing requires a similar software revolution, as the algorithms and hardware are complex systems.
-A computer grounded in quantum mechanical principles carries with it a unique set of computational attributes, such as superposition, entanglement, and no cloning to name a few.  Novel constructs for programming, optimizing, and controlling quantum hardware are necessary to fully harness and manipulate quantum states for algorithmic advantage. Debugging tools will require innovative approaches due to the entanglement of qubits and the inability to copy.  In this regard, simulators and emulators will be critical for the design and testing of quantum algorithms and circuits. Early design decisions can result in substantial cost savings on the path to finalizing an end-to-end system, and enable the verification, analysis, and redesign of key components of the system.
+%A computer grounded in quantum mechanical principles carries with it a unique set of computational attributes, such as superposition, entanglement, and no cloning to name a few.  
+Novel constructs for programming, optimizing, and controlling quantum hardware are necessary to fully harness and manipulate quantum states for algorithmic advantage. Debugging tools will require innovative approaches due to the entanglement of qubits and the inability to copy.  In this regard, simulators and emulators will be critical for the design and testing of quantum algorithms and circuits. Early design decisions can result in substantial cost savings on the path to finalizing an end-to-end system, and enable the verification, analysis, and redesign of key components of the system.
 
 %The significant steps of any quantum computing design flow \cite{svore2006layered} include a front end, a technology-independent optimizer, a technology-dependent %optimizer, and a technology simulator or quantum device.  The interfaces between the steps require a high-level programming language and several intermediate and low-%level representations.
 
 
-Figure \ref{fig:toolchain} shows a software stack for quantum computing \cite{stack}.
-The stack should enhance communication between algorithm designers, quantum engineers, and experimental physicists alike.
-It should provide well-defined interfaces between the software and hardware systems and should enable programming of any quantum algorithm of any size for any target architecture.
+Figure \ref{fig:toolchain} shows a software stack for quantum computing \cite{stack},
+%The stack should enhance communication between algorithm designers, quantum engineers, and experimental physicists alike.
+which should provide well-defined interfaces between the software and hardware systems and should enable programming of any quantum algorithm of any size for any target architecture.
 
 At the top is a high-level language in which one writes quantum programs.
 %The high-level quantum programming language may be one of several~\cite{gay2006quantum}:
 %some are based on C \cite{omer1998procedural} and others based on functional languages \cite{green13,wecker14}.
 Since quantum programs consist of an intimate mixture of classical and quantum instructions, a compelling case can be made for an embedded domain-specific language such as Quipper \cite{green13} or LIQ$Ui\ket{} $\cite{wecker14} in order to maximally leverage classical language and compilation features.
-Both are functional languages, the former is embedded in Haskell and allows extensible data types and advanced programming constructs,
-while the latter contains a domain-specific language embedded in F\#.
+%Both are functional languages, the former is embedded in Haskell and allows extensible data types and advanced programming constructs,
+%while the latter contains a domain-specific language embedded in F\#.
 %In contrast to Quipper,  LIQ$Ui\ket{} $ also features simulators for noise and resource analysis, but neither allows for hardware backends.
 
 To ensure flexibility and modularity, the high-level compilers are hardware agnostic and, combined with quantum meta functions, e.g., conditional instructions and user annotations, enable a very high level of optimization of quantum code.  
 The low-level compilers of the stack will allow automatic translations to hardware instructions for specific backend quantum devices.  
 
-The development of standard libraries for quantum subroutines, including those for arithmetic, subroutines, and complex quantum gates, will speed up the development of new quantum programs.
+The development of standard libraries for quantum subroutines, including those for arithmetic operations and complex quantum subroutines, will speed up the development of new quantum programs.
 Auto-tuning of these quantum libraries allows determination of the best representations for a given target backend and in turn can result in substantial cost savings in the final implementation of the quantum algorithms on any hardware \cite{stack}.  Building high-level quantum applications on libraries will let them take advantage of algorithmic improvements in those components, just as in classical applications. Recent examples of such optimizations in the quantum domain include substantial complexity reductions in simulating quantum chemical systems and savings of several orders of magnitude in quantum gate synthesis.
 
 The bottom of the stack  supports a variety of backends, including simulators, emulators, resource analyzers, or any proposed quantum hardware implementation.
-Ultimately the software stack needs to be designed to program and automate the control of a quantum computer, no matter the size of the algorithm or device.
+%Ultimately the software stack needs to be designed to program and automate the control of a quantum computer, no matter the size of the algorithm or device.
 While the upper layers of the stack are agnostic to whether the hardware backend is an ion trap, superconducting system, quantum dot, or topological quantum computer, the lower layers allow tuning and optimization of control for the specific device design, including layout, scheduling, and control optimization.
 
 %Later work presents a more detailed software architecture \cite{jones2012layered}, however the components are specific to a quantum dot architecture and the focus is %mainly on the pipelined control cycle from the application layer down to the physical hardware layer.
@@ -798,7 +833,8 @@ $|\alpha|^2+|\beta|^2=1$. Identifying the two classical states 0 and 1 with two-
   \end{equation}
 where the $k$-th bit of the integer $i$ corresponds to the values of the $k$-th qubit.
 
-The exponential memory of $2^N$ complex numbers required to represent the state of just $N$ qubits hints at the potential for exponentially larger computational power of quantum computers compared to classical ones. Current high end supercomputers are barely able to represent the state of $N\approx50$ qubits and simulating $N=60$ qubits is beyond the powers of planned exa-scale machines. Already small-scale quantum computers with about one hundred qubits offer computational capabilities that go beyond that of any classical computer for certain applications.
+The exponential memory required to represent the state of just $N$ qubits hints at the potential for exponentially larger computational power of quantum computers compared to classical ones. Current high end supercomputers are barely able to represent the state of $N\approx50$ qubits. %and simulating $N=60$ qubits is beyond the powers of planned exa-scale machines. 
+Already small-scale quantum computers with about one hundred qubits offer computational capabilities that go beyond that of any classical computer for certain applications.
 
 
 Despite requiring $2^N$ complex numbers to represent a quantum state on a classical computers, when reading out a quantum register one obtains just $N$ bits of information. Of all the $2^N$ classical values in the superposition one value $i$ is chosen at random in a measurement, according to a probability distribution given by the squares of the wave function entries $|c_i|^2$.
@@ -839,7 +875,7 @@ Despite requiring $2^N$ complex numbers to represent a quantum state on a classi
 			0 & 0 & 1 & 0
 			\end{matrix}\right)\)\\ \bottomrule
 	\end{tabular}
-	\caption{Standard quantum gates with their corresponding matrices and symbols. Similar to classical logic circuits lines denotes qubits and boxes gates acting on the qubits. Quantum gates operating on $n$ qubits can be represented by unitary matrices of simension $2^n\times 2^n$. We use a basis $\{|0\rangle, |1\rangle\}$ for the two states of a single qubit and   $\{|00\rangle, |01\rangle, |10\rangle,|11\rangle\}$ for the four states of two qubits.
+	\caption{Standard quantum gates with their corresponding matrices and symbols. Similar to classical logic circuits lines denotes qubits and boxes gates acting on the qubits. Quantum gates operating on $n$ qubits can be represented by unitary matrices of dimension $2^n\times 2^n$. We use a basis $\{|0\rangle, |1\rangle\}$ for the two states of a single qubit and   $\{|00\rangle, |01\rangle, |10\rangle,|11\rangle\}$ for the four states of two qubits.
 	}
 	\label{tbl:gates}
 \end{figure}
@@ -878,7 +914,9 @@ A walk, or random walk, is a succession of random steps on a given graph. Quantu
 
 \item   {\bf Quantum tunneling}: Escaping from local minima is an important problem in heuristic optimization algorithms. Quantum systems can ``tunnel'' between local minima faster than classical local search algorithms can climb the barrier separating them, if the barrier is tall but narrow. It is currently unknown whether this can lead to faster solutions for hard optimization problems of practical interest.
 
-\item   {\bf Quantum simulation}: Being discrete quantum devices, quantum computers, are by construction well suited for simulating discrete quantum systems, such as electrons in molecular orbitals or in a crystal lattice. Given a potentially time-dependent Hamiltonian ({\it i.e.} energy function) $H(t)$ that describes a system and the initial state of system $\ket{\psi(0)}$, the task is to determine a given property of the state after evolving according to Schr\"odinger's equation, which can be discretized as  $\ket{\psi(t+\delta_t)}=e^{-iH(t)\delta_t}\ket{\psi(t)}$. Using time evolution a quantum computer can efficiently  calculate many important properties: one can prepare ground states and excited states of quantum systems, measure their energies through processes mimicking interferometry and and simulate the outcome of any measurement procedure by simulating experimental procedures.
+\item   {\bf Quantum simulation}: Being discrete quantum devices, quantum computers, are by construction well suited for simulating discrete quantum systems, such as electrons in molecular orbitals or in a crystal lattice, %Given a potentially time-dependent Hamiltonian ({\it i.e.} energy function) $H(t)$ that describes a system and the initial state of system $\ket{\psi(0)}$, the task is to determine a given property of the state after evolving according to Schr\"odinger's equation, which can be discretized as  $\ket{\psi(t+\delta_t)}=e^{-iH(t)\delta_t}\ket{\psi(t)}$. 
+%Using time evolution a quantum computer can efficiently  
+and calculate many important properties: one can prepare ground states and excited states, measure their energies by mimicking interferometry and the outcome of any measurement procedure by simulating experimental procedures.
 
 
 \end{itemize}
@@ -888,9 +926,8 @@ A walk, or random walk, is a succession of random steps on a given graph. Quantu
 
 
 The advantage of quantum computers over classical ones is sometimes over-simplified to be due to the former being able to perform computations on all possible inputs simultaneously. More accurately, many quantum algorithms can be viewed as instances of the design pattern shown in Figure \ref{fig:simd}. At a high level such a quantum program can be viewed to be similar to MapReduce, but acting on all possible values on a {\em single} quantum CPU. After a quantum superposition of all input values is prepared, a computation is performed simultaneously on all values, before summary information is computed in a reduction step and read out. 
-While conceptually similar to MapReduce there are a number of important differences that show both the powers and limitations of quantum computers.
 
-The potentially exponential speedup of a quantum computer is due to its ability to perform operations on a superposition of exponential many input values on a single quantum processor. As each quantum gates acts on {\em all} input values, these computations can be viewed as an extreme form of single instruction, multiple data (SIMD) parallelism. This analogy immediately points out some of the issues faced by the designer of quantum algorithms. Conditional instructions have to implemented using masking registers (called control qubits), both branches of an if-else statement have to be executed and any loops have to be iterated for the worst case.
+While conceptually similar to MapReduce there are a number of important differences that show both the powers and limitations of quantum computers. Performing operations on a superposition of exponential many input values, a quantum computer can be viewed as an extreme form of single instruction, multiple data (SIMD) processor. While exponentially more powerful than a classical computer, the SIMD analogy also points out some of the challenges: conditional instructions have to implemented using masking registers (called control qubits), both branches of an if-else statement have to be executed and any loops have to be iterated for the worst case.
 
 Quantum gates being unitary operations are by definition reversible. This requires that any classical function that a quantum computer computer should perform is first converted to a reversible classical function, which can potentially incur large overheads in memory (for ancilla registers) and runtime.
 
