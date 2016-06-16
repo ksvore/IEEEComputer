@@ -1,0 +1,30 @@
+
+
+
+Reviewer: 1
+
+If pointing out specific languages like Quipper and Liqui|>, it seems appropriate to also mention Scaffold. I would be tempted to not mention Quipper and Liqui|>, in order to add a reference to a quantum cryptography review, a quantum machine learning algorithm paper, or a review article on quantum error correction.
+
+Reviewer: 2
+
+
+from PDF:
+
+Post-quantum crypto: a reference or two?  I thought that this transition is actually quite difficult, requiring a massive redoing of infrastructure, and will require a decadal effort.  Maybe some sense of this can be given. http://pqcrypto.eu.org/docs/initial-recommendations.pdf
+
+clustering: references?
+
+general readers will not know what a "dilution refrigerator" is
+
+what is quantum money?
+
+
+5. What do you see as the weakest aspect of this manuscript?: I fear that it may give the idea of inevitability to quantum computation, the struggles to achieve quantum hardware of sufficiently high performance, and the extreme uncertainty in the success, or the timeline for success, of these efforts is not touched on.
+
+
+Reviewer: 3
+
+
+
+5. What do you see as the weakest aspect of this manuscript?: A possible concern is that this reads a bit like a conference paper, but I think this can be addressed during copy-editing.
+
