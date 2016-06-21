@@ -394,7 +394,7 @@
 % paper title
 % can use linebreaks \\ within to get better formatting as desired
 % Do not put math or special symbols in the title.
-\title{Making Quantum Leaps for Computation}
+\title{A Quantum Future for Computation}
 %
 %
 % author names and IEEE memberships
@@ -407,7 +407,7 @@
 %
 
 \author{Krysta~M.~Svore~and~Matthias~Troyer% <-this % stops a space
-\thanks{K. Svore is with the Quantum Architectures and Computation Group, Microsoft Research, Redmond, WA (USA).}% <-this % stops a space
+\thanks{K. Svore is a Senior Researcher and manager of the Quantum Architectures and Computation Group, Microsoft Research, Redmond, WA (USA).  She studies the applications and fault-tolerant programming of quantum computers as well as machine learning methods for web applications.  She received her PhD in 2006 with highest distinction from Columbia University.  She is a Senior Member of the ACM and was a member of the winning team in the Yahoo! Learning to Rank Challenge. }% <-this % stops a space
 \thanks{M. Troyer is Professor of Computational Physics at ETH Zurich (Switzerland)  and a consultant for the Quantum Architectures and Computation Group, Microsoft Research, Redmond, WA (USA). His research interests range from simulations of quantum materials to quantum computing and ecosystem modeling. He received his PhD from ETH Zurich in 1994, is a Fellow of the American Physical Society, recipient of the Annesuhr Rahman Prize for Computational Physics, and Trustee of the Aspen Center for Physics.}% <-this % stops a space
 %\thanks{Manuscript received April 19, 2005; revised December 27, 2012.}
 }
@@ -511,12 +511,12 @@ Faced with the challenge of simulation of quantum systems on classical computers
 %
 %\section{Quantum computers and their applications}
 %Richard Feynman's seminal paper already envisaged a digital quantum computer, overcoming calibration and design limitations of analog quantum devices by 
-generalizing the bits and gates of classical computers to quantum bits (qubits) and quantum gates. It turns out that such quantum computers have applications well beyond physics problems, and we already have a diverse range of quantum algorithms that outperform their classical counterparts (see Box \ref{sec:box2}).
+generalizing the bits and gates of classical computers to quantum bits (qubits) and quantum gates. It turns out that so-called quantum computers have applications well beyond physics problems, and we already have a diverse range of quantum algorithms that outperform their classical counterparts (see Box \ref{sec:box2}).
 
-Quantum computers are most readily known for solving integer factorization \cite{Shor1994}, where given an integer $N=p\times q$, the task is to determine the prime numbers $p$ and $q$.  This problem forms a mainstay of e-commerce today, as it underlies the most widely used public-key cryptosystem RSA.  A quantum computer consisting of roughly one billion physical qubits {\color{red}(see Rod Van Meter's article)} would be able to break a 2000-bit key RSA in a short time.  While quantum algorithms for cryptographic attacks are certainly an area of quantum advantage, their significance is sure to decrease over time.  Already, post-quantum cryptosystems are in development that aim for security against a quantum computer and companies and governments around the world are beginning to actively transition to such post-quantum cryptography methods.
+Quantum computers are most readily known for solving integer factorization \cite{Shor1994}, where given an integer $N=p\times q$, the task is to determine the prime numbers $p$ and $q$.  This problem forms a mainstay of e-commerce today, as it underlies the most widely used public-key cryptosystem RSA.  A quantum computer consisting of roughly one billion physical qubits {\color{red}(see Rod Van Meter's article)} would be able to break a 2000-bit key RSA in a short time.  While quantum algorithms for cryptographic attacks are certainly an area of quantum advantage, their significance is sure to decrease since classical so-called ``post-quantum" cryptosystems aimed to resist quantum attacks are under development.  Already, companies and governments around the world are beginning to actively transition to post-quantum cryptosystems since the necessary software upgrades will require at least a decade to complete.
 %, as the changes will require years worth of software upgrades.  
 
-More globally and economically impactful applications arise from the simulation of physical systems, which was the original motivation behind Feynman's seminal paper. Quantum simulations of  molecules materials currently account for a major fraction of supercomputer usage. Quantum computers will improve the reliability of such calculations by performing accurate simulations of molecules and materials on the scale of days to months for problems that might take billions of years on state-of-the-art supercomputers today. They can be applied to help solve critical real-world problems, such as elucidating the mechanism of biological nitrogen fixation with application to fertilizer production or designing catalysts for carbon capture  and sequestration (to combat global warming).  Extensions of these approaches promise solutions for applications in materials modeling, including investigation of materials that display higher temperature superconductivity. 
+More globally and economically impactful applications arise from the simulation of physical systems, which was the original motivation behind Feynman's seminal paper. Quantum simulations of  molecules and materials currently account for a major fraction of supercomputer usage. Quantum computers will improve the reliability of such calculations by performing accurate simulations of molecules and materials on the scale of days to months for problems that might take billions of years on state-of-the-art supercomputers today. They can be applied to help solve critical real-world problems, such as elucidating the mechanism of biological nitrogen fixation with application to fertilizer production or designing catalysts for carbon capture  and sequestration (to combat global warming).  Extensions of these approaches promise solutions for applications in materials modeling, including investigation of materials that display higher temperature superconductivity. 
 
 The last decade has witnessed an explosion in classical machine learning methods for making predictions and gaining insights based on data.  Machine learning has utterly transformed domains such as speech recognition, computer vision, and web search.  With its foundations in computational statistics, machine learning is an area ripe for quantum improvements.  Recent results indicate that quantum algorithms may perform classification and clustering methods such as $k$-means and nearest-neighbor methods more efficiently than  classical methods.  Boltzmann machine training, deep learning, and neural networks have also been shown to have quantum advantages.  
 %The discovery of quantum algorithms for machine learning is just beginning and
@@ -540,9 +540,9 @@ Quantum computers are unlike their classical cousins.  While in principle they c
 %\label{fig:cryo}
 %\end{figure}
 
-A quantum computer will thus operate as a co-processor, receiving its instructions and cues from a stack of classical processors. To suppress noise and errors and keep the qubits in a superposition most designs for quantum computers require the qubits to be cooled to very low temperatures. This calls for the use of dilution refrigerators
+A quantum computer will thus operate as a co-processor, receiving its instructions and cues from a stack of classical processors. To suppress noise and errors and keep the qubits in a superposition, most designs for quantum computers require the qubits to be cooled to very low temperatures using a so-called dilution refrigerator to achieve near-absolute-zero temperatures.
 %, as shown in Figure \ref{fig:cryo}, 
-and means that large-scale quantum computers will be operated in data centers and accessed remotely as a cloud service. Locally one may just have a limited number of qubits to establish secure communication or to use as secure ``quantum money''.
+We envision that large-scale quantum computers will operate in data centers and be accessed remotely as a cloud service. Locally, one may have just a limited number of qubits with which to establish secure communication or to use as secure ``quantum money'' that is impossible to forge.
 %
 %\begin{figure*}[tb]
 %\centering
@@ -703,7 +703,7 @@ More importantly, it will accelerate the path towards development of logical qub
 
  Quantum algorithms for quantum simulations and factoring have been optimized to the point where they can be viewed as realistic applications on small to medium scale quantum computers. For other applications, including linear systems, sampling, and machine learning, algorithmic optimizations and in-depth resource estimates are still required. 
 
-While quantum algorithms are generally much less well understood than their classical cousins, the search continues for which important problems can be solved much faster on quantum computers and which cannot. Answering this question has become increasingly important, and industrial efforts are emerging that focus on the impending quantum revolution.
+While quantum algorithms are generally much less well understood than their classical cousins, the search continues for which important problems can be solved much faster on quantum computers and which cannot. Answering this question has become increasingly important, and industrial efforts are emerging that focus on the impending quantum revolution.  The quantum hardware architecture that may ultimately lead to scalability will require today's computer scientists, physicists, mathematicians, and engineers to together overcome the exciting challenges on the path toward universal quantum computing.
 
 % needed in second column of first page if using \IEEEpubid
 %\IEEEpubidadjcol
